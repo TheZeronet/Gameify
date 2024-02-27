@@ -7,9 +7,12 @@ import Girl from "../components/Girl";
 import Pricing from "../components/Pricing";
 import Trainer from "../components/Trainer";
 import "../styles/LandingPage.css";
+import Body from "./body";
+
 const LandingPage = () => {
   return (
     <div>
+      <Body />
       {/* <FrontCarousel />
       <Choose />
       <Girl />
