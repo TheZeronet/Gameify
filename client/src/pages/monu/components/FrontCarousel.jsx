@@ -11,9 +11,9 @@ import {
 
 import front1 from "../assets/Alan.jpeg";
 import front2 from "../assets/Kena.jpg";
-import front3 from "../assets/NFS.jpg";
+import front3 from "../assets/Horizon.jpg";
 import front4 from "../assets/Nier.jpg";
-import front5 from "../assets/Stray.webp";
+import front5 from "../assets/Sifu.jpg";
 import front6 from "../assets/Cyberpunk.jpg";
 
 // Here we have used react-icons package for the icons
@@ -53,8 +53,8 @@ export default function FrontCarousel() {
       image: front2,
     },
     {
-      title: "Criterion Games",
-      strong: "NFS Unbounded",
+      title: "Guerrilla Games",
+      strong: "horizon: forbidden west",
       image: front3,
     },
     {
@@ -68,8 +68,8 @@ export default function FrontCarousel() {
       image: front1,
     },
     {
-      title: "BlueTwelve Studio",
-      strong: "Stray",
+      title: "Sloclap",
+      strong: "Sifu",
       image: front5,
     },
     {
@@ -154,6 +154,7 @@ export default function FrontCarousel() {
                 maxW={"lg"}
                 position="absolute"
                 top="50%"
+                left="-90%"
                 transform={[
                   "translate(10%,15%)",
                   "translate(80%,50%)",

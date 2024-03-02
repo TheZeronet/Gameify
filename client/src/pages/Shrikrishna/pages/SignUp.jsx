@@ -24,41 +24,37 @@ import { useDispatch } from "react-redux";
 import { login } from "../../../redux/auth/auth.actions";
 import { registerUser } from "../../../redux/register/register.actions";
 
-import gymbro from "../assets/gymBro.gif"
-
 export default function Signup() {
-
   const [showPassword, setShowPassword] = useState(false);
-  const toast = useToast()
-  const dispatch  = useDispatch()
+  const toast = useToast();
+  const dispatch = useDispatch();
 
   const defaultValues = {
-    "firstName": "",
-    "lastName": "",
-    "email": "",
-    "age": 0,
-    "height": 0,
-    "weight": 0,
-    "gender": "",
-    "password": "",
-  }
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: 0,
+    gender: "",
+    password: "",
+  };
 
   const [user, setUser] = useState(defaultValues);
 
- // console.log(user);
+  // console.log(user);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
- 
   const handleClick = () => {
     if (
       !user.firstName ||
       !user.lastName ||
       !user.email ||
-      !user.password || !user.age || !user.height ||  !user.weight || !user.gender           
+      !user.password ||
+      !user.age ||
+      !user.gender
     ) {
       toast({
         title: "All fields are mandatory",
@@ -68,9 +64,8 @@ export default function Signup() {
         isClosable: true,
       });
     } else {
-
       dispatch(registerUser(user));
-      setUser(defaultValues)
+      setUser(defaultValues);
       toast({
         title: "Your account is created",
         description: "We've created your account for you.",
@@ -78,94 +73,116 @@ export default function Signup() {
         duration: 4000,
         isClosable: true,
       });
-   
-     
     }
   };
 
-
-
-
   return (
     <Flex
-   
-    position={"relative"}
+      position={"relative"}
       minH={"100vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
-      <Stack  zIndex={2} spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("whiteAlpha.200", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-          color="white"
-        >
+      <Stack zIndex={2} spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack align={"center"}>
+          <Heading color={"White"} fontSize={"4xl"}>
+            Sign up
+            {""}
+          </Heading>
+        </Stack>
+        <Box rounded={"lg"} bg="white" boxShadow={"lg"} p={8} color="white">
+          <Image
+            opacity={{ base: "30%", md: "80%" }}
+            display={{ base: "none", md: "block" }}
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            position={"absolute"}
+            src="https://i.pinimg.com/originals/db/cd/7f/dbcd7fda35282cb6992062f770a90833.gif"
+          />
           <Stack spacing={4}>
             <HStack>
               <Box>
                 <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input value={user.firstName} onChange={handleChange} type="text" name="firstName" />
+                  <FormLabel color={"#f45f02"}>First Name</FormLabel>
+                  <Input
+                    value={user.firstName}
+                    onChange={handleChange}
+                    type="text"
+                    name="firstName"
+                    color={"gray.300"}
+                  />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input value={user.lastName} onChange={handleChange} type="text" name="lastName" />
+                  <FormLabel color={"#f45f02"}>Last Name</FormLabel>
+                  <Input
+                    value={user.lastName}
+                    onChange={handleChange}
+                    type="text"
+                    name="lastName"
+                    color={"gray.300"}
+                  />
                 </FormControl>
               </Box>
             </HStack>
             <HStack>
               <Box>
                 <FormControl id="age" isRequired>
-                  <FormLabel>Age</FormLabel>
-                  <Input value={user.age} onChange={handleChange} type="number" name="age" />
+                  <FormLabel color={"#f45f02"}>Age</FormLabel>
+                  <Input
+                    value={user.age}
+                    onChange={handleChange}
+                    type="number"
+                    name="age"
+                    color={"gray.300"}
+                  />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="gender" bg="none">
-                  <FormLabel>Gender</FormLabel>
-                  <Select value={user.gender} _hover={{color:"black"}}  type="text" name="gender" onChange={handleChange}>
-                    <option  value="">select gender</option>
-                    <option  value="Male">male</option>
-                    <option  value="Female">female</option>
-                    <option  value="Others">Custom</option>
+                  <FormLabel color={"#f45f02"}>Gender</FormLabel>
+                  <Select
+                    value={user.gender}
+                    _hover={{ color: "black" }}
+                    type="text"
+                    name="gender"
+                    onChange={handleChange}
+                    color={"gray.300"}
+                  >
+                    <option value="">select gender</option>
+                    <option value="Male">male</option>
+                    <option value="Female">female</option>
+                    <option value="Others">Custom</option>
                   </Select>
                 </FormControl>
               </Box>
             </HStack>
-            <HStack>
-              <Box>
-                <FormControl id="weight">
-                  <FormLabel>Weight</FormLabel>
-                  <Input value={user.weight} onChange={handleChange} type="number" name="weight" />
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="height">
-                  <FormLabel>Height</FormLabel>
-                  <Input value={user.height} onChange={handleChange} type="number" name="height" />
-                </FormControl>
-              </Box>
-            </HStack>
+            <HStack></HStack>
             <FormControl id="email" isRequired>
-              <FormLabel>Email address</FormLabel>
-              <Input value={user.email} onChange={handleChange} type="email" name="email" />
+              <FormLabel color={"#f45f02"}>Email address</FormLabel>
+              <Input
+                value={user.email}
+                onChange={handleChange}
+                type="email"
+                name="email"
+                color={"gray.300"}
+              />
             </FormControl>
 
             <FormControl id="password" isRequired>
-              <FormLabel>Password</FormLabel>
+              <FormLabel color={"#f45f02"}>Password</FormLabel>
               <InputGroup>
-                <Input 
+                <Input
                   onChange={handleChange}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={user.password}
+                  color={"gray.300"}
                 />
                 <InputRightElement h={"full"}>
                   <Button
@@ -188,7 +205,6 @@ export default function Signup() {
                 _hover={{
                   bg: "blue.500",
                 }}
-
                 onClick={handleClick}
               >
                 Sign up
@@ -205,10 +221,6 @@ export default function Signup() {
           </Stack>
         </Box>
       </Stack>
-
-   
-
-  
     </Flex>
   );
 }

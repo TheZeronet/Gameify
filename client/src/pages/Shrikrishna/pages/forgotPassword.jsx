@@ -13,16 +13,15 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ForegetPassword } from "../../../redux/auth/auth.actions";
 
-export default function ForgotPasswordForm( {handleOtp} ) {
-
-  const toast = useToast()
+export default function ForgotPasswordForm({ handleOtp }) {
+  const toast = useToast();
 
   const [email, setEmail] = useState("");
   console.log(email);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const forgetKaro = ()=>{
-    dispatch(ForegetPassword(email))
+  const forgetKaro = () => {
+    dispatch(ForegetPassword(email));
     toast({
       title: "OTP Sent Successfull",
       description: "We've created your account for you.",
@@ -31,18 +30,16 @@ export default function ForgotPasswordForm( {handleOtp} ) {
       isClosable: true,
     });
     localStorage.setItem("tempEmail", email);
-  }
-
-
+  };
 
   return (
     <Flex
-    zIndex={500}
+      zIndex={500}
       minH={"60vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("none", "gray.800")}
-    //  bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      //  bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
       <Stack
         spacing={4}
@@ -81,9 +78,9 @@ export default function ForgotPasswordForm( {handleOtp} ) {
         </FormControl>
         <Stack spacing={6}>
           <Button
-            onClick={()=>{
-              handleOtp()
-              forgetKaro()
+            onClick={() => {
+              handleOtp();
+              forgetKaro();
             }}
             bg={"#f45f02"}
             color={"white"}

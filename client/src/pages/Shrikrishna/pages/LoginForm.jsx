@@ -20,9 +20,9 @@ import { getUserData, login } from "../../../redux/auth/auth.actions";
 import Loading from "../../Loading";
 
 export default function LoginForm({ handleForgot }) {
-
   const { isAuth, loading, error, errorMessage } = useSelector(
-    (store) => store.auth)
+    (store) => store.auth
+  );
 
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -35,7 +35,6 @@ export default function LoginForm({ handleForgot }) {
   };
 
   const handleClick = () => {
-    
     if (!user.email || !user.password) {
       toast({
         title: "All fields are mandatory",
@@ -45,18 +44,12 @@ export default function LoginForm({ handleForgot }) {
         isClosable: true,
       });
     } else {
-      dispatch(login(user))
-      
-      
+      dispatch(login(user));
     }
-
-   
   };
 
-
-
-  if(loading ){
-    return <Loading/>
+  if (loading) {
+    return <Loading />;
   }
 
   if (isAuth) {
@@ -67,21 +60,17 @@ export default function LoginForm({ handleForgot }) {
       duration: 4000,
       isClosable: true,
     });
-  
-    let token = JSON.parse(localStorage.getItem("token"))
-    
-    dispatch(getUserData(token.email))
- //console.log(token.email)
+
+    let token = JSON.parse(localStorage.getItem("token"));
+
+    dispatch(getUserData(token.email));
+    //console.log(token.email)
     return <Navigate to="/" />;
   }
- 
-
-
-
 
   return (
     // position={"relative"}
-    <Box zIndex={500} >
+    <Box zIndex={500}>
       {/* <video
           style={{ "object-fit": "cover", position: "fixed", "z-index": -1 }}
           width={"100%"}
@@ -155,7 +144,7 @@ export default function LoginForm({ handleForgot }) {
                   </Button>
                 </Stack>
                 <Button
-                onClick={handleClick}
+                  onClick={handleClick}
                   bg={"#f45f02"}
                   color={"white"}
                   _hover={{
