@@ -35,7 +35,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
-
 import { ImAndroid } from "react-icons/im";
 import SearchBar from "../components/SearchBar";
 import SearchBar2 from "../components/SearchBar2";
@@ -43,60 +42,55 @@ import { VscHeart } from "react-icons/vsc";
 import { IoBagOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 
-
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import { ActionLogout, getUserData } from "../../../redux/auth/auth.actions";
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import { ACTION_GET_ADMIN } from "../../../redux/admin/admin.actions";
 
- const Links = [
- 
-   {
-     name: 'Plans',
-     path: '/plans',
-   },
-   {
-     name: 'Products',
-     path: '/products',
-   },
-   {
-     name: 'Coach',
-     path: '/coach',
-   },
-   {
-     name: "About Us",
-     path: "/about",
-   },
-  
- ];
+const Links = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Games",
+    path: "/products",
+  },
+  {
+    name: "Accessories",
+    path: "/coach",
+  },
+  {
+    name: "About Us",
+    path: "/about",
+  },
+];
 
 const Navbar = () => {
   // const AdminIsAuth = true
 
   const dispatch = useDispatch();
 
-  const {  loading, error } = useSelector((store) => store.product);
- const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+  const { loading, error } = useSelector((store) => store.product);
+  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
 
-  let userName =  userData && userData?.details?.username 
+  let userName = userData && userData?.details?.username;
 
-  console.log(userData)
+  console.log(userData);
 
   useEffect(() => {
-   dispatch(ACTION_GET_PRODUCTS());
-   
-//console.log(token)
-   setTimeout(() => {
-     if (isAuth) {
+    dispatch(ACTION_GET_PRODUCTS());
 
-      let token = JSON.parse(localStorage.getItem("token"))
+    //console.log(token)
+    setTimeout(() => {
+      if (isAuth) {
+        let token = JSON.parse(localStorage.getItem("token"));
 
-       dispatch(getUserData(token.email))
-     }
-   }, 3000);
+        dispatch(getUserData(token.email));
+      }
+    }, 3000);
   }, [isAuth]);
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -104,9 +98,7 @@ const Navbar = () => {
         dispatch(ACTION_GET_ADMIN());
       }
     }, 3000);
-   }, [AdminIsAuth]);
-
-
+  }, [AdminIsAuth]);
 
   //console.log(cartData.length);
 
@@ -115,33 +107,34 @@ const Navbar = () => {
 
   const [OpenSearch, SetOpenSearch] = useState("none");
 
-  const toast = useToast()
-  
-  const naviGate = useNavigate()
+  const toast = useToast();
+
+  const naviGate = useNavigate();
 
   const LogOutUser = () => {
     dispatch(ActionLogout());
     toast({
       title: "Logout Successfull",
-     
+
       status: "success",
       duration: 4000,
       isClosable: true,
     });
-    naviGate("/")
-   
+    naviGate("/");
   };
 
   // borderBottom="1px solid #eeee"
 
-  
   return (
-    <Box zIndex={999}
-     borderBottom={"4px solid #f45f02"}
-    bgGradient={"linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"}
-    style={{ position: "sticky", top: 0, zIndex: "999" }}>
+    <Box
+      zIndex={999}
+      borderBottom={"4px solid #f45f02"}
+      bgGradient={
+        "linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      }
+      style={{ position: "sticky", top: 0, zIndex: "999" }}
+    >
       <HStack
-      
         style={{ position: "sticky", top: 0 }}
         p="0px 8%"
         justify="center"
@@ -160,7 +153,6 @@ const Navbar = () => {
                 w={{ base: "150px", md: "200px" }}
                 minW="150px"
                 dropShadow="2xl"
-              
                 style={{ position: "relative", left: "0px", zIndex: "1" }}
                 top={{ base: "10px", md: "28px" }}
                 src={logo}
@@ -183,8 +175,7 @@ const Navbar = () => {
               <HStack>
                 <NavLink to="/login">
                   <Button
-                   
-                   _hover={{backgroundColor:"white", color:"orange.500"}}
+                    _hover={{ backgroundColor: "white", color: "orange.500" }}
                     color="white"
                     variant="outline"
                     fontWeight="semibold"
@@ -195,18 +186,18 @@ const Navbar = () => {
 
                 <NavLink to="/register">
                   <Button
-                  _hover={{backgroundColor:"white", color:"orange.500"}}
-                     bg="#f45f02"
-                     color="white"
-                     variant="solid"
-                     fontWeight="semibold"
+                    _hover={{ backgroundColor: "white", color: "orange.500" }}
+                    bg="#f45f02"
+                    color="white"
+                    variant="solid"
+                    fontWeight="semibold"
                   >
                     Register
                   </Button>
                 </NavLink>
 
                 <IconButton
-                _hover={{ color:"orange.500"}}
+                  _hover={{ color: "orange.500" }}
                   fontSize="25px"
                   borderRadius={50}
                   variant="link"
@@ -216,7 +207,7 @@ const Navbar = () => {
 
                 <NavLink to="/cart">
                   <IconButton
-                  _hover={{ color:"orange.500"}}
+                    _hover={{ color: "orange.500" }}
                     fontSize="25px"
                     borderRadius={50}
                     variant="link"
@@ -224,8 +215,6 @@ const Navbar = () => {
                     icon={<IoBagOutline />}
                   />
                 </NavLink>
-
-                
               </HStack>
             </Box>
           ) : (
@@ -242,7 +231,6 @@ const Navbar = () => {
 
                 <Button
                   onClick={LogOutUser}
-              
                   bg="#f45f02"
                   color="white"
                   variant="solid"
@@ -250,25 +238,26 @@ const Navbar = () => {
                 >
                   LogOut
                 </Button>
-                <NavLink to="/cart"> 
-              <Flex>
-                <IconButton
-                  fontSize="25px"
-                  borderRadius={50}
-                  variant="link"
-                  //onClick={toggleColorMode}
-                  icon={<VscHeart />}
-                  /><Text >
-                  {userData.wishlist?.length !== 0 ? (
-                    <Circle minWidth={30} bg="white">
-                      {userData.wishlist?.length}
-                    </Circle>
-                  ) : (
-                    ""
-                  )}
-                </Text>
-
-                  </Flex></NavLink>
+                <NavLink to="/cart">
+                  <Flex>
+                    <IconButton
+                      fontSize="25px"
+                      borderRadius={50}
+                      variant="link"
+                      //onClick={toggleColorMode}
+                      icon={<VscHeart />}
+                    />
+                    <Text>
+                      {userData.wishlist?.length !== 0 ? (
+                        <Circle minWidth={30} bg="white">
+                          {userData.wishlist?.length}
+                        </Circle>
+                      ) : (
+                        ""
+                      )}
+                    </Text>
+                  </Flex>
+                </NavLink>
 
                 <NavLink to="/cart">
                   <Flex>
@@ -279,7 +268,7 @@ const Navbar = () => {
                       //onClick={toggleColorMode}
                       icon={<IoBagOutline />}
                     />
-                    <Text >
+                    <Text>
                       {userData.cart?.length !== 0 ? (
                         <Circle minWidth={30} bg="white">
                           {userData.cart?.length}
@@ -290,8 +279,6 @@ const Navbar = () => {
                     </Text>
                   </Flex>
                 </NavLink>
-
-               
               </HStack>
             </Box>
           )}
@@ -325,26 +312,20 @@ const Navbar = () => {
           </HStack>
         </HStack>
 
-        <Drawer
-         onClose={onClose} isOpen={isOpen} size="full">
+        <Drawer onClose={onClose} isOpen={isOpen} size="full">
           <DrawerOverlay />
 
           <DrawerContent
-          color="white"
-          bgGradient={"linear-gradient(0deg, rgba(0,0,0,1) 14%, rgba(64,64,64,1) 100%)"}
-        placement="right" >
+            color="white"
+            bgGradient={
+              "linear-gradient(0deg, rgba(0,0,0,1) 14%, rgba(64,64,64,1) 100%)"
+            }
+            placement="right"
+          >
             <DrawerCloseButton />
             <DrawerHeader>
               <HStack alignItems="center" h="20px">
-                <Image
-                 
-                  w="150px"
-                  position="absolute"
-                  bottom="20px"
-                  src={logo}
-                />
-
-              
+                <Image w="150px" position="absolute" bottom="20px" src={logo} />
               </HStack>
             </DrawerHeader>
             <DrawerBody>
@@ -370,15 +351,14 @@ const Navbar = () => {
                       to={el.path}
                       w={"100%"}
                       onClick={() => onClose()}
-                     
                       end
                     >
                       <Text
                         w={"100%"}
                         fontSize="20px"
                         className={({ isActive }) =>
-                        isActive ? "SmallactiveS" : "SmalldefaultS"
-                      }
+                          isActive ? "SmallactiveS" : "SmalldefaultS"
+                        }
                         fontWeight={"semibold"}
                         p="10px 5px"
                       >
@@ -455,7 +435,6 @@ const Navbar = () => {
 
       <HStack
         justifyContent={{ sm: "flex-end", xl: "center" }}
-    
         // style={{position:"sticky", top:0 }}
         p="0px 8%"
         justify="center"
@@ -473,7 +452,7 @@ const Navbar = () => {
                 }
                 end
               >
-                <Text fontSize="20px" fontFamily={"exo"}  p="10px 10px">
+                <Text fontSize="20px" fontFamily={"exo"} p="10px 10px">
                   {el.name}
                 </Text>
               </NavLink>
@@ -488,13 +467,18 @@ const Navbar = () => {
                 }
                 end
               >
-                <Text fontSize="20px" fontFamily={"exo"} color="whiteAlpha.900" p="10px 10px">
+                <Text
+                  fontSize="20px"
+                  fontFamily={"exo"}
+                  color="whiteAlpha.900"
+                  p="10px 10px"
+                >
                   {"Admin"}
                 </Text>
               </NavLink>
             )}
 
-        {isAuth && AdminIsAuth==false && (
+            {isAuth && AdminIsAuth == false && (
               <NavLink
                 key={"el.path"}
                 to={"/user-profile"}
@@ -503,7 +487,12 @@ const Navbar = () => {
                 }
                 end
               >
-                <Text fontSize="20px" fontFamily={"exo"} color="whiteAlpha.900" p="10px 10px">
+                <Text
+                  fontSize="20px"
+                  fontFamily={"exo"}
+                  color="whiteAlpha.900"
+                  p="10px 10px"
+                >
                   {"Profile"}
                 </Text>
               </NavLink>

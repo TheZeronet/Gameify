@@ -1,6 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Products from "./ProductsB"; // Assuming Products component is imported from a file
+import ProductsB from "./ProductsB.jsx";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 function Body() {
   return (
@@ -44,12 +43,12 @@ function Body() {
                               features, quests, and content, enriching the
                               original experience.
                             </p>
-                            <NavLink
-                              to="#"
+                            <ChakraLink
+                              href="#"
                               className="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3"
                             >
                               Shop Now
-                            </NavLink>
+                            </ChakraLink>
                           </div>
                           <div className="img-wrapper col-md-5"></div>
                         </div>
@@ -58,7 +57,7 @@ function Body() {
                     <div className="swiper-pagination" />
                   </div>
                 </div>
-                {/* <div
+                <div
                   className="banner-ad bg-success-subtle block-2"
                   style={{
                     color: "#F0BC2C",
@@ -79,19 +78,19 @@ function Body() {
                       <h3 className="banner-title" style={{ color: "#EAECE7" }}>
                         All JRPG Games
                       </h3>
-                      <NavLink
-                        to="#"
+                      <ChakraLink
+                        href="#"
                         className="d-flex align-items-center nav-link"
                       >
                         Shop Collection{" "}
                         <svg width={24} height={24}>
                           <use xlinkto="#arrow-right" />
                         </svg>
-                      </NavLink>
+                      </ChakraLink>
                     </div>
                   </div>
-                </div> */}
-                {/* <div
+                </div>
+                <div
                   className="banner-ad bg-danger block-3"
                   style={{
                     color: "#F0BC2C",
@@ -112,25 +111,25 @@ function Body() {
                       <h3 className="item-title" style={{ color: "#EAECE7" }}>
                         Accessories
                       </h3>
-                      <NavLink
-                        to="#"
+                      <ChakraLink
+                        href="#"
                         className="d-flex align-items-center nav-link"
                       >
                         Shop Collection{" "}
                         <svg width={24} height={24}>
                           <use xlinkto="#arrow-right" />
                         </svg>
-                      </NavLink>
+                      </ChakraLink>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* <section className="py-5 overflow-hidden">
+      <section className="py-5 overflow-hidden">
         <div>
           <div className="row">
             <h2
@@ -151,13 +150,13 @@ function Body() {
             <div style={{ paddingLeft: "50px" }}>
               <div className="row">
                 <div>
-                  <Products />
+                  <ProductsB />
                 </div>
               </div>
             </div>
           </section>
         </div>
-      </section> */}
+      </section>
     </>
   );
 }

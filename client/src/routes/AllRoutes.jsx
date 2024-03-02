@@ -4,7 +4,7 @@ import LandingPage from "../pages/monu/pages/LandingPage";
 import OrderSuccessfull from "../pages/monu/pages/OrderSuccessfull";
 import PaymentForm from "../pages/monu/pages/PaymentForm";
 import Coach from "../pages/nayan/pages/Coach";
-import ProductPage from "../pages/nayan/pages/Product Page";
+import ProductPage from "../pages/nayan/pages/ProductPage";
 import SingleProductPage from "../pages/nayan/pages/SingleProductPage";
 import UserDashboard from "../pages/nayan/pages/UserDashboard";
 import Login from "../pages/Shrikrishna/pages/Login";
@@ -19,25 +19,24 @@ import Dashborad from "../pages/sufiyan/pages/nestedPages/Dashborad";
 import AdminPrivateAuth from "./AdminPrivateRoute";
 import PrivateRoute from "./PrivateRoute";
 
-
 const AllRoutes = () => {
-    return (
-      <div>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
 
-          <Route path="/coach" element={<Coach />} />
+        <Route path="/coach" element={<Coach />} />
 
-          <Route path="/plans" element={<Plans />} />
-          <Route path="/plans/:plan" element={<SinglePlanPage />} />
+        <Route path="/plans" element={<Plans />} />
+        <Route path="/plans/:plan" element={<SinglePlanPage />} />
 
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="/products/:id" element={<SingleProductPage />} />
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/products/:id" element={<SingleProductPage />} />
 
-          <Route
+        <Route
           path="/checkout/payment"
           element={
             <PrivateRoute>
@@ -64,62 +63,53 @@ const AllRoutes = () => {
           }
         />
 
+        <Route path="/user-profile" element={<UserDashboard />} />
 
+        <Route path="/about" element={<AboutUS />} />
 
+        {/*////////////////////////////////////////////////////*/}
 
-          <Route path="/user-profile" element={<UserDashboard />} />
+        <Route path="/admin" element={<AdminDashbord />}>
+          <Route
+            index
+            element={
+              <AdminPrivateAuth>
+                <Dashborad />{" "}
+              </AdminPrivateAuth>
+            }
+          />
+          <Route
+            exact
+            path="dashboard"
+            element={
+              <AdminPrivateAuth>
+                <Dashborad />{" "}
+              </AdminPrivateAuth>
+            }
+          />
 
-          <Route path="/about" element={<AboutUS />} />
+          <Route
+            exact
+            path="add-product"
+            element={
+              <AdminPrivateAuth>
+                <AddProduct />{" "}
+              </AdminPrivateAuth>
+            }
+          />
+          <Route
+            exact
+            path="all-users"
+            element={
+              <AdminPrivateAuth>
+                <AllUsers />{" "}
+              </AdminPrivateAuth>
+            }
+          />
+        </Route>
+      </Routes>
+    </div>
+  );
+};
 
-{/*////////////////////////////////////////////////////*/}
-
-
-          <Route path="/admin" element={<AdminDashbord />} >
-
-               
-                <Route
-                  index
-                  element={
-                    <AdminPrivateAuth>
-                      <Dashborad />{" "}
-                    </AdminPrivateAuth>
-                  }
-                />
-                <Route
-                  exact
-                  path="dashboard"
-                  element={
-                    <AdminPrivateAuth>
-                      <Dashborad />{" "}
-                    </AdminPrivateAuth>
-                  }
-                />
-
-                <Route
-                  exact
-                  path="add-product"
-                  element={
-                    <AdminPrivateAuth>
-                      <AddProduct />{" "}
-                    </AdminPrivateAuth>
-                  }
-                />
-                <Route
-                  exact
-                  path="all-users"
-                  element={
-                    <AdminPrivateAuth>
-                      <AllUsers />{" "}
-                    </AdminPrivateAuth>
-                  }
-                />
-
-          </Route>
-       
-        </Routes>
-      </div>
-    );
-  };
-  
-  export default AllRoutes;
-  
+export default AllRoutes;

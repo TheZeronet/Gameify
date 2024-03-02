@@ -1,7 +1,7 @@
-// import wave from "../assets/wave.png";all_accessories
+// import wave from "../assets/wave.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import All_accessories from "../../monu/pages/all_accessories";
+import All_games from "../../monu/pages/all_games";
 import {
   VStack,
   chakra,
@@ -78,7 +78,7 @@ const ProductPage = () => {
             spacing={{ base: "3", md: 5, lg: "10" }}
             columns={{ base: 2, md: 3, lg: 4 }}
           >
-            {All_accessories.map((item) => (
+            {All_games.map((item) => (
               <VStack
                 position={"relative"}
                 key={item.producerID}

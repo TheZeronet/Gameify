@@ -1,4 +1,4 @@
-const all_accessories = [
+const DispAccessories = [
   {
     name: "PS5 (Spiderman 2 Edition)",
     producerID: "qwertyuiop01",
@@ -51,4 +51,4 @@ const all_accessories = [
   },
 ];
 
-export default all_accessories;
+export default DispAccessories;

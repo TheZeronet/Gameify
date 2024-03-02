@@ -5,20 +5,17 @@ import FrontCarousel from "../components/FrontCarousel";
 
 import Girl from "../components/Girl";
 import Pricing from "../components/Pricing";
-import Trainer from "../components/Trainer";
+import Store from "../components/Store";
 import "../styles/LandingPage.css";
 import Body from "./body";
 
 const LandingPage = () => {
   return (
     <div>
-      <Body />
-      {/* <FrontCarousel />
-      <Choose />
-      <Girl />
-      <Pricing />
-      <BigGallery />
-      <Trainer /> */}
+      {/* <Body /> */}
+      <FrontCarousel />
+      <Store />
+      {/* <Choose /> */}
     </div>
   );
 };

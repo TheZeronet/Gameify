@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Product from "./all_products.js";
+import Games from "./all_games.jsx";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,7 +10,7 @@ function ProductsB() {
   return (
     <>
       <div className="col">
-        {Product.slice(0, 4).map((product) => (
+        {Games.slice(0, 4).map((product) => (
           <div key={product._id} style={{ marginBottom: "30px" }}>
             <div>
               <img
