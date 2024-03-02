@@ -9,12 +9,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import front1 from "../assets/front1.jpg";
-import front2 from "../assets/front2.jpg";
-import front3 from "../assets/front3.jpg";
-import front4 from "../assets/front4.jpg";
-import front5 from "../assets/front5.jpg";
-import front6 from "../assets/front6.jpg";
+import front1 from "../assets/Alan.jpeg";
+import front2 from "../assets/Kena.jpg";
+import front3 from "../assets/NFS.jpg";
+import front4 from "../assets/Nier.jpg";
+import front5 from "../assets/Stray.webp";
+import front6 from "../assets/Cyberpunk.jpg";
+
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
@@ -47,45 +48,33 @@ export default function FrontCarousel() {
   // This can be static or loaded from a server
   const cards = [
     {
-      title: "SHAPE YOUR BODY",
-      text: "TRAINING HARD",
-      be: "BE",
-      strong: "POWER",
+      title: "Ember Lab",
+      strong: "Kena Bridge of Spirits",
       image: front2,
     },
     {
-      title: "SHAPE YOUR BODY",
-      text: "NO GAIN",
-      be: "NO",
-      strong: "PAIN",
+      title: "Criterion Games",
+      strong: "NFS Unbounded",
       image: front3,
     },
     {
-      title: "SHAPE YOUR BODY",
-      text: "TRAINING HARD",
-      be: "BE",
-      strong: "HERO",
+      title: "Square Enix",
+      strong: "Nier Automata",
       image: front4,
     },
     {
-      title: "SHAPE YOUR BODY",
-      text: "TRAINING HARD",
-      be: "BE",
-      strong: "MIGHTY",
+      title: "Remedy Entertainment",
+      strong: "Alan Wake",
       image: front1,
     },
     {
-      title: "SHAPE YOUR BODY",
-      text: "TRAINING HARD",
-      be: "BE",
-      strong: "STRONG",
+      title: "BlueTwelve Studio",
+      strong: "Stray",
       image: front5,
     },
     {
-      title: "SHAPE YOUR BODY",
-      text: "WORK INSANE",
-      be: "BE",
-      strong: "FLAME",
+      title: "CD Projekt Red",
+      strong: "Cyberpunk 2077",
       image: front6,
     },
   ];
@@ -176,20 +165,27 @@ export default function FrontCarousel() {
                   mt="30"
                   letterSpacing="10px"
                   ml="2"
-                  fontSize={{ base: "sm", md: "md", lg: "xl" }}
+                  fontSize={{
+                    base: "30px",
+                    md: "30px",
+                    lg: "20px",
+                    xl: "20px",
+                  }}
                   fontWeight="500"
                   w="100%"
                   color="#fff"
                 >
                   {card.title}
                 </Heading>
+
                 <Heading
                   color="#fff"
-                  fontSize={["50px", "60px", "70px", "90px"]}
+                  fontSize={["50px", "60px", "70px", "70px"]}
                 >
                   {card.be}
-                  <span style={{ color: "#f45f02" }}> {card.strong}</span>
+                  <span style={{ color: "#E5E4E2" }}> {card.strong}</span>
                 </Heading>
+
                 <Text
                   fontSize={["30px", "40px", "50px", "60px"]}
                   fontWeight="650"
