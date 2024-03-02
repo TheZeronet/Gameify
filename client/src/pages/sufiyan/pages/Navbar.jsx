@@ -42,7 +42,7 @@ import { VscHeart } from "react-icons/vsc";
 import { IoBagOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 
-import logo from "../assets/logo.png";
+import logo from "../../../assets/Logo.png";
 import { ActionLogout, getUserData } from "../../../redux/auth/auth.actions";
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import { ACTION_GET_ADMIN } from "../../../redux/admin/admin.actions";
@@ -129,9 +129,10 @@ const Navbar = () => {
     <Box
       zIndex={999}
       borderBottom={"4px solid #f45f02"}
-      bgGradient={
-        "linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      }
+      // bgGradient={
+      //   "linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      // }
+      bg={"#151515"}
       style={{ position: "sticky", top: 0, zIndex: "999" }}
     >
       <HStack
@@ -162,7 +163,7 @@ const Navbar = () => {
 
           <HStack
             w={{ base: "full", md: "fit-content" }}
-            justifyContent="space-around"
+            style={{ paddingLeft: "200px" }}
           >
             <Box visibility={{ base: "hidden", md: "visible" }}>
               <SearchBar />
@@ -179,6 +180,8 @@ const Navbar = () => {
                     color="white"
                     variant="outline"
                     fontWeight="semibold"
+                    left="100px"
+                    top="27px"
                   >
                     Sign in
                   </Button>
@@ -191,6 +194,8 @@ const Navbar = () => {
                     color="white"
                     variant="solid"
                     fontWeight="semibold"
+                    left="100px"
+                    top="27px"
                   >
                     Register
                   </Button>
@@ -203,6 +208,8 @@ const Navbar = () => {
                   variant="link"
                   //onClick={toggleColorMode}
                   icon={<VscHeart />}
+                  left="100px"
+                  top="27px"
                 />
 
                 <NavLink to="/cart">
@@ -213,6 +220,8 @@ const Navbar = () => {
                     variant="link"
                     //onClick={toggleColorMode}
                     icon={<IoBagOutline />}
+                    left="100px"
+                    top="27px"
                   />
                 </NavLink>
               </HStack>

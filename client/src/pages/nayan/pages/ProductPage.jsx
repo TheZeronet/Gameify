@@ -2,6 +2,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import All_games from "../../monu/pages/all_games";
+import Filter from "./Filter";
+
 import {
   VStack,
   chakra,
@@ -11,6 +13,9 @@ import {
   Stack,
   Heading,
   BreadcrumbItem,
+  Text,
+  Checkbox,
+  Divider,
   Box,
   Flex,
   Image,
@@ -63,14 +68,10 @@ const ProductPage = () => {
   return (
     <Box
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      // bg='url("https://pbs.twimg.com/media/FQQh3p1WYAAfEVS.jpg:large")'
-      // backgroundSize="cover"
-      // backgroundPosition="center"
       w="100%"
     >
+      <Filter />
       <Box>
-        {/* products crouser */}
-
         <VStack maxW="1400px" m="auto">
           <SimpleGrid
             p={5}
@@ -114,8 +115,12 @@ const ProductPage = () => {
                     fontWeight="bold"
                     fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
                     textTransform="uppercase"
+                    textAlign={"center"}
                   >
                     {item.name}
+                  </chakra.h1>
+                  <chakra.h1 color="gray.400" textAlign="center">
+                    {item.category}
                   </chakra.h1>
                 </Box>
 
