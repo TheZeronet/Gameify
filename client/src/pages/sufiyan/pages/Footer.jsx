@@ -77,15 +77,26 @@ export default function Footer() {
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "center" }}
         >
-          <Text>© 2024 Pixel-Cartel. All rights reserved</Text>
+          <Stack direction={"column"} spacing={0}>
+            <Text>Number: +91 XXX-XXX-XXXX</Text>
+            <Text>Gmail: Gameify@gmail.com</Text>
+            <br />
+            <Text style={{ color: "gray" }}>
+              © 2024 Gameify. All rights reserved
+            </Text>
+          </Stack>
           <Stack direction={"row"} spacing={6}>
-            <SocialButton label={"Twitter"} href={"#"}>
+            <SocialButton label={"Twitter"} href={"https://twitter.com"}>
               <FaTwitter />
             </SocialButton>
-            <SocialButton label={"YouTube"} href={"#"}>
+
+            <SocialButton label={"YouTube"} href={"https://www.youtube.com"}>
               <FaYoutube />
             </SocialButton>
-            <SocialButton label={"Instagram"} href={"#"}>
+            <SocialButton
+              label={"Instagram"}
+              href={"https://www.instagram.com"}
+            >
               <FaInstagram />
             </SocialButton>
           </Stack>

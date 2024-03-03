@@ -56,6 +56,14 @@
     margin: 0 auto;
     height: 16px;
 }
+
+.white-border {
+    width: 50%;
+    border-bottom: 1px solid #ffffff;
+    margin: 0 auto;
+    height: 16px;
+}
+
 .company-sections p {
     margin-top: 20px;
 }
@@ -73,7 +81,7 @@
 }
 .culture-section {
     background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url(https://www.solodev.com/assets/culture.jpg) top no-repeat;
-    background-color: #095c87;
+    background-color: #f45f02;
     color: #fff;
 }
 .company-sections, .careers-sections, .left-headquarter-section-img, .right-headquarter-section-img {
@@ -182,7 +190,7 @@ img {
 }
 .btn-solodev-red-reversed {
     background-color: #ffffff;
-    color: #26194a;
+    color: #f45f02;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     padding: 12px 35px;
@@ -226,7 +234,7 @@ section.clients-home .clients-logos .client-logos-repeater img {
     line-height: 16px;
     text-transform: uppercase;
     color: #FFF;
-    background-color: #0079c2;
+    background-color: #f45f02;
 }
 .ct-u-paddingBottom100 {
   margin-top: 40px;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, Flex } from "@chakra-ui/react";
 
-function Filter({}) {
+function FilterG({}) {
   return (
     <Flex justifyContent="center" alignItems="flex-start">
       {" "}
@@ -28,7 +28,7 @@ function Filter({}) {
   );
 }
 
-export default Filter;
+export default FilterG;
 
 // import React from "react";
 // import { Select } from "@chakra-ui/react";

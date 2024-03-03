@@ -87,14 +87,20 @@ export default function Signup() {
     >
       <Stack zIndex={2} spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading color={"White"} fontSize={"4xl"}>
+          <Heading color={"white"} fontSize={"4xl"}>
             Sign up
             {""}
           </Heading>
         </Stack>
-        <Box rounded={"lg"} bg="white" boxShadow={"lg"} p={8} color="white">
+        <Box
+          rounded={"lg"}
+          // bg="whiteAlpha.300"     // The colour for the box thingy
+          boxShadow={"lg"}
+          p={8}
+          color="white"
+        >
           <Image
-            opacity={{ base: "30%", md: "80%" }}
+            opacity={{ base: "30%", md: "50%" }}
             display={{ base: "none", md: "block" }}
             top="0"
             left="0"

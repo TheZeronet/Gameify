@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
 import GameCarousel from "./GameCarousel";
 import AccCarousel from "./AccCarousel";
 const Store = () => {
   return (
     <Box bg="#151515" pt="10" pb="20" w="full">
+      <br />
+      <br />
+      <br />
       <Box w="80%" margin={"auto"} mb="20">
-        <HStack spacing={["50", "20", "260", "460", "610"]}>
+        <HStack spacing={["50", "20", "260", "460", "795"]}>
           <Box>
             <Text color="#f45f02" mb="5" fontWeight={"500"}>
               Discover
@@ -15,13 +19,20 @@ const Store = () => {
               New games
             </Heading>
           </Box>
-          <button className="oggu">Games</button>
+          <Link to="/products">
+            <button className="oggu">Games</button>
+          </Link>
         </HStack>
       </Box>
+
       <GameCarousel />
 
+      <br />
+      <br />
+      <br />
+
       <Box w="80%" margin={"auto"} mb="20">
-        <HStack spacing={["50", "20", "260", "460", "610"]}>
+        <HStack spacing={["50", "20", "260", "460", "685"]}>
           <Box>
             <Text color="#f45f02" mb="5" fontWeight={"500"}>
               Explore
@@ -30,7 +41,9 @@ const Store = () => {
               Various Accessories
             </Heading>
           </Box>
-          <button className="oggu">Accessories</button>
+          <Link to="/coach">
+            <button className="oggu">Accessories</button>
+          </Link>
         </HStack>
       </Box>
       <AccCarousel />

@@ -1,8 +1,9 @@
 // import wave from "../assets/wave.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { VscHeart } from "react-icons/vsc";
 import All_games from "../../monu/pages/all_games";
-import Filter from "./Filter";
+import Filter from "./FilterG";
 
 import {
   VStack,
@@ -57,7 +58,7 @@ const ProductPage = () => {
     dispatch(ACTION_DELETE_PRODUCT(id)).then((res) => {
       dispatch(ACTION_ADD_PRODUCT);
       toast({
-        title: "Product Deleted Successfull",
+        title: "Product Deleted Successful",
         status: "success",
         duration: 4000,
         isClosable: true,
@@ -70,6 +71,7 @@ const ProductPage = () => {
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
       w="100%"
     >
+      <br />
       <Filter />
       <Box>
         <VStack maxW="1400px" m="auto">
@@ -136,6 +138,16 @@ const ProductPage = () => {
                 >
                   <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
                     ${item.price}
+                    <IconButton
+                      _hover={{ color: "orange.500" }}
+                      fontSize="25px"
+                      borderRadius={50}
+                      variant="link"
+                      //onClick={toggleColorMode}
+                      icon={<VscHeart />}
+                      left="110px"
+                      bottom="-5px"
+                    />
                   </chakra.h1>
 
                   {AdminIsAuth ? (

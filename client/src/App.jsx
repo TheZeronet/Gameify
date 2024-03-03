@@ -29,14 +29,14 @@ function App() {
           position={"absolute"}
           minW={{ base: "800px", md: "none" }}
           h="100%"
-          src="https://i.pinimg.com/originals/72/0c/c4/720cc43d757ee638ad5054a05220fafe.gif"
+          src="https://i.pinimg.com/originals/ab/a8/f5/aba8f59ad58977e19d35d0c09760611f.gif"
         />
         <Image
           position={"absolute"}
-          // sizes="20% 20%"
-          minW={{ base: "800px", md: "none" }}
-          h="100%"
+          minW={{ base: "300px", md: "none" }}
+          h="auto"
           src={Logo}
+          alt="Logo"
         />
       </VStack>
     );

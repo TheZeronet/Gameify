@@ -80,20 +80,10 @@ export default function LoginForm({ handleForgot }) {
           src="https://www.meesho.io/img/tech-at-meesho/TechBanner.mp4"
         ></video> */}
 
-      <Flex
-        // position={"absolute"}
-        // top="0"
-        // right="500"
-        //  left="50%"
-        //  transform="(-50%, 0)"
-
-        zIndex={100}
-        align={"center"}
-        justify={"center"}
-      >
+      <Flex zIndex={100} align={"center"} justify={"center"}>
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
-            <Heading color={"white"} fontSize={"4xl"}>
+            <Heading color={"whiteAlpha.900"} fontSize={"4xl"}>
               Sign in
             </Heading>
           </Stack>

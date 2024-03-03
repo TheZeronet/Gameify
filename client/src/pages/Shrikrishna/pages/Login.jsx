@@ -59,7 +59,7 @@ const Login = () => {
         justify={"center"}
       >
         <Image
-          opacity={{ base: "30%", md: "80%" }}
+          opacity={{ base: "30%", md: "50%" }}
           display={{ base: "none", md: "block" }}
           top="0"
           left="0"

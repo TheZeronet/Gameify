@@ -1,7 +1,9 @@
 // import wave from "../assets/wave.png";all_accessories
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { VscHeart } from "react-icons/vsc";
 import All_accessories from "../../monu/pages/all_accessories";
+import Filter from "./FilterA";
 import {
   VStack,
   chakra,
@@ -68,6 +70,8 @@ const ProductPage = () => {
       // backgroundPosition="center"
       w="100%"
     >
+      <br />
+      <Filter />
       <Box>
         {/* products crouser */}
 
@@ -131,6 +135,16 @@ const ProductPage = () => {
                 >
                   <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
                     ${item.price}
+                    <IconButton
+                      _hover={{ color: "orange.500" }}
+                      fontSize="25px"
+                      borderRadius={50}
+                      variant="link"
+                      //onClick={toggleColorMode}
+                      icon={<VscHeart />}
+                      left="100px"
+                      bottom="-5px"
+                    />
                   </chakra.h1>
 
                   {AdminIsAuth ? (

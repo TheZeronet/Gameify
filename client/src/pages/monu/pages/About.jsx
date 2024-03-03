@@ -13,10 +13,7 @@ function About() {
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
       />
       <link rel="stylesheet" href="about-us.css" />
-      <link
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-        rel="stylesheet"
-      />
+
       <script
         src="https://code.jquery.com/jquery-2.2.0.min.js"
         type="text/javascript"
@@ -49,26 +46,20 @@ function About() {
           <div className="container">
             <div className="col-md-8 col-md-offset-2">
               <h2>About the Company</h2>
+              <div className="white-border">&nbsp;</div>
               <p className="ct-u-size22 ct-u-fontWeight300 ct-u-marginBottom60">
                 <br />
-                Pixel-Cartel is more than just an e-commerce platform; it's a
-                haven for gamers worldwide. With a dynamic blend of innovation
-                and expertise, we curate a vast array of games and accessories,
+                Gameify is more than just an e-commerce platform; it's a haven
+                for gamers worldwide. With a dynamic blend of innovation and
+                expertise, we curate a vast array of games and accessories,
                 catering to every gaming need and desire. Our relentless
                 dedication to quality, coupled with a deep understanding of the
                 gaming community, defines us as a leading force in the industry.
-                At Pixel-Cartel, we're not just selling products; we're crafting
+                At Gameify, we're not just selling products; we're crafting
                 experiences, fostering camaraderie, and shaping the future of
                 gaming culture, one pixel at a time.
               </p>
             </div>
-
-            <a
-              className="ct-u-marginTop60 btn btn-solodev-red-reversed btn-fullWidth-sm ct-u-size19"
-              href="/"
-            >
-              Ready to Learn More?
-            </a>
           </div>
         </section>
 
@@ -76,7 +67,7 @@ function About() {
           <div className="container">
             <div className="col-md-8 col-md-offset-2">
               <h2>CUSTOMERS</h2>
-              <h3>Trusted by some of the world’s leading Gaming Companies.</h3>
+              <div className="red-border">&nbsp;</div>
               <p className="ct-u-size22 ct-u-fontWeight300 ct-u-marginBottom60 marginTop40">
                 Customers rave about the seamless browsing experience on our
                 e-commerce website for games and accessories, praising its
