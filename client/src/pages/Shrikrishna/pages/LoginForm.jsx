@@ -89,12 +89,10 @@ export default function LoginForm({ handleForgot }) {
           </Stack>
           <Box
             rounded={"lg"}
-            zIndex={100}
-            // bg="white"
-            // bg={useColorModeValue('white', 'gray.700')}
             bg="whiteAlpha.300"
             boxShadow={"lg"}
             p={8}
+            zIndex={100}
           >
             <Stack spacing={4}>
               <FormControl id="email">

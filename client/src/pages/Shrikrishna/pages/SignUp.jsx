@@ -82,8 +82,7 @@ export default function Signup() {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      bg={"black"}
     >
       <Stack zIndex={2} spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -94,10 +93,10 @@ export default function Signup() {
         </Stack>
         <Box
           rounded={"lg"}
-          bg="whiteAlpha.300" // The colour for the box thingy
+          bg="whiteAlpha.400" // The colour for the box thingy
           boxShadow={"lg"}
           p={8}
-          color="white"
+          zIndex={100}
         >
           <Image
             opacity={{ base: "30%", md: "50%" }}

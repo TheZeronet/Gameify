@@ -29,7 +29,7 @@ function App() {
           position={"absolute"}
           minW={{ base: "800px", md: "none" }}
           h="100%"
-          src="https://i.pinimg.com/originals/ab/a8/f5/aba8f59ad58977e19d35d0c09760611f.gif"
+          src="https://i.pinimg.com/originals/a6/10/8b/a6108b31b391378d30856edba57172a4.gif"
         />
         <Image
           position={"absolute"}
