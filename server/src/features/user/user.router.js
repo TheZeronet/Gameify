@@ -9,6 +9,7 @@ const SECRET_TOKEN = process.env.SECRET_TOKEN;
 const SECRET_REFRESH_TOKEN = process.env.SECRET_REFRESH_TOKEN;
 
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 const CartModel = require("../cart/cart.model");
 
 const blackList = [];
@@ -22,7 +23,6 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get("/", async (req, res) => {
-
   try {
     let data = await UserModel.find();
     return res.status(200).send(data);
@@ -32,37 +32,32 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/:email", async (req, res) => {
+  console.log(req.params.email);
 
-  console.log(req.params.email)
-
-  if(req.params.email ){
-    let data = await UserModel.findOne({email:req.params.email});
+  if (req.params.email) {
+    let data = await UserModel.findOne({ email: req.params.email });
     return res.status(200).send(data);
   }
 
-  return res.send(404)
-
+  return res.send(404);
 });
-
-
 
 // Login Route
 app.post("/login", async (req, res) => {
-
   const { email, password } = req.body;
 
- console.log(email,password)
+  console.log(email, password);
 
   if (!email || !password) {
     return res.status(403).send("Enter Credianteials");
   }
   const User = await UserModel.findOne({ email });
- // console.log(User)
- // if (!User) return res.status(404).send("User Not Found");
+  // console.log(User)
+  // if (!User) return res.status(404).send("User Not Found");
 
   try {
     const match = bcrypt.compareSync(password, User.password);
-   console.log(match)
+    console.log(match);
     if (match) {
       //login
       const token = jwt.sign(
@@ -70,7 +65,7 @@ app.post("/login", async (req, res) => {
           _id: User.id,
           name: User.username,
           role: User.role,
-          email:User.email,
+          email: User.email,
           password: User.password,
         },
         SECRET_TOKEN,
@@ -83,7 +78,7 @@ app.post("/login", async (req, res) => {
           _id: User.id,
           name: User.username,
           role: User.role,
-          email:User.email,
+          email: User.email,
           password: User.password,
         },
         SECRET_REFRESH_TOKEN,
@@ -121,7 +116,8 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res) => {
   const {
     email,
-    firstName, lastName,
+    firstName,
+    lastName,
     password,
     weight,
     height,
@@ -131,9 +127,9 @@ app.post("/signup", async (req, res) => {
     bodyType,
   } = req.body;
 
-  console.log(req.body)
-  
-  let username = firstName + " "+ lastName
+  console.log(req.body);
+
+  let username = firstName + " " + lastName;
 
   if (!email || !password || !username) {
     return res.status(403).send("Enter Credentails");
@@ -162,12 +158,13 @@ app.post("/signup", async (req, res) => {
         bodyType,
       });
 
-      const X = await CartModel.create(
-        { email: email, cart: [], purchase:[] }
-      )
+      const X = await CartModel.create({
+        email: email,
+        cart: [],
+        purchase: [],
+      });
       await user.save();
-      
-    
+
       const mailOptions = {
         from: process.env.EMAIL,
         to: email,
@@ -194,7 +191,7 @@ let flag = false;
 
 app.post("/reset-password/getOtp", async (req, res) => {
   const { email } = req.body;
- console.log(req.body)
+  console.log(req.body);
   if (!email) {
     return res.status(403).send("Enter Valid Email");
   }
@@ -235,7 +232,7 @@ app.post("/reset-password/verifyOtp", async (req, res) => {
   }
 
   try {
-    console.log(MYOTP, otp)
+    console.log(MYOTP, otp);
     if (+MYOTP == +otp) {
       flag = true;
       return res.status(201).send("Otp Verified");
@@ -364,8 +361,5 @@ app.post("/verify", async (req, res) => {
     return res.status(502).send("kuch to gadbad he daya");
   }
 });
-
-
-
 
 module.exports = app;
