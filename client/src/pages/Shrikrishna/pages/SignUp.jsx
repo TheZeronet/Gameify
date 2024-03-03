@@ -94,7 +94,7 @@ export default function Signup() {
         </Stack>
         <Box
           rounded={"lg"}
-          // bg="whiteAlpha.300"     // The colour for the box thingy
+          bg="whiteAlpha.300" // The colour for the box thingy
           boxShadow={"lg"}
           p={8}
           color="white"
