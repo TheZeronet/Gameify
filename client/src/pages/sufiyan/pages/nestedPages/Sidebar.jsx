@@ -1,25 +1,15 @@
 import "./Sidebar.css";
 import { motion } from "framer-motion";
-import {AiOutlineBars} from "react-icons/ai";
-
-import { MdDashboard 
-} from "react-icons/md"
-
-
-import { AiFillEdit} from "react-icons/ai"
-
-import {   GiReceiveMoney } from "react-icons/gi"
-import {   FaUsers } from "react-icons/fa"
-
-
-
+import { AiOutlineBars } from "react-icons/ai";
+import { MdDashboard } from "react-icons/md";
+import { AiFillEdit } from "react-icons/ai";
+import { GiReceiveMoney } from "react-icons/gi";
+import { FaUsers } from "react-icons/fa";
 import { useState } from "react";
 import Item from "../../components/item";
 import { Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function SideBarLeft() {
-
-  
   const [open, setOpen] = useState(true);
 
   // for collpsing sidebar
@@ -29,14 +19,13 @@ function SideBarLeft() {
 
   const sideContainerVariants = {
     true: {
-      width: "20rem"
+      width: "20rem",
     },
     false: {
-      
       transition: {
-        delay: 0.6
-      }
-    }
+        delay: 0.6,
+      },
+    },
   };
 
   const sidebarVariants = {
@@ -44,21 +33,21 @@ function SideBarLeft() {
     false: {
       width: "3rem",
       transition: {
-        delay: 0.4
-      }
-    }
+        delay: 0.4,
+      },
+    },
   };
 
   const profileVariants = {
     true: {
       alignSelf: "center",
-      width: "10rem"
+      width: "10rem",
     },
     false: {
       alignSelf: "flex-start",
       marginTop: "2rem",
-      width: "3rem"
-    }
+      width: "3rem",
+    },
   };
   return (
     <Box zIndex={500} className="Apps">
@@ -67,7 +56,6 @@ function SideBarLeft() {
         variants={sideContainerVariants}
         initial={`${open}`}
         animate={`${open}`}
-        className="sidebar_container"
       >
         {/* sidebar div */}
         <motion.div
@@ -87,15 +75,15 @@ function SideBarLeft() {
               border: "1px solid rgba( 255, 255, 255, 0.18 )",
               transition: {
                 delay: 0.2,
-                duration: 0.4
-              }
+                duration: 0.4,
+              },
             }}
             onClick={handleToggle}
             className="lines_icon"
           >
             <AiOutlineBars />
           </motion.div>
-          {/* profile */}
+          Profile
           <motion.div
             layout
             initial={`${open}`}
@@ -108,12 +96,12 @@ function SideBarLeft() {
               boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
               backdropFilter: "blur(5.5px)",
               WebkitBackdropFilter: "blur(5.5px)",
-              border: "1px solid rgba( 255, 255, 255, 0.18 )",
-              cursor: "pointer"
+              cursor: "pointer",
+              border: "6px solid #151515",
             }}
           >
             <img
-              src="https://i.im.ge/2022/07/29/FwZXw1.jpg"
+              src="https://i.pinimg.com/564x/58/c4/d2/58c4d205c1b600e63f05c8df47687b9d.jpg"
               alt="profile_img"
             />
           </motion.div>
@@ -126,8 +114,10 @@ function SideBarLeft() {
               >
                 ANALYTICS
               </motion.h3>
-             <Link to="/admin/dashboard"> <Item icon={<MdDashboard />} name="Dashboard" /> </Link> 
-             
+              <Link to="/admin/dashboard">
+                {" "}
+                <Item icon={<MdDashboard />} name="Dashboard" />{" "}
+              </Link>
             </div>
           </div>
           {/* group 2 */}
@@ -139,7 +129,10 @@ function SideBarLeft() {
             </motion.h3>
             <Item icon={<GiReceiveMoney />} name="Sales" />
 
-            <Link to="/admin/all-users">  <Item icon={<FaUsers />} name="Customers" /></Link>
+            <Link to="/admin/all-users">
+              {" "}
+              <Item icon={<FaUsers />} name="Customers" />
+            </Link>
           </div>
           {/* group 3 */}
           <div className="group">
@@ -148,8 +141,10 @@ function SideBarLeft() {
             >
               CUSTOMIZATION
             </motion.h3>
-            <Link to="/admin/add-product">   <Item icon={<AiFillEdit />} name="Add Products" /> </Link>
-            
+            <Link to="/admin/add-product">
+              {" "}
+              <Item icon={<AiFillEdit />} name="Add Products" />{" "}
+            </Link>
           </div>
         </motion.div>
       </motion.div>

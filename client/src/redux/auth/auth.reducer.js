@@ -2,29 +2,29 @@ import {
   LOGIN_ERROR,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGOUT,  FORGET_REQUEST_,FORGET_SUCCESS_, FORGET_ERROR_,
+  LOGOUT,
+  FORGET_REQUEST_,
+  FORGET_SUCCESS_,
+  FORGET_ERROR_,
   GET_USER_REQUEST_,
   GET_USER_SUCCESS_,
-  GET_USER_ERROR_
+  GET_USER_ERROR_,
 } from "./auth.types";
 
 let LocalToken = JSON.parse(localStorage.getItem("token"));
-const check = (LocalToken!=undefined)
+const check = LocalToken != undefined;
 
+let checkAdminAuth = LocalToken?.email === "virajbiji01@gmail.com";
 
-  let checkAdminAuth = LocalToken?.email ==="admin@gmail.com"
-
- 
-
-console.log(LocalToken?.email == "admin@gmail.com" , check)
+console.log(LocalToken?.email == "virajbiji01@gmail.com", check);
 // const AdminToken = "admin@gmail.com#admin";
 const initialState = {
-  token:  LocalToken,
-  isAuth: check ,
+  token: LocalToken,
+  isAuth: check,
   loading: false,
   error: false,
   AdminIsAuth: checkAdminAuth,
-  userData : {  details : {} , cart: [], purchase: [], wishlist: [] }
+  userData: { details: {}, cart: [], purchase: [], wishlist: [] },
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -45,23 +45,20 @@ export const authReducer = (state = initialState, { type, payload }) => {
         token: payload,
         loading: false,
         error: false,
-        AdminIsAuth: payload?.email ==="admin@gmail.com"
+        AdminIsAuth: payload?.email === "virajbiji01@gmail.com",
       };
     }
 
-
     case GET_USER_SUCCESS_: {
-     
       return {
         ...state,
         loading: false,
         error: false,
-        userData : payload
-        
+        userData: payload,
       };
     }
     case LOGIN_ERROR || FORGET_ERROR_ || GET_USER_ERROR_: {
-     // localStorage.setItem("token", payload);
+      // localStorage.setItem("token", payload);
       return {
         ...state,
         loading: false,
@@ -73,7 +70,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        error: false
+        error: false,
       };
     }
 
@@ -84,7 +81,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         isAuth: false,
         token: "",
         AdminIsAuth: false,
-        userData : {  details : {} , cart: [], purchase: [], wishlist:[] }
+        userData: { details: {}, cart: [], purchase: [], wishlist: [] },
       };
     }
     default: {

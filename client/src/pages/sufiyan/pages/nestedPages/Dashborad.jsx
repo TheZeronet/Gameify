@@ -10,44 +10,42 @@ const Dashborad = () => {
 
   const { data: adminData } = useSelector((store) => store.admin);
 
- 
-  let pending_sales = 0
-  let cart = adminData.carts.map((el)=> el.cart)
-  .flat().forEach((el)=> pending_sales+= +el.price)
+  let pending_sales = 0;
+  let cart = adminData.carts
+    .map((el) => el.cart)
+    .flat()
+    .forEach((el) => (pending_sales += +el.price));
 
+  let sales_revenue = 0;
+  let purchase = adminData.carts
+    .map((el) => el.purchase)
+    .flat()
+    .forEach((el) => (sales_revenue += +el.price));
 
-  let sales_revenue = 0
-  let purchase = adminData.carts.map((el)=> el.purchase)
-  .flat().forEach((el)=> sales_revenue+= +el.price)
-
-
-
-console.log(pending_sales.toFixed(1), sales_revenue)
- 
+  console.log(pending_sales.toFixed(1), sales_revenue);
 
   //adminData.carts.map((el) => el.cartData.map((x) => Income += +x.price));
 
-  const allProducts = data?.length
-
+  const allProducts = data?.length;
 
   let PendingPurchase = 0;
-  adminData.carts.map((el)=> PendingPurchase += +el.cart.length )
+  adminData.carts.map((el) => (PendingPurchase += +el.cart.length));
 
   let TotalNumberOfSales = 0;
-  adminData.carts.map((el)=> TotalNumberOfSales += +el.purchase.length )
-  
-  console.log(PendingPurchase, TotalNumberOfSales );
+  adminData.carts.map((el) => (TotalNumberOfSales += +el.purchase.length));
+
+  console.log(PendingPurchase, TotalNumberOfSales);
 
   return (
-    <HStack zIndex={50} maxW="1200px" >
+    <HStack zIndex={50} maxW="1200px">
       <Box alignSelf={"center"} className="main__container">
         {/* <!-- MAIN TITLE STARTS HERE --> */}
 
-        <HStack className="main__title" >
+        <HStack className="main__title">
           <img src={hello} alt="hello" />
           <div style={{ textAlign: "start" }} className="main__greeting">
-            <h1 >Hello Chief</h1>
-            <p >Welcome to your admin dashboard</p>
+            <h1>Hello Chief</h1>
+            <p>Welcome to your admin dashboard</p>
           </div>
         </HStack>
 
@@ -56,7 +54,6 @@ console.log(pending_sales.toFixed(1), sales_revenue)
         {/* <!-- MAIN CARDS STARTS HERE --> */}
         <div className="main__cards">
           <div className="card">
-           
             <div className="card_inner">
               <p className="text-primary-p">Number of Users</p>
               <span className="font-bold text-title">
@@ -66,7 +63,6 @@ console.log(pending_sales.toFixed(1), sales_revenue)
           </div>
 
           <div className="card">
-           
             <div className="card_inner">
               <p className="text-primary-p">Number of Products</p>
               <span className="font-bold text-title">{allProducts}</span>
@@ -74,17 +70,13 @@ console.log(pending_sales.toFixed(1), sales_revenue)
           </div>
 
           <div className="card">
-           
             <div className="card_inner">
               <p className="text-primary-p">Pending Purchase</p>
-              <span className="font-bold text-title">
-                {PendingPurchase}
-              </span>
+              <span className="font-bold text-title">{PendingPurchase}</span>
             </div>
           </div>
 
           <div className="card">
-           
             <div className="card_inner">
               <p className="text-primary-p"> Total Sales </p>
               <span className="font-bold text-title">{TotalNumberOfSales}</span>
@@ -99,7 +91,6 @@ console.log(pending_sales.toFixed(1), sales_revenue)
             <div className="charts__left__title">
               <div>
                 <h1>Daily Reports</h1>
-                <p>Bangalore, India</p>
               </div>
               <i className="fa fa-usd" aria-hidden="true"></i>
             </div>
@@ -110,7 +101,6 @@ console.log(pending_sales.toFixed(1), sales_revenue)
             <div className="charts__right__title">
               <div>
                 <h1>Stats Reports</h1>
-                <p>Bangalore, India</p>
               </div>
               <i className="fa fa-usd" aria-hidden="true"></i>
             </div>
@@ -118,9 +108,8 @@ console.log(pending_sales.toFixed(1), sales_revenue)
             <div className="charts__right__cards">
               <div className="card1">
                 <h1>Revenue </h1>
-                <p>$ {(sales_revenue/1.5).toFixed(2)}</p>
+                <p>$ {(sales_revenue / 1.5).toFixed(2)}</p>
               </div>
-              
 
               <div className="card2">
                 <h1>Sales</h1>

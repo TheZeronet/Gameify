@@ -5,7 +5,7 @@ import SideBarLeft from "./nestedPages/Sidebar";
 
 import cloud from "../assets/cloud.png";
 import cloud2 from "../assets/cloud2.png";
-import img1 from "../assets/img1.png";
+import Chief from "../assets/Chief.png";
 
 const AdminDashbord = () => {
   return (
@@ -14,9 +14,10 @@ const AdminDashbord = () => {
       align={"flex-start"}
       justifyContent="flex-start"
       p={5}
-      bgGradient={
-        "linear-gradient(279deg, rgba(64,64,64,1) 31%, rgba(0,0,0,1) 100%)"
-      }
+      // bgGradient={
+      //   "linear-gradient(279deg, rgba(64,64,64,1) 31%, rgba(0,0,0,1) 100%)"
+      // }
+      bg={"#151515"}
     >
       <SideBarLeft />
       <Outlet />
@@ -42,7 +43,17 @@ const AdminDashbord = () => {
         position={"absolute"}
         opacity="50%"
         left="-20"
-        src={img1}
+        src={Chief}
+      />
+
+      <Image
+        zIndex={2}
+        bottom="30"
+        transform={"scaleX(-1)"}
+        position={"absolute"}
+        opacity="50%"
+        right="-20"
+        src={Chief}
       />
     </HStack>
   );
