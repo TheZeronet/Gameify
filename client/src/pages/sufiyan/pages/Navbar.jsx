@@ -35,7 +35,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
-import { ImAndroid } from "react-icons/im";
 import SearchBar from "../components/SearchBar";
 import SearchBar2 from "../components/SearchBar2";
 import { VscHeart } from "react-icons/vsc";
@@ -230,9 +229,7 @@ const Navbar = () => {
             <Box display={{ base: "none", md: "none", lg: "block" }}>
               <HStack spacing={25}>
                 <HStack>
-                  <Text color="whiteAlpha.900" fontSize="xl">
-                    <ImAndroid />
-                  </Text>
+                  <Text color="whiteAlpha.900" fontSize="xl"></Text>
                   <Text fontWeight="semibold" color="whiteAlpha.900">
                     {userName}
                   </Text>
@@ -341,9 +338,7 @@ const Navbar = () => {
               {isAuth && (
                 <VStack>
                   <HStack>
-                    <Text fontSize="xl">
-                      <ImAndroid />
-                    </Text>
+                    <Text fontSize="xl"></Text>
                     <Text fontWeight="semibold">{userName}</Text>
                   </HStack>
                 </VStack>

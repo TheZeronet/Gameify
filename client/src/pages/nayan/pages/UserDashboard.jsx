@@ -1,7 +1,8 @@
 import { Box, Flex, Img, Spacer, Tag, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
-import Vid from "./Vid";
+import Clive from "../Assets/Clive16.png";
+
 const UserDashboard = () => {
   const { userData, token, isAuth, AdminIsAuth } = useSelector(
     (store) => store.auth
@@ -11,18 +12,15 @@ const UserDashboard = () => {
 
   return (
     <Box minH="100vh" position={"relative"} maxW="1400vh">
-      <Box
-        bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-        minH="100vh"
-      >
+      <Box bg={"#151515"} minH="100vh">
         <Img
           w="700px"
           opacity="0.5"
-          src="https://i.ibb.co/ydNHbSH/pngegg-24.png"
+          src={Clive}
           alt="userBody"
           position="absolute"
           right={-70}
-          bottom={0}
+          top={-200}
           //  transform={"scaleX(-1)"}
         />
       </Box>
@@ -40,7 +38,10 @@ const UserDashboard = () => {
           maxW="600px"
         >
           <Box w={{ base: "100%", sm: "40%", md: "50%", lg: "40%" }}>
-            <Img src="https://i.im.ge/2022/07/29/FwZXw1.jpg" />
+            <Img
+              src="https://i.pinimg.com/564x/81/8a/1b/818a1b89a57c2ee0fb7619b95e11aebd.jpg"
+              border={"5px solid #151515"}
+            />
           </Box>
           <VStack align={"flex-start"} color="white">
             <Text fontSize="2xl">{details.username}</Text>
@@ -51,9 +52,6 @@ const UserDashboard = () => {
             <Text>Gender: {details.gender}</Text>
             <Text>Email: {details.email}</Text>
           </VStack>
-        </Box>
-        <Box position={"absolute"} top={345} left={50}>
-          <Vid />
         </Box>
         <VStack left="680" top="20" position={"absolute"} w="400px">
           <Text fontSize={"2xl"} color="white" fontWeight={"semibold"}>
