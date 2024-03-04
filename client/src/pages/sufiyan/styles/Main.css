@@ -46,8 +46,8 @@ main {
     padding: 20px;
     border-radius: 5px;
     color: white;
-    background: #6b67678a;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    background: #2320208a;
+    box-shadow: 0 8px 32px 0 rgba(51, 31, 2, 0.37);
   }
   
   .card_inner {
@@ -72,8 +72,8 @@ main {
     padding: 25px;
     border-radius: 5px;
     color: white;
-    background: #6b67678a;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    background: #2320208a;
+    box-shadow: 0 8px 32px 0 rgba(51, 31, 2, 0.37);
   }
   
   .charts__left__title {
@@ -109,8 +109,8 @@ main {
     padding: 25px;
     border-radius: 5px;
     color: white;
-    background: #6b67678a;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    background: #2320208a;
+    box-shadow: 0 8px 32px 0 rgba(51, 31, 2, 0.37);
   }
   
   .charts__right__title {

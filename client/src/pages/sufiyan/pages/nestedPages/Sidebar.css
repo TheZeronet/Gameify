@@ -35,8 +35,8 @@
     flex-direction: column;
     padding: 15px;
     margin: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(135, 90, 31, 0.37);
+    background: #151515 ;
+    box-shadow: 0 8px 32px 0 rgba(76, 46, 7, 0.37);
     backdrop-filter: blur(5.5px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
