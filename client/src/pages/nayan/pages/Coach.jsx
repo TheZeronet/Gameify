@@ -1,179 +1,152 @@
-// import wave from "../assets/wave.png";all_accessories
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { VscHeart } from "react-icons/vsc";
-import All_accessories from "../../monu/pages/all_accessories";
-import Filter from "./FilterA";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   VStack,
   chakra,
   SimpleGrid,
-  Breadcrumb,
-  BreadcrumbLink,
-  Stack,
-  Heading,
-  BreadcrumbItem,
-  Box,
-  Flex,
+  Link,
   Image,
   IconButton,
   useToast,
   Spacer,
   HStack,
+  Box,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-
+import { VscHeart } from "react-icons/vsc";
 import { RiDeleteBinLine } from "react-icons/ri";
-
-import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
   ACTION_DELETE_PRODUCT,
 } from "../../../redux/admin/admin.actions";
-// import axios from "axios";
-// const getData = async () => {
-//   let { data } = await axios.get("http://localhost:8080/products");
-//   console.log(data.length);
-//   return data;
-// };
+import Filter from "./FilterA";
 
-const ProductPage = () => {
+function ProductPage() {
+  const [accessories, setAccessories] = useState([]);
   const dispatch = useDispatch();
-  const product = useSelector((store) => store.product);
-
   const toast = useToast();
 
-  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
-  //console.log(product.data, "from selector");
+  useEffect(() => {
+    const fetchAccessories = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/accessories"); // Replace "http://localhost:8080" with your backend URL
+        setAccessories(response.data);
+      } catch (error) {
+        console.error("Error fetching Accessories:", error);
+      }
+    };
 
-  //useEffect(() => {
-  //
-  //}, [dispatch]);
+    fetchAccessories();
+  }, []);
 
-  const DeleteProduct = (id) => {
-    dispatch(ACTION_DELETE_PRODUCT(id)).then((res) => {
-      dispatch(ACTION_ADD_PRODUCT);
-      toast({
-        title: "Product Deleted Successfull",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
+  const ProductPage = () => {
+    const product = useSelector((store) => store.product);
+    const { userData, isAuth, AdminIsAuth } = useSelector(
+      (store) => store.auth
+    );
+
+    const DeleteProduct = (id) => {
+      dispatch(ACTION_DELETE_PRODUCT(id)).then((res) => {
+        dispatch(ACTION_ADD_PRODUCT);
+        toast({
+          title: "Product Deleted Successful",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
       });
-    });
-  };
+    };
 
-  return (
-    <Box
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      // bg='url("https://pbs.twimg.com/media/FQQh3p1WYAAfEVS.jpg:large")'
-      // backgroundSize="cover"
-      // backgroundPosition="center"
-      w="100%"
-    >
-      <br />
-      <Filter />
-      <Box>
-        {/* products crouser */}
-
-        <VStack maxW="1400px" m="auto">
-          <SimpleGrid
-            p={5}
-            w="100%"
-            spacing={{ base: "3", md: 5, lg: "10" }}
-            columns={{ base: 2, md: 3, lg: 4 }}
-          >
-            {All_accessories.map((item) => (
-              <VStack
-                position={"relative"}
-                key={item.producerID}
-                boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                borderRadius="10px"
-                maxW="xs"
-                bg="whiteAlpha.300"
-                shadow="lg"
-                rounded="lg"
-                z-index={-1}
-                h="100%"
-              >
-                <Box h="350px" w="100%">
-                  {" "}
-                  {/* Set a fixed height for the image container */}
-                  <Link to={`/products/${item.producerID}`}>
-                    <Image
-                      fit="cover"
-                      src={item.imgURL}
-                      alt="NIKE AIR"
-                      w="100%"
-                      h="100%" // Set the image height to fill the container
-                    />
-                  </Link>
-                </Box>
-                <Spacer />
-                <Box p={{ base: "2", md: "2", lg: "3" }}>
-                  <chakra.h1
-                    color="white"
-                    _dark={{
-                      color: "white",
-                    }}
-                    fontWeight="bold"
-                    fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
-                    textTransform="uppercase"
-                  >
-                    {item.name}
-                  </chakra.h1>
-                </Box>
-
-                <HStack
-                  w="100%"
-                  alignSelf={"flex-end"}
-                  alignItems="center"
-                  justifyContent="space-between"
-                  px={4}
-                  py={2}
-                  // bg="gray.900"
-                  roundedBottom="lg"
+    return (
+      <Box
+        bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+        w="100%"
+      >
+        <br />
+        <Filter />
+        <Box>
+          <VStack maxW="1400px" m="auto">
+            <SimpleGrid
+              p={5}
+              w="100%"
+              spacing={{ base: "3", md: 5, lg: "10" }}
+              columns={{ base: 2, md: 3, lg: 4 }}
+            >
+              {accessories.map((accessory) => (
+                <VStack
+                  position={"relative"}
+                  key={accessory.producerID}
+                  boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                  borderRadius="10px"
+                  maxW="xs"
+                  bg="whiteAlpha.300"
+                  shadow="lg"
+                  rounded="lg"
+                  z-index={-1}
+                  h="100%"
                 >
-                  <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                    ${item.price}
-                    <IconButton
-                      _hover={{ color: "orange.500" }}
-                      fontSize="25px"
-                      borderRadius={50}
-                      variant="link"
-                      //onClick={toggleColorMode}
-                      icon={<VscHeart />}
-                      left="100px"
-                      bottom="-5px"
-                    />
-                  </chakra.h1>
-
-                  {AdminIsAuth ? (
-                    <IconButton
-                      p="0px 20px"
-                      // bg="white"
-                      fontSize="3xl"
-                      onClick={() => DeleteProduct(item.producerID)}
+                  <Box h="350px" w="100%">
+                    {" "}
+                    {/* Set a fixed height for the image container */}
+                    <Link to={`/products/${accessory.producerID}`}>
+                      <Image
+                        fit="cover"
+                        src={accessory.imgURL}
+                        alt="NIKE AIR"
+                        w="100%"
+                        h="100%" // Set the image height to fill the container
+                      />
+                    </Link>
+                  </Box>
+                  <Spacer />
+                  <Box p={{ base: "2", md: "2", lg: "3" }}>
+                    <chakra.h1
                       color="white"
-                      fontWeight="bold"
-                      rounded="lg"
-                      textTransform="uppercase"
-                      _hover={{
-                        bg: "white",
-                        color: "#f45f02;",
+                      _dark={{
+                        color: "white",
                       }}
-                      // _focus={{
-                      //   bg: "gray.400",
-                      // }}
-                      bg="#f45f02;"
-                      icon={<RiDeleteBinLine />}
-                    />
-                  ) : (
-                    <Link to={`/products/${item.producerID}`}>
-                      <chakra.button
-                        px={4}
-                        py={3}
+                      fontWeight="bold"
+                      fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
+                      textTransform="uppercase"
+                      textAlign={"center"}
+                    >
+                      {accessory.name}
+                    </chakra.h1>
+                    <chakra.h1 color="gray.400" textAlign="center">
+                      {accessory.category}
+                    </chakra.h1>
+                  </Box>
+
+                  <HStack
+                    w="100%"
+                    alignSelf={"flex-end"}
+                    aligntems="center"
+                    justifyContent="space-between"
+                    px={4}
+                    py={2}
+                    // bg="gray.900"
+                    roundedBottom="lg"
+                  >
+                    <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
+                      ${accessory.price}
+                      <IconButton
+                        _hover={{ color: "orange.500" }}
+                        fontSize="25px"
+                        borderRadius={50}
+                        variant="link"
+                        //onClick={toggleColorMode}
+                        icon={<VscHeart />}
+                        left="110px"
+                        bottom="-5px"
+                      />
+                    </chakra.h1>
+
+                    {AdminIsAuth ? (
+                      <IconButton
+                        p="0px 20px"
                         // bg="white"
-                        fontSize="xs"
+                        fontSize="3xl"
+                        onClick={() => DeleteProduct(accessory.producerID)}
                         color="white"
                         fontWeight="bold"
                         rounded="lg"
@@ -186,19 +159,43 @@ const ProductPage = () => {
                         //   bg: "gray.400",
                         // }}
                         bg="#f45f02;"
-                      >
-                        View
-                      </chakra.button>{" "}
-                    </Link>
-                  )}
-                </HStack>
-              </VStack>
-            ))}
-          </SimpleGrid>
-        </VStack>
+                        icon={<RiDeleteBinLine />}
+                      />
+                    ) : (
+                      <Link to={`/products/${accessory.producerID}`}>
+                        <chakra.button
+                          px={4}
+                          py={3}
+                          // bg="white"
+                          fontSize="xs"
+                          color="white"
+                          fontWeight="bold"
+                          rounded="lg"
+                          textTransform="uppercase"
+                          _hover={{
+                            bg: "white",
+                            color: "#f45f02;",
+                          }}
+                          // _focus={{
+                          //   bg: "gray.400",
+                          // }}
+                          bg="#f45f02;"
+                        >
+                          View
+                        </chakra.button>{" "}
+                      </Link>
+                    )}
+                  </HStack>
+                </VStack>
+              ))}
+            </SimpleGrid>
+          </VStack>
+        </Box>
       </Box>
-    </Box>
-  );
-};
+    );
+  };
+
+  return <ProductPage />;
+}
 
 export default ProductPage;

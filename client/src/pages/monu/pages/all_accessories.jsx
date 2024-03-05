@@ -103,8 +103,7 @@ const all_accessories = [
     name: "Nintendo Switch Pro Controller",
     producerID: "qwertyuiop11",
     maker: "Nintendo",
-    imgURL:
-      "https://i.pinimg.com/564x/7c/05/1e/7c051e7791f5e796655b994bf101864c.jpg",
+    imgURL: "https://m.media-amazon.com/images/I/61tMvlGxXFL.jpg",
     info: "Next-gen gaming controller, advanced features, immersive experiences, high demand.",
     price: 6000,
     category: "Controllers",

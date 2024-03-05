@@ -1,58 +1,46 @@
-// import wave from "../assets/wave.png";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { VscHeart } from "react-icons/vsc";
-import All_games from "../../monu/pages/all_games";
-import Filter from "./FilterG";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   VStack,
   chakra,
   SimpleGrid,
-  Breadcrumb,
-  BreadcrumbLink,
-  Stack,
-  Heading,
-  BreadcrumbItem,
-  Text,
-  Checkbox,
-  Divider,
-  Box,
-  Flex,
+  Link,
   Image,
   IconButton,
   useToast,
   Spacer,
   HStack,
+  Box,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-
+import { VscHeart } from "react-icons/vsc";
 import { RiDeleteBinLine } from "react-icons/ri";
-
-import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
   ACTION_DELETE_PRODUCT,
 } from "../../../redux/admin/admin.actions";
-// import axios from "axios";
-// const getData = async () => {
-//   let { data } = await axios.get("http://localhost:8080/products");
-//   console.log(data.length);
-//   return data;
-// };
+import Filter from "./FilterG";
 
-const ProductPage = () => {
+function ProductPage() {
+  const [games, setGames] = useState([]);
   const dispatch = useDispatch();
-  const product = useSelector((store) => store.product);
-
   const toast = useToast();
 
-  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
-  //console.log(product.data, "from selector");
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/games"); // Replace "http://localhost:8080" with your backend URL
+        setGames(response.data);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    };
 
-  //useEffect(() => {
-  //
-  //}, [dispatch]);
+    fetchGames();
+  }, []);
+
+  const product = useSelector((store) => store.product);
+  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
 
   const DeleteProduct = (id) => {
     dispatch(ACTION_DELETE_PRODUCT(id)).then((res) => {
@@ -81,10 +69,10 @@ const ProductPage = () => {
             spacing={{ base: "3", md: 5, lg: "10" }}
             columns={{ base: 2, md: 3, lg: 4 }}
           >
-            {All_games.map((item) => (
+            {games.map((game) => (
               <VStack
                 position={"relative"}
-                key={item.producerID}
+                key={game.producerID}
                 boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
                 borderRadius="10px"
                 maxW="xs"
@@ -97,10 +85,10 @@ const ProductPage = () => {
                 <Box h="350px" w="100%">
                   {" "}
                   {/* Set a fixed height for the image container */}
-                  <Link to={`/products/${item.producerID}`}>
+                  <Link to={`/products/${game.producerID}`}>
                     <Image
                       fit="cover"
-                      src={item.imgURL}
+                      src={game.imgURL}
                       alt="NIKE AIR"
                       w="100%"
                       h="100%" // Set the image height to fill the container
@@ -119,10 +107,10 @@ const ProductPage = () => {
                     textTransform="uppercase"
                     textAlign={"center"}
                   >
-                    {item.name}
+                    {game.name}
                   </chakra.h1>
                   <chakra.h1 color="gray.400" textAlign="center">
-                    {item.category}
+                    {game.category}
                   </chakra.h1>
                 </Box>
 
@@ -137,7 +125,7 @@ const ProductPage = () => {
                   roundedBottom="lg"
                 >
                   <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                    ${item.price}
+                    ${game.price}
                     <IconButton
                       _hover={{ color: "orange.500" }}
                       fontSize="25px"
@@ -155,7 +143,7 @@ const ProductPage = () => {
                       p="0px 20px"
                       // bg="white"
                       fontSize="3xl"
-                      onClick={() => DeleteProduct(item.producerID)}
+                      onClick={() => DeleteProduct(game.producerID)}
                       color="white"
                       fontWeight="bold"
                       rounded="lg"
@@ -171,7 +159,7 @@ const ProductPage = () => {
                       icon={<RiDeleteBinLine />}
                     />
                   ) : (
-                    <Link to={`/products/${item.producerID}`}>
+                    <Link to={`/products/${game.producerID}`}>
                       <chakra.button
                         px={4}
                         py={3}
@@ -202,6 +190,6 @@ const ProductPage = () => {
       </Box>
     </Box>
   );
-};
+}
 
 export default ProductPage;
