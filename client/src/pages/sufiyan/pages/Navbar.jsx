@@ -124,6 +124,10 @@ const Navbar = () => {
 
   // borderBottom="1px solid #eeee"
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box
       zIndex={999}
@@ -354,7 +358,10 @@ const Navbar = () => {
                       key={el.path}
                       to={el.path}
                       w={"100%"}
-                      onClick={() => onClose()}
+                      onClick={() => {
+                        onClose();
+                        handleClick();
+                      }}
                       end
                     >
                       <Text
@@ -451,6 +458,7 @@ const Navbar = () => {
               <NavLink
                 key={el.path}
                 to={el.path}
+                onClick={handleClick}
                 className={({ isActive }) =>
                   isActive ? "activeS" : "defaultS"
                 }

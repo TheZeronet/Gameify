@@ -4,6 +4,10 @@ import { Box, Heading, HStack, Text } from "@chakra-ui/react";
 import GameCarousel from "./GameCarousel";
 import AccCarousel from "./AccCarousel";
 const Store = () => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box bg="#151515" pt="10" pb="20" w="full">
       <br />
@@ -20,7 +24,9 @@ const Store = () => {
             </Heading>
           </Box>
           <Link to="/products">
-            <button className="oggu">Games</button>
+            <button className="oggu" onClick={handleClick}>
+              Games
+            </button>
           </Link>
         </HStack>
       </Box>
@@ -42,7 +48,9 @@ const Store = () => {
             </Heading>
           </Box>
           <Link to="/coach">
-            <button className="oggu">Accessories</button>
+            <button className="oggu" onClick={handleClick}>
+              Accessories
+            </button>
           </Link>
         </HStack>
       </Box>
