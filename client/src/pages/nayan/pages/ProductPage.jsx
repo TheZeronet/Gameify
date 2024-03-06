@@ -23,21 +23,31 @@ import Filter from "./FilterG";
 
 function ProductPage() {
   const [games, setGames] = useState([]);
+  const [sort, setSort] = useState("");
+  const [category, setCategory] = useState("");
+  const [priceRange, setPriceRange] = useState("");
   const dispatch = useDispatch();
   const toast = useToast();
 
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/games"); // Replace "http://localhost:8080" with your backend URL
+        const response = await axios.get("http://localhost:8080/games", {
+          params: {
+            sort,
+            category,
+            priceRange,
+          },
+        });
         setGames(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching games:", error);
       }
     };
 
     fetchGames();
-  }, []);
+  }, [sort, category, priceRange]);
 
   const product = useSelector((store) => store.product);
   const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
@@ -60,7 +70,12 @@ function ProductPage() {
       w="100%"
     >
       <br />
-      <Filter />
+      {/* <Filter /> */}
+      <Filter
+        setSort={setSort}
+        setCategory={setCategory}
+        setPriceRange={setPriceRange}
+      />
       <Box>
         <VStack maxW="1400px" m="auto">
           <SimpleGrid

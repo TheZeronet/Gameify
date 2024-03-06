@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 8080;
 const mongoose = require("mongoose");
 const connect = async () => {
   mongoose.set("strictQuery", false);
+  console.log("Connected to DB");
   return mongoose.connect(process.env.DB_URL);
 };
 
@@ -39,8 +40,30 @@ const Accessory = mongoose.model("Accessory", accessorySchema);
 
 app.get("/games", async (req, res) => {
   try {
-    const games = await Game.find();
-    res.json(games);
+    let query = {};
+
+    // Filter by category
+    if (req.query.category) {
+      query.category = req.query.category;
+    }
+
+    // Filter by price range
+    if (req.query.priceRange) {
+      if (req.query.priceRange === "3000+") {
+        query.price = { $gt: 3000 };
+      } else {
+        query.price = { $lt: req.query.priceRange };
+      }
+    }
+
+    console.log(query);
+
+    let game = await Game.find(query);
+    console.log(game);
+
+    // line 61 should be better
+
+    res.json(game);
   } catch (err) {
     res.status(500).send(err);
   }
