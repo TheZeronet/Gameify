@@ -42,17 +42,23 @@ app.get("/games", async (req, res) => {
   try {
     let query = {};
 
-    // Filter by category
-    if (req.query.category) {
-      query.category = req.query.category;
-    }
+    if (req.query.priceRange || req.query.category) {
+      query = {}; // Reset the query object
 
-    // Filter by price range
-    if (req.query.priceRange) {
-      if (req.query.priceRange === "3000+") {
-        query.price = { $gt: 3000 };
-      } else {
-        query.price = { $lt: req.query.priceRange };
+      if (req.query.priceRange) {
+        if (req.query.priceRange <= 1000) {
+          query.price = { $lt: 1000 };
+        } else if (req.query.priceRange <= 2500) {
+          query.price = { $lt: 2500 };
+        } else if (req.query.priceRange <= 3000) {
+          query.price = { $lt: 3000 };
+        } else {
+          query.price = { $gt: 3000 };
+        }
+      }
+
+      if (req.query.category) {
+        query.category = req.query.category;
       }
     }
 

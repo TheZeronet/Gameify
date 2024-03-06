@@ -8,16 +8,6 @@ function FilterG({ setSort, setCategory, setPriceRange }) {
         w="20%"
         mr={2}
         color="gray.300"
-        placeholder="Sort"
-        onChange={(e) => setSort(e.target.value)}
-      >
-        <option value="lowest">Cost: Lowest to highest</option>
-        <option value="highest">Cost: highest to Lowest</option>
-      </Select>
-      <Select
-        w="20%"
-        mr={2}
-        color="gray.300"
         placeholder="Categories"
         onChange={(e) => setCategory(e.target.value)}
       >
@@ -38,9 +28,9 @@ function FilterG({ setSort, setCategory, setPriceRange }) {
         onChange={(e) => setPriceRange(e.target.value)}
       >
         <option value="1000">Less than 1000</option>
-        <option value="2000">less than 2000</option>
+        <option value="2500">less than 2000</option>
         <option value="3000">less than 3000</option>
-        <option value="3000+">more than 3000</option>
+        <option value="3001">more than 3000</option>
       </Select>
     </Flex>
   );
