@@ -11,12 +11,14 @@ function FilterG({ setSort, setCategory, setPriceRange }) {
         placeholder="Categories"
         onChange={(e) => setCategory(e.target.value)}
       >
-        <option value="Console">console</option>
-        <option value="Keyboard">Keyboard</option>
-        <option value="Mouse">Mouse</option>
-        <option value="Headphones">Headphones</option>
-        <option value="Controllers">Controller</option>
-        <option value="Miscellaneous">Miscellaneous</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="RPG">RPG</option>
+        <option value="Racing">Racing</option>
+        <option value="Horror">Horror</option>
+        <option value="Platformer">Platformer</option>
+        <option value="Indie">Indie</option>
+        <option value="Action, Adventure">Action & Adventure</option>
       </Select>
       <Select
         w="20%"

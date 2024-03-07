@@ -166,7 +166,7 @@ const Navbar = () => {
 
           <HStack
             w={{ base: "full", md: "fit-content" }}
-            style={{ paddingLeft: "200px" }}
+            style={{ paddingLeft: "110px" }}
           >
             <Box visibility={{ base: "hidden", md: "visible" }}>
               <SearchBar />
