@@ -23,7 +23,6 @@ import Filter from "./FilterG";
 
 function ProductPage() {
   const [games, setGames] = useState([]);
-  const [sort, setSort] = useState("");
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
   const dispatch = useDispatch();
@@ -34,7 +33,6 @@ function ProductPage() {
       try {
         const response = await axios.get("http://localhost:8080/games", {
           params: {
-            sort,
             category,
             priceRange,
           },
@@ -47,7 +45,7 @@ function ProductPage() {
     };
 
     fetchGames();
-  }, [sort, category, priceRange]);
+  }, [category, priceRange]);
 
   const product = useSelector((store) => store.product);
   const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
@@ -71,11 +69,7 @@ function ProductPage() {
     >
       <br />
       {/* <Filter /> */}
-      <Filter
-        setSort={setSort}
-        setCategory={setCategory}
-        setPriceRange={setPriceRange}
-      />
+      <Filter setCategory={setCategory} setPriceRange={setPriceRange} />
       <Box>
         <VStack maxW="1400px" m="auto">
           <SimpleGrid
