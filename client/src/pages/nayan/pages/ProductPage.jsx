@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 import {
   VStack,
   chakra,
   SimpleGrid,
-  Link,
   Image,
   IconButton,
   useToast,
   Spacer,
   HStack,
   Box,
+  Button,
 } from "@chakra-ui/react";
 import { VscHeart } from "react-icons/vsc";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -20,11 +22,15 @@ import {
   ACTION_DELETE_PRODUCT,
 } from "../../../redux/admin/admin.actions";
 import Filter from "./FilterG";
+import { useParams } from "react-router-dom";
 
 function ProductPage() {
   const [games, setGames] = useState([]);
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 3;
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -38,7 +44,8 @@ function ProductPage() {
           },
         });
         setGames(response.data);
-        console.log(response.data);
+        setTotalPages(Math.ceil(response.data.length / itemsPerPage));
+        console.log(response.data.length);
       } catch (error) {
         console.error("Error fetching games:", error);
       }
@@ -46,6 +53,14 @@ function ProductPage() {
 
     fetchGames();
   }, [category, priceRange]);
+
+  const handlePageChange = (pageNumber) => {
+    setPage(pageNumber);
+  };
+
+  const addToWish = (_id) => {
+    console.log(_id);
+  };
 
   const product = useSelector((store) => store.product);
   const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
@@ -68,7 +83,6 @@ function ProductPage() {
       w="100%"
     >
       <br />
-      {/* <Filter /> */}
       <Filter setCategory={setCategory} setPriceRange={setPriceRange} />
       <Box>
         <VStack maxW="1400px" m="auto">
@@ -78,102 +92,77 @@ function ProductPage() {
             spacing={{ base: "3", md: 5, lg: "10" }}
             columns={{ base: 2, md: 3, lg: 4 }}
           >
-            {games.map((game) => (
-              <VStack
-                position={"relative"}
-                key={game.producerID}
-                boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                borderRadius="10px"
-                maxW="xs"
-                bg="whiteAlpha.300"
-                shadow="lg"
-                rounded="lg"
-                z-index={-1}
-                h="100%"
-              >
-                <Box h="350px" w="100%">
-                  {" "}
-                  {/* Set a fixed height for the image container */}
-                  <Link to={`/products/${game.producerID}`}>
-                    <Image
-                      fit="cover"
-                      src={game.imgURL}
-                      alt="NIKE AIR"
-                      w="100%"
-                      h="100%" // Set the image height to fill the container
-                    />
-                  </Link>
-                </Box>
-                <Spacer />
-                <Box p={{ base: "2", md: "2", lg: "3" }}>
-                  <chakra.h1
-                    color="white"
-                    _dark={{
-                      color: "white",
-                    }}
-                    fontWeight="bold"
-                    fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
-                    textTransform="uppercase"
-                    textAlign={"center"}
-                  >
-                    {game.name}
-                  </chakra.h1>
-                  <chakra.h1 color="gray.400" textAlign="center">
-                    {game.category}
-                  </chakra.h1>
-                </Box>
-
-                <HStack
-                  w="100%"
-                  alignSelf={"flex-end"}
-                  alignItems="center"
-                  justifyContent="space-between"
-                  px={4}
-                  py={2}
-                  // bg="gray.900"
-                  roundedBottom="lg"
+            {games
+              .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+              .map((game) => (
+                <VStack
+                  position={"relative"}
+                  key={game.producerID}
+                  boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                  borderRadius="10px"
+                  maxW="xs"
+                  bg="whiteAlpha.300"
+                  shadow="lg"
+                  rounded="lg"
+                  z-index={-1}
+                  h="100%"
                 >
-                  <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                    ${game.price}
-                    <IconButton
-                      _hover={{ color: "orange.500" }}
-                      fontSize="25px"
-                      borderRadius={50}
-                      variant="link"
-                      //onClick={toggleColorMode}
-                      icon={<VscHeart />}
-                      left="110px"
-                      bottom="-5px"
-                    />
-                  </chakra.h1>
-
-                  {AdminIsAuth ? (
-                    <IconButton
-                      p="0px 20px"
-                      // bg="white"
-                      fontSize="3xl"
-                      onClick={() => DeleteProduct(game.producerID)}
-                      color="white"
-                      fontWeight="bold"
-                      rounded="lg"
-                      textTransform="uppercase"
-                      _hover={{
-                        bg: "white",
-                        color: "#f45f02;",
-                      }}
-                      // _focus={{
-                      //   bg: "gray.400",
-                      // }}
-                      bg="#f45f02;"
-                      icon={<RiDeleteBinLine />}
-                    />
-                  ) : (
+                  <Box h="350px" w="100%">
                     <Link to={`/products/${game.producerID}`}>
-                      <chakra.button
-                        px={4}
-                        py={3}
-                        // bg="white"
-                        fontSize="xs"
+                      <Image
+                        fit="cover"
+                        src={game.imgURL}
+                        alt="NIKE AIR"
+                        w="100%"
+                        h="100%"
+                      />
+                    </Link>
+                  </Box>
+                  <Spacer />
+                  <Box p={{ base: "2", md: "2", lg: "3" }}>
+                    <chakra.h1
+                      color="white"
+                      _dark={{
+                        color: "white",
+                      }}
+                      fontWeight="bold"
+                      fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
+                      textTransform="uppercase"
+                      textAlign={"center"}
+                    >
+                      {game.name}
+                    </chakra.h1>
+                    <chakra.h1 color="gray.400" textAlign="center">
+                      {game.category}
+                    </chakra.h1>
+                  </Box>
+                  <HStack
+                    w="100%"
+                    alignSelf={"flex-end"}
+                    alignItems="center"
+                    justifyContent="space-between"
+                    px={4}
+                    py={2}
+                    roundedBottom="lg"
+                  >
+                    <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
+                      ${game.price}
+                      <IconButton
+                        _hover={{ color: "orange.500" }}
+                        fontSize="25px"
+                        borderRadius={50}
+                        variant="link"
+                        onClick={addToWish}
+                        icon={<VscHeart />}
+                        left="110px"
+                        bottom="-5px"
+                      />
+                    </chakra.h1>
+                    {AdminIsAuth ? (
+                      <IconButton
+                        p="0px 20px"
+                        fontSize="3xl"
+                        onClick={() => DeleteProduct(game.producerID)}
                         color="white"
                         fontWeight="bold"
                         rounded="lg"
@@ -182,19 +171,57 @@ function ProductPage() {
                           bg: "white",
                           color: "#f45f02;",
                         }}
-                        // _focus={{
-                        //   bg: "gray.400",
-                        // }}
                         bg="#f45f02;"
-                      >
-                        View
-                      </chakra.button>{" "}
-                    </Link>
-                  )}
-                </HStack>
-              </VStack>
-            ))}
+                        icon={<RiDeleteBinLine />}
+                      />
+                    ) : (
+                      <Link to={`/products/${game.producerID}`}>
+                        <Button
+                          px={4}
+                          py={3}
+                          fontSize="xs"
+                          color="white"
+                          fontWeight="bold"
+                          rounded="lg"
+                          textTransform="uppercase"
+                          _hover={{
+                            bg: "white",
+                            color: "#f45f02;",
+                          }}
+                          bg="#f45f02;"
+                        >
+                          View
+                        </Button>{" "}
+                      </Link>
+                    )}
+                  </HStack>
+                </VStack>
+              ))}
           </SimpleGrid>
+          <HStack mt={4} spacing={4}>
+            <Button
+              colorScheme="orange"
+              disabled={page === 1}
+              onClick={() => handlePageChange(page - 1)}
+              _hover={{
+                bg: "white",
+                color: "#f45f02;",
+              }}
+            >
+              Previous
+            </Button>
+            <Button
+              colorScheme="orange"
+              disabled={page === totalPages}
+              onClick={() => handlePageChange(page + 1)}
+              _hover={{
+                bg: "white",
+                color: "#f45f02;",
+              }}
+            >
+              Next
+            </Button>
+          </HStack>
         </VStack>
       </Box>
     </Box>

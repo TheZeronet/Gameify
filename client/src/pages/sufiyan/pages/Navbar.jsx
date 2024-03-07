@@ -119,6 +119,7 @@ const Navbar = () => {
       duration: 4000,
       isClosable: true,
     });
+    localStorage.clear();
     naviGate("/");
   };
 
@@ -204,17 +205,18 @@ const Navbar = () => {
                   </Button>
                 </NavLink>
 
-                <IconButton
-                  _hover={{ color: "orange.500" }}
-                  fontSize="25px"
-                  borderRadius={50}
-                  variant="link"
-                  //onClick={toggleColorMode}
-                  icon={<VscHeart />}
-                  left="100px"
-                  top="27px"
-                />
-
+                <NavLink to="/wishlist">
+                  <IconButton
+                    _hover={{ color: "orange.500" }}
+                    fontSize="25px"
+                    borderRadius={50}
+                    variant="link"
+                    //onClick={toggleColorMode}
+                    icon={<VscHeart />}
+                    left="100px"
+                    top="27px"
+                  />
+                </NavLink>
                 <NavLink to="/cart">
                   <IconButton
                     _hover={{ color: "orange.500" }}
@@ -248,7 +250,7 @@ const Navbar = () => {
                 >
                   LogOut
                 </Button>
-                <NavLink to="/cart">
+                <NavLink to="/wishlist">
                   <Flex>
                     <IconButton
                       fontSize="25px"

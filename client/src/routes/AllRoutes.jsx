@@ -5,6 +5,7 @@ import OrderSuccessfull from "../pages/monu/pages/OrderSuccessfull";
 import PaymentForm from "../pages/monu/pages/PaymentForm";
 import Coach from "../pages/nayan/pages/Coach";
 import ProductPage from "../pages/nayan/pages/ProductPage";
+import Wishlist from "../pages/nayan/pages/Wishlist";
 import SingleProductPage from "../pages/nayan/pages/SingleProductPage";
 import UserDashboard from "../pages/nayan/pages/UserDashboard";
 import Login from "../pages/Shrikrishna/pages/Login";
@@ -59,6 +60,15 @@ const AllRoutes = () => {
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
             </PrivateRoute>
           }
         />

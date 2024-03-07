@@ -43,14 +43,14 @@ const SingleProductPage = () => {
 
   const [SingleData, setSingle] = useState({});
 
-  const { id } = useParams();
+  const { producerID } = useParams();
   const NavigatKaro = useNavigate();
 
   //console.log(id)
 
   useEffect(() => {
     try {
-      fetch("http://localhost:8080/products/" + id)
+      fetch("http://localhost:8080/games" + producerID)
         .then((res) => res.json())
         .then((res) => {
           setSingle(res);
@@ -63,7 +63,7 @@ const SingleProductPage = () => {
     } catch (e) {
       setLoading(true);
     }
-  }, [id]);
+  }, [producerID]);
 
   const handleCart = () => {
     if (!isAuth) {
