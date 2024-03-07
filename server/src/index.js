@@ -75,10 +75,47 @@ app.get("/games", async (req, res) => {
   }
 });
 
+// app.get("/accessories", async (req, res) => {
+//   try {
+//     const accessories = await Accessory.find();
+//     res.json(accessories);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
+
 app.get("/accessories", async (req, res) => {
   try {
-    const accessories = await Accessory.find();
-    res.json(accessories);
+    let query = {};
+
+    if (req.query.priceRange || req.query.category) {
+      query = {}; // Reset the query object
+
+      if (req.query.priceRange) {
+        if (req.query.priceRange <= 1000) {
+          query.price = { $lt: 1000 };
+        } else if (req.query.priceRange <= 2500) {
+          query.price = { $lt: 2500 };
+        } else if (req.query.priceRange <= 3000) {
+          query.price = { $lt: 3000 };
+        } else {
+          query.price = { $gt: 3000 };
+        }
+      }
+
+      if (req.query.category) {
+        query.category = req.query.category;
+      }
+    }
+
+    console.log(query);
+
+    let game = await Accessory.find(query);
+    console.log(game);
+
+    // line 61 should be better
+
+    res.json(game);
   } catch (err) {
     res.status(500).send(err);
   }
