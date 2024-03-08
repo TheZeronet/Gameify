@@ -184,7 +184,8 @@ const SingleProductPage = () => {
             borderRadius={10}
             mt="10px"
             ml={"100px"}
-            maxW={{ md: "400px", lg: "400px", xl: "400px" }}
+            maxW={{ md: "500px", lg: "500px", xl: "500px" }}
+            maxH={{ md: "500px", lg: "500px", xl: "500px" }}
             src={SingleData.imgURL}
             alt="singleProduct"
             // Set the height of the image dynamically based on the height of the adjacent VStack
@@ -196,9 +197,8 @@ const SingleProductPage = () => {
         <VStack
           p={5}
           bg={"whiteAlpha.100"}
-          mt="50px"
-          mr="300px"
-          h={"50%"}
+          mt="30px"
+          mr="0px"
           w={"40%"}
           spacing={3}
           align={"flex-start"}
@@ -293,6 +293,9 @@ const SingleProductPage = () => {
             </Text>
             <Text borderBottom={"1px solid gray"}>
               Release Date: {SingleData.release_date}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              Rating: {SingleData.rating}
             </Text>
             <Text>Platform: {SingleData.platform_available}</Text>
           </VStack>

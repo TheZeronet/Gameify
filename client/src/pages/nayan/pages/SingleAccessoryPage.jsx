@@ -163,7 +163,8 @@ const SingleAccessoryPage = () => {
 
   return (
     <Box
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      // bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      bg={"#151515"}
       minH="100vh"
     >
       <Box
@@ -175,34 +176,46 @@ const SingleAccessoryPage = () => {
         color={"white"}
       >
         <VStack
-          mt="50px"
+          mt="20px"
           h="100%"
           p={5}
           align={"center"}
           justify="center"
           w={"100%"}
+          spacing={5} // Add spacing between the image and box info
         >
           <Img
             bg={"whiteAlpha.200"}
             borderRadius={10}
-            maxW={{ md: "400px", lg: "400px", xl: "500px" }}
+            mt="40px"
+            ml={"100px"}
+            maxW={{ md: "900px", lg: "900px", xl: "900px" }}
+            maxH={{ md: "900px", lg: "900px", xl: "900px" }}
             src={SingleData.imgURL}
-            alt="SingleAccessory"
+            alt="singleProduct"
+            // Set the height of the image dynamically based on the height of the adjacent VStack
+            h="100%"
+            maxHeight="600px" // Set a max height to avoid stretching the image too much
           />
         </VStack>
+
         <VStack
           p={5}
-          bg={"whiteAlpha.200"}
-          mt="50px"
+          bg={"whiteAlpha.100"}
+          mt="40px"
+          mr="260px"
+          h={"50%"}
+          w={"40%"}
           spacing={3}
           align={"flex-start"}
         >
           <VStack align={"flex-start"}>
-            <Text fontSize="2xl" fontWeight="500" color="gray.200">
+            <Text fontSize="2xl" fontWeight="500" color="gray.300">
               Name : {SingleData.name}
             </Text>
+
             <Text fontSize="1xl" fontWeight="500" color="gray.400">
-              Price : ₹{SingleData.price}
+              Price :: ₹{SingleData.price}
             </Text>
           </VStack>
           <VStack
@@ -215,10 +228,14 @@ const SingleAccessoryPage = () => {
               lg: "left",
             }}
           >
-            <Text fontSize="md" fontWeight={"medium"}>
-              {SingleData.description}
+            <Text>{"-----------------------"}</Text>
+
+            <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
+              {SingleData.info}
             </Text>
           </VStack>
+
+          <br />
 
           <HStack
             m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
@@ -233,32 +250,37 @@ const SingleAccessoryPage = () => {
             >
               <Button
                 bg="#f36100"
+                color={"gray.200"}
                 disabled={quant < 1}
                 onClick={() => setQuant((prev) => prev - 1)}
               >
                 -
               </Button>
-              <Text>{quant}</Text>
-              <Button bg="#f36100" onClick={() => setQuant((prev) => prev + 1)}>
+              <Text color={"gray.200"}>{quant}</Text>
+              <Button
+                bg="#f36100"
+                color={"gray.200"}
+                onClick={() => setQuant((prev) => prev + 1)}
+              >
                 +
               </Button>
             </HStack>
           </HStack>
 
           <HStack>
-            <Button bg="#f36100" onClick={handleCart}>
+            <Button bg="#f36100" onClick={handleCart} color={"gray.200"}>
               Add to Cart
             </Button>
             <IconButton
               p="0px 20px"
               fontSize="3xl"
               onClick={AddWishlist}
-              color="white"
+              color="gray.300"
               fontWeight="bold"
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: "white",
+                bg: "gray.300",
                 color: "#f45f02;",
               }}
               bg="#f45f02;"
@@ -268,16 +290,21 @@ const SingleAccessoryPage = () => {
 
           <br />
 
-          <VStack align={"flex-start"} color={"gray.200"}>
+          <VStack align={"flex-start"} color={"gray.300"}>
             <Text borderBottom={"1px solid gray"}>
-              brand: {SingleData.maker}
+              Company: {SingleData.maker}
             </Text>
             <Text borderBottom={"1px solid gray"}>
-              
+              Rating: {SingleData.rating}
             </Text>
+            <Text borderBottom={"1px solid gray"}>
+              category: {SingleData.category}
+            </Text>
+            <Text>Release Date: {SingleData.release_date}</Text>
           </VStack>
         </VStack>
       </Box>
+      <br />
     </Box>
   );
 };
