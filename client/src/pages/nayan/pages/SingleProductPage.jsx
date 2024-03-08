@@ -9,6 +9,7 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +24,7 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import Loading from "../../Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
+import { IoChevronBackCircleSharp } from "react-icons/io5";
 
 const SingleProductPage = () => {
   const [quant, setQuant] = useState(1);
@@ -170,6 +172,19 @@ const SingleProductPage = () => {
         alignContent="center"
         color={"white"}
       >
+        <Link to="/products" style={{ marginTop: "60px" }}>
+          <IconButton
+            alignSelf="flex-start"
+            bg={"#151515"}
+            color={"#f45f02"}
+            _hover={{
+              color: "#151515",
+              bg: "#f45f02;",
+            }}
+          >
+            <IoChevronBackCircleSharp size={48} />
+          </IconButton>
+        </Link>
         <VStack
           mt="20px"
           h="100%"
@@ -177,15 +192,33 @@ const SingleProductPage = () => {
           align={"center"}
           justify="center"
           w={"100%"}
-          spacing={5} // Add spacing between the image and box info
+          spacing={5}
         >
+          {/* New container for the product name */}
+          <Box
+            bg={"whiteAlpha.100"}
+            p={3}
+            borderRadius={10}
+            textAlign="center"
+            w="80%"
+          >
+            <Text fontSize="2xl" fontWeight="500" color="gray.300">
+              Name : {SingleData.name}
+            </Text>
+
+            <Text fontSize="1xl" fontWeight="500" color="gray.400">
+              Price :: ₹{SingleData.price}
+            </Text>
+          </Box>
+
+          {/* Existing Img component */}
           <Img
             bg={"whiteAlpha.200"}
             borderRadius={10}
             mt="10px"
             ml={"100px"}
-            maxW={{ md: "500px", lg: "500px", xl: "500px" }}
-            maxH={{ md: "500px", lg: "500px", xl: "500px" }}
+            maxW={{ md: "400px", lg: "400px", xl: "400px" }}
+            maxH={{ md: "400px", lg: "400px", xl: "400px" }}
             src={SingleData.imgURL}
             alt="singleProduct"
             // Set the height of the image dynamically based on the height of the adjacent VStack
@@ -203,15 +236,6 @@ const SingleProductPage = () => {
           spacing={3}
           align={"flex-start"}
         >
-          <VStack align={"flex-start"}>
-            <Text fontSize="2xl" fontWeight="500" color="gray.300">
-              Name : {SingleData.name}
-            </Text>
-
-            <Text fontSize="1xl" fontWeight="500" color="gray.400">
-              Price :: ₹{SingleData.price}
-            </Text>
-          </VStack>
           <VStack
             spacing={5}
             w="80%"
@@ -300,6 +324,20 @@ const SingleProductPage = () => {
             <Text>Platform: {SingleData.platform_available}</Text>
           </VStack>
         </VStack>
+      </Box>
+
+      <br />
+
+      <Box
+        bg={"whiteAlpha.100"}
+        p={3}
+        mr={"100px"}
+        borderRadius={10}
+        textAlign="center"
+        w="80%"
+        ml={"100px"}
+      >
+        {/* Images for extra games */}
       </Box>
     </Box>
   );

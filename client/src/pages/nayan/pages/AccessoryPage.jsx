@@ -58,6 +58,10 @@ function AccessoryPage() {
     setPage(pageNumber);
   };
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const addToWish = (_id) => {
     console.log(_id);
   };
@@ -189,6 +193,7 @@ function AccessoryPage() {
                             color: "#f45f02;",
                           }}
                           bg="#f45f02;"
+                          onClick={handleClick}
                         >
                           View
                         </chakra.button>{" "}
