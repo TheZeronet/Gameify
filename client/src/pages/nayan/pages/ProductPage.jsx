@@ -82,10 +82,7 @@ function ProductPage() {
   };
 
   return (
-    <Box
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      w="100%"
-    >
+    <Box bg={"#151515"} w="100%">
       <br />
       <Filter setCategory={setCategory} setPriceRange={setPriceRange} />
       <Box>
@@ -227,6 +224,7 @@ function ProductPage() {
               Next
             </Button>
           </HStack>
+          <br />
         </VStack>
       </Box>
     </Box>

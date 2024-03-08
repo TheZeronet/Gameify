@@ -486,6 +486,7 @@ const Navbar = () => {
                   fontFamily={"exo"}
                   color="whiteAlpha.900"
                   p="10px 10px"
+                  _hover={{ color: "orange.500" }}
                 >
                   {"Admin"}
                 </Text>
@@ -506,6 +507,7 @@ const Navbar = () => {
                   fontFamily={"exo"}
                   color="whiteAlpha.900"
                   p="10px 10px"
+                  _hover={{ color: "orange.500" }}
                 >
                   {"Profile"}
                 </Text>

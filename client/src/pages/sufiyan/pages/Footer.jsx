@@ -57,16 +57,11 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function Footer() {
   return (
-    <Box
-      color="white"
-      bgGradient={
-        "linear-gradient(0deg, rgba(0,0,0,1) 14%, rgba(64,64,64,1) 100%)"
-      }
-    >
+    <Box color="white" bg={"#151515"}>
       <Box
         borderTopWidth={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderTop={"4px solid #f45f02"}
       >
         <Container
           as={Stack}
