@@ -180,7 +180,11 @@ const Navbar = () => {
               <HStack>
                 <NavLink to="/login">
                   <Button
-                    _hover={{ backgroundColor: "white", color: "orange.500" }}
+                    _hover={{
+                      border: "1px solid #f45f02",
+                      bg: "#151515",
+                      color: "orange.500",
+                    }}
                     color="white"
                     variant="outline"
                     fontWeight="semibold"
@@ -193,7 +197,11 @@ const Navbar = () => {
 
                 <NavLink to="/register">
                   <Button
-                    _hover={{ backgroundColor: "white", color: "orange.500" }}
+                    _hover={{
+                      border: "1px solid #f45f02",
+                      bg: "#151515",
+                      color: "orange.500",
+                    }}
                     bg="#f45f02"
                     color="white"
                     variant="solid"

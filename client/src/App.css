@@ -105,6 +105,14 @@
   }
 }
 
+.buttonHover {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttonHover:hover {
+  background-color: #f45f02;
+  color: #151515;
+}
 
 
 .activeS {

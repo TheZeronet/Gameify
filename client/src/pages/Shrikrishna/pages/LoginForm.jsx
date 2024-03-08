@@ -121,12 +121,12 @@ export default function LoginForm({ handleForgot }) {
                   align={"start"}
                   justify={"space-between"}
                 >
-                  <Checkbox color={"#f45f02"}>Remember me</Checkbox>
+                  <Checkbox color={"#f45f02"}>Receive emails</Checkbox>
                   <Button
                     onClick={handleForgot}
                     bg="transparent"
-                    _hover={{ color: "#f45f02" }}
-                    color={"blue.400"}
+                    _hover={{ color: "#151515" }}
+                    color={"blue.500"}
                   >
                     Forgot password?
                   </Button>
@@ -137,7 +137,7 @@ export default function LoginForm({ handleForgot }) {
                   color={"white"}
                   _hover={{
                     border: "1px solid #f45f02",
-                    bg: "white",
+                    bg: "#151515",
                     color: "#f45f02",
                   }}
                 >

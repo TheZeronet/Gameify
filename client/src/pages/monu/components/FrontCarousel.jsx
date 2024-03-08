@@ -8,6 +8,8 @@ import {
   Container,
   Button,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import "../../../App.css";
 
 import front1 from "../assets/Alan.jpeg";
 import front2 from "../assets/Kena.jpg";
@@ -194,9 +196,18 @@ export default function FrontCarousel() {
                 >
                   {card.text}
                 </Text>
-                <Button color="#fff" ml="2" bg={"#f45f02"}>
-                  GET INFO
-                </Button>
+                <Box>
+                  <Link to="/products">
+                    <Button
+                      color="#fff"
+                      ml="2"
+                      bg={"#f45f02"}
+                      className="buttonHover"
+                    >
+                      GET INFO
+                    </Button>
+                  </Link>
+                </Box>
               </Box>
             </Container>
           </Box>

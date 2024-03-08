@@ -16,8 +16,9 @@ import {
   option,
   useToast,
   Image,
+  Checkbox,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
@@ -33,7 +34,7 @@ export default function Signup() {
     firstName: "",
     lastName: "",
     email: "",
-    age: 0,
+    age: "",
     gender: "",
     password: "",
   };
@@ -45,6 +46,10 @@ export default function Signup() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+  };
+
+  const click = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleClick = () => {
@@ -201,6 +206,9 @@ export default function Signup() {
                 </InputRightElement>
               </InputGroup>
             </FormControl>
+            <Checkbox color={"#f45f02"}>
+              I have read all the terms and conditions
+            </Checkbox>
             <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
@@ -208,20 +216,32 @@ export default function Signup() {
                 bg={"#f45f02"}
                 color={"white"}
                 _hover={{
-                  bg: "blue.500",
+                  border: "1px solid #f45f02",
+                  bg: "#151515",
+                  color: "#f45f02",
                 }}
                 onClick={handleClick}
               >
                 Sign up
               </Button>
-            </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user?{" "}
-                <Link to="/login" color={"blue.400"}>
-                  Login
+
+              <Stack spacing={10} pt={2}>
+                <Link to="/login" align={"center"}>
+                  <Button
+                    loadingText="Submitting"
+                    size="lg"
+                    bg={"transparent"}
+                    color={"white"}
+                    _hover={{
+                      bg: "transparent",
+                      color: "#f45f02",
+                    }}
+                    onClick={click}
+                  >
+                    Already a user? login
+                  </Button>
                 </Link>
-              </Text>
+              </Stack>
             </Stack>
           </Stack>
         </Box>
