@@ -158,7 +158,8 @@ const SingleProductPage = () => {
 
   return (
     <Box
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      // bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      bg={"#151515"}
       minH="100vh"
     >
       <Box
@@ -170,43 +171,45 @@ const SingleProductPage = () => {
         color={"white"}
       >
         <VStack
-          mt="50px"
+          mt="20px"
           h="100%"
           p={5}
           align={"center"}
           justify="center"
           w={"100%"}
+          spacing={5} // Add spacing between the image and box info
         >
           <Img
-            borderLeft={"4px solid #f45f02"}
             bg={"whiteAlpha.200"}
             borderRadius={10}
-            maxW={{ md: "400px", lg: "400px", xl: "500px" }}
+            mt="10px"
+            ml={"100px"}
+            maxW={{ md: "400px", lg: "400px", xl: "400px" }}
             src={SingleData.imgURL}
             alt="singleProduct"
+            // Set the height of the image dynamically based on the height of the adjacent VStack
+            h="100%"
+            maxHeight="600px" // Set a max height to avoid stretching the image too much
           />
         </VStack>
+
         <VStack
-          borderRight={"4px solid #f45f02"}
           p={5}
-          bg={"whiteAlpha.200"}
+          bg={"whiteAlpha.100"}
           mt="50px"
+          mr="300px"
+          h={"50%"}
+          w={"40%"}
           spacing={3}
           align={"flex-start"}
         >
-          <Tag
-            bg="#f36100"
-            _hover={{ bg: "white", color: "#f36100" }}
-            color="white"
-          >
-            New In
-          </Tag>
           <VStack align={"flex-start"}>
-            <Text fontSize="3xl" fontWeight="500">
+            <Text fontSize="2xl" fontWeight="500" color="gray.300">
               Name : {SingleData.name}
             </Text>
-            <Text fontSize="2xl" fontWeight="500">
-              Price : {SingleData.price}
+
+            <Text fontSize="1xl" fontWeight="500" color="gray.400">
+              Price :: ₹{SingleData.price}
             </Text>
           </VStack>
           <VStack
@@ -219,14 +222,14 @@ const SingleProductPage = () => {
               lg: "left",
             }}
           >
-            <Text fontSize="md" fontWeight={"medium"}>
-              {SingleData.description}
+            <Text>{"-----------------------"}</Text>
+
+            <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
+              {SingleData.info}
             </Text>
           </VStack>
-          <Box>
-            <Text>✔️ Brand Authorized</Text>
-            <Text>✔️ Free and Fast Delivery</Text>
-          </Box>
+
+          <br />
 
           <HStack
             m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
@@ -241,42 +244,57 @@ const SingleProductPage = () => {
             >
               <Button
                 bg="#f36100"
+                color={"gray.200"}
                 disabled={quant < 1}
                 onClick={() => setQuant((prev) => prev - 1)}
               >
                 -
               </Button>
-              <Text>{quant}</Text>
-              <Button bg="#f36100" onClick={() => setQuant((prev) => prev + 1)}>
+              <Text color={"gray.200"}>{quant}</Text>
+              <Button
+                bg="#f36100"
+                color={"gray.200"}
+                onClick={() => setQuant((prev) => prev + 1)}
+              >
                 +
               </Button>
             </HStack>
           </HStack>
 
           <HStack>
-            <Button bg="#f36100" onClick={handleCart}>
+            <Button bg="#f36100" onClick={handleCart} color={"gray.200"}>
               Add to Cart
             </Button>
             <IconButton
               p="0px 20px"
               fontSize="3xl"
               onClick={AddWishlist}
-              color="white"
+              color="gray.300"
               fontWeight="bold"
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: "white",
+                bg: "gray.300",
                 color: "#f45f02;",
               }}
               bg="#f45f02;"
               icon={<AiOutlineHeart />}
             />
           </HStack>
-          <VStack align={"flex-start"}>
-            <Text>📦 Free Shipping + returns</Text>
-            <Text>⏱️ we are here for you 24/7</Text>
-            <Text>🧾 Prime check before you buy</Text>
+
+          <br />
+
+          <VStack align={"flex-start"} color={"gray.300"}>
+            <Text borderBottom={"1px solid gray"}>
+              Genre: {SingleData.category}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              Studio: {SingleData.maker}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              Release Date: {SingleData.release_date}
+            </Text>
+            <Text>Platform: {SingleData.platform_available}</Text>
           </VStack>
         </VStack>
       </Box>

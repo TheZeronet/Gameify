@@ -183,7 +183,6 @@ const SingleAccessoryPage = () => {
           w={"100%"}
         >
           <Img
-            borderLeft={"4px solid #f45f02"}
             bg={"whiteAlpha.200"}
             borderRadius={10}
             maxW={{ md: "400px", lg: "400px", xl: "500px" }}
@@ -192,26 +191,18 @@ const SingleAccessoryPage = () => {
           />
         </VStack>
         <VStack
-          borderRight={"4px solid #f45f02"}
           p={5}
           bg={"whiteAlpha.200"}
           mt="50px"
           spacing={3}
           align={"flex-start"}
         >
-          <Tag
-            bg="#f36100"
-            _hover={{ bg: "white", color: "#f36100" }}
-            color="white"
-          >
-            New In
-          </Tag>
           <VStack align={"flex-start"}>
-            <Text fontSize="3xl" fontWeight="500">
+            <Text fontSize="2xl" fontWeight="500" color="gray.200">
               Name : {SingleData.name}
             </Text>
-            <Text fontSize="2xl" fontWeight="500">
-              Price : {SingleData.price}
+            <Text fontSize="1xl" fontWeight="500" color="gray.400">
+              Price : ₹{SingleData.price}
             </Text>
           </VStack>
           <VStack
@@ -228,10 +219,6 @@ const SingleAccessoryPage = () => {
               {SingleData.description}
             </Text>
           </VStack>
-          <Box>
-            <Text>✔️ Brand Authorized</Text>
-            <Text>✔️ Free and Fast Delivery</Text>
-          </Box>
 
           <HStack
             m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
@@ -278,10 +265,16 @@ const SingleAccessoryPage = () => {
               icon={<AiOutlineHeart />}
             />
           </HStack>
-          <VStack align={"flex-start"}>
-            <Text>📦 Free Shipping + returns</Text>
-            <Text>⏱️ we are here for you 24/7</Text>
-            <Text>🧾 Prime check before you buy</Text>
+
+          <br />
+
+          <VStack align={"flex-start"} color={"gray.200"}>
+            <Text borderBottom={"1px solid gray"}>
+              brand: {SingleData.maker}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              
+            </Text>
           </VStack>
         </VStack>
       </Box>
