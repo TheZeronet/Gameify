@@ -3,7 +3,7 @@ import Cart from "../Cart";
 import LandingPage from "../pages/monu/pages/LandingPage";
 import OrderSuccessfull from "../pages/monu/pages/OrderSuccessfull";
 import PaymentForm from "../pages/monu/pages/PaymentForm";
-import Coach from "../pages/nayan/pages/Coach";
+import AccessoryPage from "../pages/nayan/pages/AccessoryPage";
 import ProductPage from "../pages/nayan/pages/ProductPage";
 import Wishlist from "../pages/nayan/pages/Wishlist";
 import SingleProductPage from "../pages/nayan/pages/SingleProductPage";
@@ -27,7 +27,7 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<SignUp />} />
 
-        <Route path="/coach" element={<Coach />} />
+        <Route path="/coach" element={<AccessoryPage />} />
 
         <Route path="/products" element={<ProductPage />} />
         <Route path="/products/:producerID" element={<SingleProductPage />} />
