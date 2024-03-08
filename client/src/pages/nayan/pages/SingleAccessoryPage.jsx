@@ -9,6 +9,7 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +24,7 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import Loading from "../../Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
+import { IoChevronBackCircleSharp } from "react-icons/io5";
 
 const SingleAccessoryPage = () => {
   const [quant, setQuant] = useState(1);
@@ -175,6 +177,20 @@ const SingleAccessoryPage = () => {
         alignContent="center"
         color={"white"}
       >
+        <Link to="/accessory" style={{ marginTop: "60px" }}>
+          <IconButton
+            alignSelf="flex-start"
+            bg={"#151515"}
+            color={"#f45f02"}
+            _hover={{
+              color: "#151515",
+              bg: "#f45f02;",
+            }}
+          >
+            <IoChevronBackCircleSharp size={48} />
+          </IconButton>
+        </Link>
+
         <VStack
           mt="20px"
           h="100%"
@@ -182,15 +198,33 @@ const SingleAccessoryPage = () => {
           align={"center"}
           justify="center"
           w={"100%"}
-          spacing={5} // Add spacing between the image and box info
+          spacing={5}
         >
+          {/* New container for the product name */}
+          <Box
+            bg={"whiteAlpha.100"}
+            p={3}
+            borderRadius={10}
+            textAlign="center"
+            w="80%"
+          >
+            <Text fontSize="2xl" fontWeight="500" color="gray.300">
+              Name : {SingleData.name}
+            </Text>
+
+            <Text fontSize="1xl" fontWeight="500" color="gray.400">
+              Price :: ₹{SingleData.price}
+            </Text>
+          </Box>
+
+          {/* Existing Img component */}
           <Img
             bg={"whiteAlpha.200"}
             borderRadius={10}
-            mt="40px"
+            mt="10px"
             ml={"100px"}
-            maxW={{ md: "900px", lg: "900px", xl: "900px" }}
-            maxH={{ md: "900px", lg: "900px", xl: "900px" }}
+            maxW={{ md: "700px", lg: "700px", xl: "700px" }}
+            maxH={{ md: "700px", lg: "700px", xl: "700px" }}
             src={SingleData.imgURL}
             alt="singleProduct"
             // Set the height of the image dynamically based on the height of the adjacent VStack
@@ -202,22 +236,12 @@ const SingleAccessoryPage = () => {
         <VStack
           p={5}
           bg={"whiteAlpha.100"}
-          mt="40px"
-          mr="260px"
-          h={"50%"}
+          mt="30px"
+          mr="0px"
           w={"40%"}
           spacing={3}
           align={"flex-start"}
         >
-          <VStack align={"flex-start"}>
-            <Text fontSize="2xl" fontWeight="500" color="gray.300">
-              Name : {SingleData.name}
-            </Text>
-
-            <Text fontSize="1xl" fontWeight="500" color="gray.400">
-              Price :: ₹{SingleData.price}
-            </Text>
-          </VStack>
           <VStack
             spacing={5}
             w="80%"
@@ -292,19 +316,34 @@ const SingleAccessoryPage = () => {
 
           <VStack align={"flex-start"} color={"gray.300"}>
             <Text borderBottom={"1px solid gray"}>
-              Company: {SingleData.maker}
+              Genre: {SingleData.category}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              Studio: {SingleData.maker}
+            </Text>
+            <Text borderBottom={"1px solid gray"}>
+              Release Date: {SingleData.release_date}
             </Text>
             <Text borderBottom={"1px solid gray"}>
               Rating: {SingleData.rating}
             </Text>
-            <Text borderBottom={"1px solid gray"}>
-              category: {SingleData.category}
-            </Text>
-            <Text>Release Date: {SingleData.release_date}</Text>
           </VStack>
         </VStack>
       </Box>
+
       <br />
+
+      <Box
+        bg={"whiteAlpha.100"}
+        p={3}
+        mr={"100px"}
+        borderRadius={10}
+        textAlign="center"
+        w="80%"
+        ml={"100px"}
+      >
+        {/* Images for extra games */}
+      </Box>
     </Box>
   );
 };
