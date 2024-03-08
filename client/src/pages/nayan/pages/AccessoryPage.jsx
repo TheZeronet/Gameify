@@ -186,7 +186,8 @@ function AccessoryPage() {
                           rounded="lg"
                           textTransform="uppercase"
                           _hover={{
-                            bg: "white",
+                            border: "1px solid #f45f02",
+                            bg: "#151515",
                             color: "#f45f02;",
                           }}
                           bg="#f45f02;"
@@ -206,7 +207,7 @@ function AccessoryPage() {
               disabled={page === 1}
               onClick={() => handlePageChange(page - 1)}
               _hover={{
-                bg: "white",
+                bg: "#151515",
                 color: "#f45f02;",
               }}
             >
@@ -217,13 +218,14 @@ function AccessoryPage() {
               disabled={page === totalPages}
               onClick={() => handlePageChange(page + 1)}
               _hover={{
-                bg: "white",
+                bg: "#151515",
                 color: "#f45f02;",
               }}
             >
               Next
             </Button>
           </HStack>
+          <br />
         </VStack>
       </Box>
     </Box>

@@ -286,7 +286,12 @@ const SingleProductPage = () => {
           </HStack>
 
           <HStack>
-            <Button bg="#f36100" onClick={handleCart} color={"gray.200"}>
+            <Button
+              bg="#f36100"
+              onClick={handleCart}
+              color={"gray.200"}
+              border="1px solid #f45f02"
+            >
               Add to Cart
             </Button>
             <IconButton

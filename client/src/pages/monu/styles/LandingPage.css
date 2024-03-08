@@ -19,15 +19,22 @@
     transition-duration: 0.3s;
 }
 .oggu{
-    border: 2px solid #f45f02;
-     color:#fff;
-     background-color: transparent;
+    border: 1px solid #f45f02;
+     color: #f45f02;
+     background-color: #151515;
      transition-duration: 0.3s;
      margin-top: 10px;
     width: 180px;
     height: 60px;
    
 }
+
+
+.oggu:hover,.oggy:hover{
+    background-color: #f45f02;
+    color: #151515;
+}
+
 .oggy{
     color:#fff;
     background-color: rgb(39, 36, 36);
@@ -36,10 +43,6 @@
     width: 180px;
     height: 60px;
     font-size: 15px;
-}
-.oggu:hover,.oggy:hover{
-     background-color: #f45f02;
-   
 }
 
 

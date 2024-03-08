@@ -24,7 +24,11 @@ const Store = () => {
             </Heading>
           </Box>
           <Link to="/products">
-            <button className="oggu" onClick={handleClick}>
+            <button
+              className="oggu"
+              onClick={handleClick}
+              fontSize={[20, 17, 20, 25, 30]}
+            >
               Games
             </button>
           </Link>
