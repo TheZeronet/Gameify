@@ -47,7 +47,7 @@ const Store = () => {
               Various Accessories
             </Heading>
           </Box>
-          <Link to="/coach">
+          <Link to="/accessory">
             <button className="oggu" onClick={handleClick}>
               Accessories
             </button>

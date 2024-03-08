@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import {
   VStack,
   chakra,
   SimpleGrid,
-  Link,
   Image,
   IconButton,
   useToast,
@@ -24,7 +24,7 @@ import {
 import Filter from "./FilterA";
 import { useParams } from "react-router-dom";
 
-function ProductPage() {
+function AccessoryPage() {
   const [accessories, setAccessories] = useState([]);
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
@@ -108,7 +108,7 @@ function ProductPage() {
                   h="100%"
                 >
                   <Box h="350px" w="100%">
-                    <Link to={`/products/${accessories.producerID}`}>
+                    <Link to={`/accessory/${accessories.producerID}`}>
                       <Image
                         fit="cover"
                         src={accessories.imgURL}
@@ -175,7 +175,7 @@ function ProductPage() {
                         icon={<RiDeleteBinLine />}
                       />
                     ) : (
-                      <Link to={`/products/${accessories.producerID}`}>
+                      <Link to={`/accessory/${accessories.producerID}`}>
                         <chakra.button
                           px={4}
                           py={3}
@@ -228,4 +228,4 @@ function ProductPage() {
   );
 }
 
-export default ProductPage;
+export default AccessoryPage;

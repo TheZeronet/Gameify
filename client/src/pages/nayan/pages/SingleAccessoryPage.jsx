@@ -24,7 +24,7 @@ import Loading from "../../Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
 
-const SingleProductPage = () => {
+const SingleAccessoryPage = () => {
   const [quant, setQuant] = useState(1);
   const toast = useToast();
 
@@ -33,32 +33,37 @@ const SingleProductPage = () => {
 
   const [LoadingT, setLoading] = useState(true);
   const [SingleData, setSingle] = useState({});
-  const [games, setGames] = useState([]);
+  const [accessories, setAccessories] = useState([]);
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
 
   useEffect(() => {
-    const fetchGames = async () => {
+    const fetchAccessories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/games", {});
-        setGames(response.data);
+        const response = await axios.get(
+          "http://localhost:8080/accessories",
+          {}
+        );
+        setAccessories(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching games:", error);
+        console.error("Error fetching accessories:", error);
       }
     };
-    fetchGames();
+    fetchAccessories();
   }, [producerID]);
 
   useEffect(() => {
-    const selectedGame = games.find((game) => game.producerID === producerID);
-    console.log(selectedGame);
-    if (selectedGame) {
-      setSingle(selectedGame);
+    const selectedAccessory = accessories.find(
+      (accessories) => accessories.producerID === producerID
+    );
+    console.log(selectedAccessory);
+    if (selectedAccessory) {
+      setSingle(selectedAccessory);
       console.log(SingleData);
     }
-  }, [producerID, games]);
+  }, [producerID, accessories]);
 
   const handleCart = () => {
     if (!isAuth) {
@@ -74,7 +79,7 @@ const SingleProductPage = () => {
     let check = true;
 
     userData.cart.map((el) => {
-      if (el.productName === SingleData.name) {
+      if (el.name === SingleData.name) {
         check = false;
 
         return toast({
@@ -183,7 +188,7 @@ const SingleProductPage = () => {
             borderRadius={10}
             maxW={{ md: "400px", lg: "400px", xl: "500px" }}
             src={SingleData.imgURL}
-            alt="singleProduct"
+            alt="SingleAccessory"
           />
         </VStack>
         <VStack
@@ -284,4 +289,4 @@ const SingleProductPage = () => {
   );
 };
 
-export default SingleProductPage;
+export default SingleAccessoryPage;

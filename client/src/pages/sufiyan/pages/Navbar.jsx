@@ -57,7 +57,7 @@ const Links = [
   },
   {
     name: "Accessories",
-    path: "/coach",
+    path: "/accessory",
   },
   {
     name: "About Us",
