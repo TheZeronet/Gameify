@@ -24,46 +24,41 @@ import Loading from "../../Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
 
-//bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-// backgroundColor="#312e2e"
-//bg="#f36100"
-
 const SingleProductPage = () => {
   const [quant, setQuant] = useState(1);
   const toast = useToast();
 
   const dispatch = useDispatch();
-  const { data } = useSelector((store) => store.product);
   const { userData, isAuth } = useSelector((store) => store.auth);
-  //console.log(data, "frontend single route");
-
-  //const { token } = useSelector((store) => store.auth);
 
   const [LoadingT, setLoading] = useState(true);
-
   const [SingleData, setSingle] = useState({});
+  const [games, setGames] = useState([]);
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
 
-  //console.log(id)
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/games", {});
+        setGames(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    };
+    fetchGames();
+  }, [producerID]);
 
   useEffect(() => {
-    try {
-      fetch("http://localhost:8080/games" + producerID)
-        .then((res) => res.json())
-        .then((res) => {
-          setSingle(res);
-          setLoading(false);
-        });
-
-      //  setSingle(X.data)
-      //  console.log(X.data)
-      //  setLoading(false)
-    } catch (e) {
-      setLoading(true);
+    const selectedGame = games.find((game) => game.producerID === producerID);
+    console.log(selectedGame);
+    if (selectedGame) {
+      setSingle(selectedGame);
+      console.log(SingleData);
     }
-  }, [producerID]);
+  }, [producerID, games]);
 
   const handleCart = () => {
     if (!isAuth) {
@@ -79,7 +74,7 @@ const SingleProductPage = () => {
     let check = true;
 
     userData.cart.map((el) => {
-      if (el.productName == SingleData.productName) {
+      if (el.productName === SingleData.name) {
         check = false;
 
         return toast({
@@ -104,7 +99,6 @@ const SingleProductPage = () => {
       );
       toast({
         title: "Product Added to cart",
-
         status: "success",
         duration: 4000,
         isClosable: true,
@@ -126,7 +120,7 @@ const SingleProductPage = () => {
     let check = true;
 
     userData.wishlist.map((el) => {
-      if (el.productName == SingleData.productName) {
+      if (el.productName === SingleData.productName) {
         check = false;
 
         return toast({
@@ -151,7 +145,6 @@ const SingleProductPage = () => {
       );
       toast({
         title: "Product Added to Wishlist",
-
         status: "success",
         duration: 4000,
         isClosable: true,
@@ -189,10 +182,7 @@ const SingleProductPage = () => {
             bg={"whiteAlpha.200"}
             borderRadius={10}
             maxW={{ md: "400px", lg: "400px", xl: "500px" }}
-            // src="https://i.ibb.co/xqGSNGC/product-10.png"
-            alignItems="center"
-            // src="https://i.ibb.co/RQfmgyQ/product-7.png"
-            src={SingleData.image}
+            src={SingleData.imgURL}
             alt="singleProduct"
           />
         </VStack>
@@ -213,12 +203,10 @@ const SingleProductPage = () => {
           </Tag>
           <VStack align={"flex-start"}>
             <Text fontSize="3xl" fontWeight="500">
-              {/* $16.45 */}
-              Name : {SingleData.productName}
+              Name : {SingleData.name}
             </Text>
             <Text fontSize="2xl" fontWeight="500">
-              {/* $16.45 */}
-              Price : ${SingleData.price}
+              Price : {SingleData.price}
             </Text>
           </VStack>
           <VStack
@@ -232,9 +220,7 @@ const SingleProductPage = () => {
             }}
           >
             <Text fontSize="md" fontWeight={"medium"}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-              voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+              {SingleData.description}
             </Text>
           </VStack>
           <Box>
@@ -245,7 +231,6 @@ const SingleProductPage = () => {
           <HStack
             m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
             mt="20px"
-            // border="1px solid white"
             w={{ base: "100%", sm: "60%", md: "70%", lg: "50%" }}
           >
             <HStack
@@ -274,7 +259,6 @@ const SingleProductPage = () => {
             </Button>
             <IconButton
               p="0px 20px"
-              // bg="white"
               fontSize="3xl"
               onClick={AddWishlist}
               color="white"
@@ -285,9 +269,6 @@ const SingleProductPage = () => {
                 bg: "white",
                 color: "#f45f02;",
               }}
-              // _focus={{
-              //   bg: "gray.400",
-              // }}
               bg="#f45f02;"
               icon={<AiOutlineHeart />}
             />
