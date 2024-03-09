@@ -30,7 +30,7 @@ function ProductPage() {
   const [priceRange, setPriceRange] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 16;
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -147,7 +147,7 @@ function ProductPage() {
                     roundedBottom="lg"
                   >
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                      ${game.price}
+                      ₹{game.price}
                       <IconButton
                         _hover={{ color: "orange.500" }}
                         fontSize="25px"

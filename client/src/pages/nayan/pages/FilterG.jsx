@@ -11,14 +11,11 @@ function FilterG({ setSort, setCategory, setPriceRange }) {
         placeholder="Categories"
         onChange={(e) => setCategory(e.target.value)}
       >
-        <option value="Action">Action</option>
-        <option value="Adventure">Adventure</option>
+        <option value="Action, Adventure">Action & Adventure</option>
         <option value="RPG">RPG</option>
         <option value="Racing">Racing</option>
         <option value="Horror">Horror</option>
-        <option value="Platformer">Platformer</option>
         <option value="Indie">Indie</option>
-        <option value="Action, Adventure">Action & Adventure</option>
       </Select>
       <Select
         w="20%"

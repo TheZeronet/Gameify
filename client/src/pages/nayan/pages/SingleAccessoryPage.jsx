@@ -9,6 +9,12 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
+
+import { VscHeart } from "react-icons/vsc";
+import { FaTruckMoving } from "react-icons/fa";
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
+import { FaLock } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -254,6 +260,10 @@ const SingleAccessoryPage = () => {
           >
             <Text>{"-----------------------"}</Text>
 
+            <Text fontSize="2xl" fontWeight={"500"} color="gray.200">
+              Description:
+            </Text>
+
             <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
               {SingleData.info}
             </Text>
@@ -332,6 +342,7 @@ const SingleAccessoryPage = () => {
       </Box>
 
       <br />
+      <br />
 
       <Box
         bg={"whiteAlpha.100"}
@@ -341,9 +352,68 @@ const SingleAccessoryPage = () => {
         textAlign="center"
         w="80%"
         ml={"100px"}
+        display="flex"
+        justifyContent="center"
       >
-        {/* Images for extra games */}
+        <Box mr={6}>
+          <IconButton
+            _hover={{ color: "orange.500", bg: "#151515" }}
+            bg={"#f45f02"}
+            color={"#151515"}
+            fontSize="25px"
+            borderRadius={50}
+            icon={<VscHeart />}
+          />
+          <Text
+            fontSize="1xl"
+            fontWeight={"300"}
+            color="gray.300"
+            textAlign="left"
+          >
+            Trusted by all studios
+          </Text>
+        </Box>
+        <Box mr={6}>
+          <IconButton
+            _hover={{ color: "orange.500", bg: "#151515" }}
+            bg={"#f45f02"}
+            color={"#151515"}
+            fontSize="25px"
+            borderRadius={50}
+            icon={<FaTruckMoving />}
+          />
+          <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
+            Fast Delivery
+          </Text>
+        </Box>
+        <Box mr={6}>
+          <IconButton
+            _hover={{ color: "orange.500", bg: "#151515" }}
+            bg={"#f45f02"}
+            color={"#151515"}
+            fontSize="25px"
+            borderRadius={50}
+            icon={<IoShieldCheckmarkSharp />}
+          />
+          <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
+            10 Days Replacement
+          </Text>
+        </Box>
+        <Box>
+          <IconButton
+            _hover={{ color: "orange.500", bg: "#151515" }}
+            bg={"#f45f02"}
+            color={"#151515"}
+            fontSize="25px"
+            borderRadius={50}
+            icon={<FaLock />}
+          />
+          <Text fontSize="1xl" fontWeight={"300"} color="gray.300">
+            100% Secure Payment
+          </Text>
+        </Box>
       </Box>
+      <br />
     </Box>
   );
 };

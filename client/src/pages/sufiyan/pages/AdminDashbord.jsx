@@ -24,7 +24,7 @@ const AdminDashbord = () => {
 
       <Image
         position="absolute"
-        right="0"
+        right="20"
         transform={"scaleX(-1)"}
         src={cloud}
       />
@@ -32,7 +32,7 @@ const AdminDashbord = () => {
       <Image
         position="absolute"
         bottom="200"
-        left="0" //transform={"scaleX(-1)"}
+        left="20" //transform={"scaleX(-1)"}
         src={cloud}
       />
 
@@ -42,7 +42,7 @@ const AdminDashbord = () => {
         transform={"scaleX(-1)"}
         position={"absolute"}
         opacity="50%"
-        left="-20"
+        left="-10"
         src={Chief}
       />
 
@@ -52,7 +52,7 @@ const AdminDashbord = () => {
         transform={"scaleX(-1)"}
         position={"absolute"}
         opacity="50%"
-        right="-20"
+        right="-10"
         src={Chief}
       />
     </HStack>

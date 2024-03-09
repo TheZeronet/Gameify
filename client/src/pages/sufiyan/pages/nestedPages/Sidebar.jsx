@@ -134,18 +134,6 @@ function SideBarLeft() {
               <Item icon={<FaUsers />} name="Customers" />
             </Link>
           </div>
-          {/* group 3 */}
-          <div className="group">
-            <motion.h3
-              animate={{ opacity: open ? 1 : 0, height: open ? "auto" : 0 }}
-            >
-              CUSTOMIZATION
-            </motion.h3>
-            <Link to="/admin/add-product">
-              {" "}
-              <Item icon={<AiFillEdit />} name="Add Products" />{" "}
-            </Link>
-          </div>
         </motion.div>
       </motion.div>
     </Box>
