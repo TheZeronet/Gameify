@@ -1,216 +1,239 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
-  VStack,
-  chakra,
-  SimpleGrid,
-  Link,
-  Image,
-  IconButton,
-  useToast,
-  Spacer,
-  HStack,
   Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  SimpleGrid,
+  Spacer,
+  Stack,
+  Text,
+  useColorModeValue as mode,
+  VStack,
 } from "@chakra-ui/react";
-import { VscHeart } from "react-icons/vsc";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ACTION_ADD_PRODUCT,
-  ACTION_DELETE_PRODUCT,
-} from "../../../redux/admin/admin.actions";
-import Filter from "./FilterG";
+import { useNavigate } from "react-router-dom";
+import { CartItem } from "../../sudarshan/pages/CartComponents/CartItem";
+import { CartOrderSummary } from "../../sudarshan/pages/CartComponents/CartOrderSummary";
+import { cartData } from "../../sudarshan/pages/CartComponents/_data";
+import CartCard from "../../sufiyan/pages/nestedPages/Card";
 
-function ProductPage() {
-  const [games, setGames] = useState([]);
-  const [category, setCategory] = useState("");
-  const [priceRange, setPriceRange] = useState("");
+const Wishlist = () => {
+  const { userData, token, isAuth } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-  const toast = useToast();
 
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/games", {
-          params: {
-            category,
-            priceRange,
-          },
-        });
-        setGames(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error("Error fetching games:", error);
-      }
-    };
+  const navigate = useNavigate();
 
-    fetchGames();
-  }, [category, priceRange]);
-
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        let token = JSON.parse(localStorage.getItem("token"));
-        console.log(token.email);
-      } catch (error) {
-        console.log("error");
-      }
-    };
-    fetchCurrentUser();
-  }, []);
-
-  const product = useSelector((store) => store.product);
-  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
-
-  const DeleteProduct = (id) => {
-    dispatch(ACTION_DELETE_PRODUCT(id)).then((res) => {
-      dispatch(ACTION_ADD_PRODUCT);
-      toast({
-        title: "Product Deleted Successful",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-      });
-    });
+  const BackToPRoductPage = () => {
+    navigate("/product");
   };
 
+  let totalPurchase = 0;
+  userData.purchase.map((el) => (totalPurchase += +el.price));
+
+  // const { data } = useSelector((store) => store.cart);
+
+  {
+    /* if(userData.cart.length===0){
+  
+    return (  
+  
+  
+  
+            <Stack bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+            w="100%" alignItems="center" p={15} direction={{base:"column", md:"row"}}   justify="center">
+  
+            <Image src='https://img.pikbest.com/png-images/20191028/little-boy-pushing-a-shopping-cart-to-buy-things-gif_2515305.png!c1024wm0' />
+         
+           <VStack spacing={30} >
+           <Text fontSize="3xl" color={"white"}>Nothing In The Bag </Text>
+  
+           <Divider />
+  <Button  onClick={()=>BackToPRoductPage()} fontSize="x-large" padding={8}  color="white" bg="#f45f02" _hover={{color:"#f45f02",bg:"white",border:"1px solid #f45f02"}}> 
+  Continue Shopping
+  </Button>
+  
+  
+  
+           </VStack>
+            </Stack>
+  
+      
+      
+      ) 
+  
+   }  */
+  }
+
   return (
-    <Box
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      w="100%"
-    >
-      <br />
-      {/* <Filter /> */}
-      <Filter setCategory={setCategory} setPriceRange={setPriceRange} />
-      <Box>
-        <VStack maxW="1400px" m="auto">
-          <SimpleGrid
-            p={5}
-            w="100%"
-            spacing={{ base: "3", md: 5, lg: "10" }}
-            columns={{ base: 2, md: 3, lg: 4 }}
+    <Box minH={"80vh"} bg={"#151515"} w="100%">
+      <Box
+        borderBottom={"4px solid #f45f02"}
+        bg={"#151515"}
+        w="100%"
+        maxW={{
+          base: "3xl",
+          lg: "7xl",
+        }}
+        mx="auto"
+        px={{
+          base: "4",
+          md: "8",
+          lg: "12",
+        }}
+        py={{
+          base: "6",
+          md: "8",
+          lg: "12",
+        }}
+      >
+        <Stack
+          direction={{
+            base: "column",
+            lg: "row",
+          }}
+          align={{
+            lg: "flex-start",
+          }}
+          spacing={{
+            base: "8",
+            md: "16",
+          }}
+        >
+          <Stack
+            spacing={{
+              base: "8",
+              md: "10",
+            }}
+            flex="2"
           >
-            {games.map((game) => (
-              <VStack
-                position={"relative"}
-                key={game.producerID}
-                boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                borderRadius="10px"
-                maxW="xs"
-                bg="whiteAlpha.300"
-                shadow="lg"
-                rounded="lg"
-                z-index={-1}
-                h="100%"
-              >
-                <Box h="350px" w="100%">
-                  {" "}
-                  {/* Set a fixed height for the image container */}
-                  <Link to={`/products/${game.producerID}`}>
-                    <Image
-                      fit="cover"
-                      src={game.imgURL}
-                      alt="NIKE AIR"
-                      w="100%"
-                      h="100%" // Set the image height to fill the container
-                    />
-                  </Link>
-                </Box>
-                <Spacer />
-                <Box p={{ base: "2", md: "2", lg: "3" }}>
-                  <chakra.h1
-                    color="white"
-                    _dark={{
-                      color: "white",
-                    }}
-                    fontWeight="bold"
-                    fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
-                    textTransform="uppercase"
-                    textAlign={"center"}
-                  >
-                    {game.name}
-                  </chakra.h1>
-                  <chakra.h1 color="gray.400" textAlign="center">
-                    {game.category}
-                  </chakra.h1>
-                </Box>
+            <Heading color={"white"} fontSize="2xl">
+              Total Product in Cart {userData.cart.length}
+            </Heading>
 
-                <HStack
-                  w="100%"
-                  alignSelf={"flex-end"}
-                  alignItems="center"
-                  justifyContent="space-between"
-                  px={4}
-                  py={2}
-                  // bg="gray.900"
-                  roundedBottom="lg"
-                >
-                  <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                    ${game.price}
-                    <IconButton
-                      _hover={{ color: "orange.500" }}
-                      fontSize="25px"
-                      borderRadius={50}
-                      variant="link"
-                      //onClick={toggleColorMode}
-                      icon={<VscHeart />}
-                      left="110px"
-                      bottom="-5px"
-                    />
-                  </chakra.h1>
+            <Stack spacing="6">
+              {userData.cart?.map((item) => (
+                <CartItem key={item.id} {...item} />
+              ))}
+            </Stack>
+          </Stack>
+          <Flex direction="column" align="center" flex="1">
+            <CartOrderSummary />
+            <HStack mt="6" fontWeight="semibold">
+              <Text color={"white"}>or</Text>
+              <Link to={"/"}>
+                <Text color="#f45f02" _hover={{ color: "white" }}>
+                  Go back to Home Page
+                </Text>
+              </Link>
+            </HStack>
+          </Flex>
+        </Stack>
+      </Box>
 
-                  {AdminIsAuth ? (
-                    <IconButton
-                      p="0px 20px"
-                      // bg="white"
-                      fontSize="3xl"
-                      onClick={() => DeleteProduct(game.producerID)}
-                      color="white"
-                      fontWeight="bold"
-                      rounded="lg"
-                      textTransform="uppercase"
-                      _hover={{
-                        bg: "white",
-                        color: "#f45f02;",
-                      }}
-                      // _focus={{
-                      //   bg: "gray.400",
-                      // }}
-                      bg="#f45f02;"
-                      icon={<RiDeleteBinLine />}
-                    />
-                  ) : (
-                    <Link to={`/products/${game.producerID}`}>
-                      <chakra.button
-                        px={4}
-                        py={3}
-                        // bg="white"
-                        fontSize="xs"
-                        color="white"
-                        fontWeight="bold"
-                        rounded="lg"
-                        textTransform="uppercase"
-                        _hover={{
-                          bg: "white",
-                          color: "#f45f02;",
-                        }}
-                        // _focus={{
-                        //   bg: "gray.400",
-                        // }}
-                        bg="#f45f02;"
-                      >
-                        View
-                      </chakra.button>{" "}
-                    </Link>
-                  )}
-                </HStack>
-              </VStack>
-            ))}
-          </SimpleGrid>
-        </VStack>
+      <Box
+        bg={"#151515"}
+        w="100%"
+        maxW={{
+          base: "3xl",
+          lg: "7xl",
+        }}
+        mx="auto"
+        px={{
+          base: "4",
+          md: "8",
+          lg: "12",
+        }}
+        py={{
+          base: "6",
+          md: "8",
+          lg: "12",
+        }}
+      >
+        <Stack
+          h="100%"
+          w="100%"
+          direction={{
+            base: "column",
+            md: "row",
+          }}
+          align={{
+            lg: "flex-start",
+          }}
+          spacing={{
+            base: "8",
+            md: "16",
+          }}
+        >
+          <VStack
+            p={5}
+            minH="100%"
+            spacing={{
+              base: "5",
+              md: "5",
+            }}
+            align={"left"}
+          >
+            <Heading color={"white"} fontSize="2xl">
+              Total Product in Wishlist {userData.wishlist.length}
+            </Heading>
+
+            <SimpleGrid columns={[2, 3, 4, 4]} spacing="6">
+              {userData.wishlist?.map((item) => (
+                <CartCard key={item.id} {...item} />
+              ))}
+            </SimpleGrid>
+          </VStack>
+
+          <Spacer />
+
+          <VStack
+            spacing={5}
+            w="350px"
+            minH="100%"
+            borderLeft={"2px solid #f45f02"}
+            direction="column"
+            align="center"
+          >
+            <Heading color={"white"} fontSize="2xl">
+              Purchase History
+            </Heading>
+
+            <VStack h="250px" spacing={5} overflowY="scroll">
+              {userData.purchase.map((el) => (
+                <Flex w="full" bg={"whiteAlpha.200"} p={3}>
+                  <Text color={"white"} fontWeight="medium">
+                    {" "}
+                    {el.productName} {"   "}
+                  </Text>
+                  <Spacer />
+                  <Text color={"white"} fontWeight="medium">
+                    {"   "} $ {el.price}
+                  </Text>
+                </Flex>
+              ))}
+            </VStack>
+            <Divider />
+
+            <Text
+              p={5}
+              bg={"#f45f02"}
+              color="white"
+              fontSize={"2xl"}
+              fontWeight="semibold"
+            >
+              {" "}
+              Total : {totalPurchase.toFixed(2)}{" "}
+            </Text>
+          </VStack>
+        </Stack>
       </Box>
     </Box>
   );
-}
+};
 
-export default ProductPage;
+export default Wishlist;
