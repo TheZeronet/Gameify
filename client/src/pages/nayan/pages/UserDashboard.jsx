@@ -1,24 +1,35 @@
-import { useState } from "react"; // Import useState hook
-import { Box, Flex, Img, Spacer, Tag, Text, VStack } from "@chakra-ui/react";
-import React from "react";
+import { useState, useEffect } from "react";
+import { Box, VStack, Text, Tag, Img, Flex, Spacer } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Clive from "../Assets/Clive16.png";
 
 const UserDashboard = () => {
-  const { userData, token, isAuth, AdminIsAuth } = useSelector(
-    (store) => store.auth
-  );
-
+  const { userData } = useSelector((store) => store.auth);
   const { details } = userData;
 
-  // State to hold the selected image file
+  // State to hold the selected image URL
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Function to handle file selection
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(file);
+    setSelectedImage(URL.createObjectURL(file));
   };
+
+  // Effect to load previously selected image from local storage on initial render
+  useEffect(() => {
+    const storedImage = localStorage.getItem("userSelectedImage");
+    if (storedImage && storedImage.startsWith("blob:")) {
+      setSelectedImage(storedImage);
+    }
+  }, []);
+
+  // Effect to update local storage when the selected image changes
+  useEffect(() => {
+    if (selectedImage && selectedImage.startsWith("blob:")) {
+      localStorage.setItem("userSelectedImage", selectedImage);
+    }
+  }, [selectedImage]);
 
   return (
     <Box minH="100vh" position={"relative"} maxW="1400vh">
@@ -53,7 +64,7 @@ const UserDashboard = () => {
           >
             {selectedImage && (
               <Img
-                src={URL.createObjectURL(selectedImage)}
+                src={selectedImage}
                 border={"5px solid #151515"}
                 borderRadius="full"
                 w="200px"
@@ -64,7 +75,7 @@ const UserDashboard = () => {
             <input
               type="file"
               onChange={handleImageChange}
-              style={{ marginLeft: "230px", marginTop: "10px" }} // Add margin to move the input to the right
+              style={{ marginTop: "10px", marginLeft: "230px" }}
             />
           </Box>
 
@@ -86,15 +97,15 @@ const UserDashboard = () => {
             <Flex bg="rgb(244,95,2)" position={"sticky"} w="full" p={3}>
               <Text color={"white"} fontWeight="medium">
                 {" "}
-                {"Poduct Name"} {"   "}
+                {"Product Name"} {"   "}
               </Text>
               <Spacer />
               <Text color={"white"} fontWeight="medium">
                 {"Price"}
               </Text>
             </Flex>
-            {userData.purchase.map((el) => (
-              <Flex w="full" bg={"whiteAlpha.200"} p={3}>
+            {userData.purchase.map((el, index) => (
+              <Flex key={index} w="full" bg={"whiteAlpha.200"} p={3}>
                 <Text color={"white"} fontWeight="medium">
                   {" "}
                   {el.productName} {"   "}
