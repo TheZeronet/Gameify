@@ -201,30 +201,32 @@ function ProductPage() {
                 </VStack>
               ))}
           </SimpleGrid>
-          <HStack mt={4} spacing={4}>
-            <Button
-              colorScheme="orange"
-              disabled={page === 1}
-              onClick={() => handlePageChange(page - 1)}
-              _hover={{
-                bg: "#151515",
-                color: "#f45f02;",
-              }}
-            >
-              Previous
-            </Button>
-            <Button
-              colorScheme="orange"
-              disabled={page === totalPages}
-              onClick={() => handlePageChange(page + 1)}
-              _hover={{
-                bg: "#151515",
-                color: "#f45f02;",
-              }}
-            >
-              Next
-            </Button>
-          </HStack>
+          <Box onClick={handleClick}>
+            <HStack mt={4} spacing={4}>
+              <Button
+                colorScheme="orange"
+                disabled={page === 1}
+                onClick={() => handlePageChange(page - 1)}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
+              >
+                Previous
+              </Button>
+              <Button
+                colorScheme="orange"
+                disabled={page === totalPages}
+                onClick={() => handlePageChange(page + 1)}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
+              >
+                Next
+              </Button>
+            </HStack>
+          </Box>
           <br />
         </VStack>
       </Box>
