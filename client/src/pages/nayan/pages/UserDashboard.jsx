@@ -1,3 +1,4 @@
+import { useState } from "react"; // Import useState hook
 import { Box, Flex, Img, Spacer, Tag, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -10,6 +11,15 @@ const UserDashboard = () => {
 
   const { details } = userData;
 
+  // State to hold the selected image file
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Function to handle file selection
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
+
   return (
     <Box minH="100vh" position={"relative"} maxW="1400vh">
       <Box bg={"#151515"} minH="100vh">
@@ -19,9 +29,8 @@ const UserDashboard = () => {
           src={Clive}
           alt="userBody"
           position="absolute"
-          right={-70}
+          right={-50}
           top={-200}
-          //  transform={"scaleX(-1)"}
         />
       </Box>
 
@@ -34,15 +43,31 @@ const UserDashboard = () => {
           p="10px"
           display={{ base: "grid", sm: "grid", md: "grid", lg: "flex" }}
           gap="20px"
-          //   borderRadius="20px"
           maxW="600px"
         >
-          <Box w={{ base: "100%", sm: "40%", md: "50%", lg: "40%" }}>
-            <Img
-              src="https://i.pinimg.com/564x/81/8a/1b/818a1b89a57c2ee0fb7619b95e11aebd.jpg"
-              border={"5px solid #151515"}
+          <Box
+            w={{ base: "100%", sm: "40%", md: "50%", lg: "40%" }}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            {selectedImage && (
+              <Img
+                src={URL.createObjectURL(selectedImage)}
+                border={"5px solid #151515"}
+                borderRadius="full"
+                w="200px"
+                h="200px"
+                alt="userImage"
+              />
+            )}
+            <input
+              type="file"
+              onChange={handleImageChange}
+              style={{ marginLeft: "230px", marginTop: "10px" }} // Add margin to move the input to the right
             />
           </Box>
+
           <VStack align={"flex-start"} color="white">
             <Text fontSize="2xl">{details.username}</Text>
             <Tag bg="#f45f02" color="white" mb="10px">
