@@ -127,7 +127,6 @@ function SideBarLeft() {
             >
               Content
             </motion.h3>
-            <Item icon={<GiReceiveMoney />} name="Sales" />
 
             <Link to="/admin/all-users">
               {" "}

@@ -3,7 +3,7 @@ import hello from "../../assets/hello.svg";
 import Chart from "../../components/Chart";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Dashborad = () => {
   const { data, loading, error } = useSelector((store) => store.product);
@@ -106,19 +106,14 @@ const Dashborad = () => {
             </div>
 
             <div className="charts__right__cards">
-              <div className="card1">
-                <h1>Revenue </h1>
-                <p>$ {(sales_revenue / 1.5).toFixed(2)}</p>
-              </div>
-
               <div className="card2">
-                <h1>Sales</h1>
+                <h1> Game Sales</h1>
                 <p>${sales_revenue.toFixed(2)}</p>
               </div>
 
               <div className="card3">
-                <h1>Pending Purchase</h1>
-                <p> {pending_sales.toFixed(2)}</p>
+                <h1>Accessory Sales</h1>
+                <p> ${pending_sales.toFixed(2)}</p>
               </div>
 
               <div className="card4">
