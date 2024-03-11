@@ -42,17 +42,18 @@ const AdminDashbord = () => {
         transform={"scaleX(-1)"}
         position={"absolute"}
         opacity="50%"
-        left="-10"
+        left="10"
         src={Chief}
       />
 
       <Image
+        overflow={"hidden"}
         zIndex={2}
         bottom="30"
         transform={"scaleX(-1)"}
         position={"absolute"}
         opacity="50%"
-        right="-10"
+        right="10"
         src={Chief}
       />
     </HStack>

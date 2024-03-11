@@ -32,11 +32,17 @@ const UserDashboard = () => {
   }, [selectedImage]);
 
   return (
-    <Box minH="100vh" position={"relative"} maxW="1400vh">
-      <Box bg={"#151515"} minH="100vh">
+    <Box
+      minH="100vh"
+      position={"relative"}
+      maxW="auto"
+      overflow="hidden"
+      backgroundColor="#151515"
+    >
+      <Box>
         <Img
           w="700px"
-          opacity="0.5"
+          opacity="1"
           src={Clive}
           alt="userBody"
           position="absolute"
@@ -45,11 +51,14 @@ const UserDashboard = () => {
         />
       </Box>
 
-      <Box border="2px solid white" maxW="xl">
+      <Box
+        border="1px solid black"
+        maxW="xl"
+        marginTop="40px"
+        marginLeft="50px"
+      >
         <Box
           bg="whiteAlpha.100"
-          position="absolute"
-          top={20}
           left={{ base: "50", sm: "0", md: "150", lg: "50" }}
           p="10px"
           display={{ base: "grid", sm: "grid", md: "grid", lg: "flex" }}

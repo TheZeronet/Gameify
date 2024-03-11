@@ -39,34 +39,34 @@ const Wishlist = () => {
 
   {
     /* if(userData.cart.length===0){
-  
-    return (  
-  
-  
-  
-            <Stack bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-            w="100%" alignItems="center" p={15} direction={{base:"column", md:"row"}}   justify="center">
-  
-            <Image src='https://img.pikbest.com/png-images/20191028/little-boy-pushing-a-shopping-cart-to-buy-things-gif_2515305.png!c1024wm0' />
-         
-           <VStack spacing={30} >
-           <Text fontSize="3xl" color={"white"}>Nothing In The Bag </Text>
-  
-           <Divider />
-  <Button  onClick={()=>BackToPRoductPage()} fontSize="x-large" padding={8}  color="white" bg="#f45f02" _hover={{color:"#f45f02",bg:"white",border:"1px solid #f45f02"}}> 
-  Continue Shopping
-  </Button>
-  
-  
-  
-           </VStack>
-            </Stack>
-  
-      
-      
-      ) 
-  
-   }  */
+    
+      return (  
+    
+    
+    
+              <Stack bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+              w="100%" alignItems="center" p={15} direction={{base:"column", md:"row"}}   justify="center">
+    
+              <Image src='https://img.pikbest.com/png-images/20191028/little-boy-pushing-a-shopping-cart-to-buy-things-gif_2515305.png!c1024wm0' />
+          
+            <VStack spacing={30} >
+            <Text fontSize="3xl" color={"white"}>Nothing In The Bag </Text>
+    
+            <Divider />
+    <Button  onClick={()=>BackToPRoductPage()} fontSize="x-large" padding={8}  color="white" bg="#f45f02" _hover={{color:"#f45f02",bg:"white",border:"1px solid #f45f02"}}> 
+    Continue Shopping
+    </Button>
+    
+    
+    
+            </VStack>
+              </Stack>
+    
+        
+        
+        ) 
+    
+    }  */
   }
 
   return (
