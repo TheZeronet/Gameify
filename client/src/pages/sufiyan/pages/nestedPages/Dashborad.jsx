@@ -10,6 +10,8 @@ const Dashborad = () => {
 
   const { data: adminData } = useSelector((store) => store.admin);
 
+  // const { data: gamesData } = useSelector((store) => store.games);
+
   let pending_sales = 0;
   let cart = adminData.carts
     .map((el) => el.cart)
@@ -22,11 +24,19 @@ const Dashborad = () => {
     .flat()
     .forEach((el) => (sales_revenue += +el.price));
 
-  console.log(pending_sales.toFixed(1), sales_revenue);
+  // console.log(pending_sales.toFixed(1), sales_revenue);
 
   //adminData.carts.map((el) => el.cartData.map((x) => Income += +x.price));
 
   const allProducts = data?.length;
+  const gameLen = adminData.games?.length;
+  const accLen = adminData.accessories?.length;
+  const prodLen = gameLen + accLen;
+
+  useEffect(() => {
+    console.log(prodLen);
+    console.log("pepepe", adminData);
+  });
 
   let PendingPurchase = 0;
   adminData.carts.map((el) => (PendingPurchase += +el.cart.length));
@@ -34,7 +44,7 @@ const Dashborad = () => {
   let TotalNumberOfSales = 0;
   adminData.carts.map((el) => (TotalNumberOfSales += +el.purchase.length));
 
-  console.log(PendingPurchase, TotalNumberOfSales);
+  // console.log(PendingPurchase, TotalNumberOfSales);
 
   return (
     <HStack zIndex={50} maxW="1200px">
@@ -65,7 +75,7 @@ const Dashborad = () => {
           <div className="card">
             <div className="card_inner">
               <p className="text-primary-p">Number of Products</p>
-              <span className="font-bold text-title">{allProducts}</span>
+              <span className="font-bold text-title">{prodLen}</span>
             </div>
           </div>
 

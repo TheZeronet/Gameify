@@ -11,14 +11,17 @@ import * as React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
 import { useDispatch, useSelector } from "react-redux";
-import { ACTION_GET_CART, ACTION_REMOVE_ITEM_CART } from "../../../../redux/cart/cart.actions"
+import {
+  ACTION_GET_CART,
+  ACTION_REMOVE_ITEM_CART,
+} from "../../../../redux/cart/cart.actions";
 import { getUserData } from "../../../../redux/auth/auth.actions";
 const QuantitySelect = (props) => {
   return (
     <Select
-    color={"white"}
-    bg="#f45f02"
-    _hover={{color:"#f45f02",bg:"white"}}
+      color={"white"}
+      bg="#f45f02"
+      _hover={{ color: "#f45f02", bg: "white" }}
       maxW="64px"
       aria-label="Select quantity"
       focusBorderColor={useColorModeValue("blue.500", "blue.200")}
@@ -32,7 +35,7 @@ const QuantitySelect = (props) => {
   );
 };
 
-export const CartItem = (props) => { 
+export const CartItem = (props) => {
   //console.log(1)
   const {
     isGiftWrapping,
@@ -44,35 +47,30 @@ export const CartItem = (props) => {
     price,
     onChangeQuantity,
     onClickDelete,
-    _id
+    _id,
   } = props;
   const { isAuth, token } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-  const toast = useToast()
+  const toast = useToast();
 
   const itemDelete = () => {
+    let data = {
+      email: token.email,
+      data: {
+        _id: _id,
+      },
+    };
+    console.log(data);
 
-    let data = { 
-      email : token.email,
-      data : {
-        _id : _id
-      }
-    }
-    console.log(data)
-
-   dispatch(ACTION_REMOVE_ITEM_CART(data))
-   .then((res)=>  {
-  
-    dispatch(getUserData(token.email)) 
-    toast({
-      title: "Product Deleted Successfully",
-      status: "success",
-      duration: 4000,
-      isClosable: true,
+    dispatch(ACTION_REMOVE_ITEM_CART(data)).then((res) => {
+      dispatch(getUserData(token.email));
+      toast({
+        title: "Product Deleted Successfully",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
     });
-  })
-
-   
   };
   return (
     <Flex
@@ -106,7 +104,9 @@ export const CartItem = (props) => {
           }}
         />
         <PriceTag price={price} currency={currency} />
-        <CloseButton color="#f45f02" _hover={{color:"white"}}
+        <CloseButton
+          color="#f45f02"
+          _hover={{ color: "white" }}
           aria-label={`Delete ${productName} from cart`}
           onClick={itemDelete}
         />
@@ -123,7 +123,12 @@ export const CartItem = (props) => {
           md: "none",
         }}
       >
-        <Link fontSize="sm" color={"#f45f02"} _hover={{color:"white"}} textDecor="underline">
+        <Link
+          fontSize="sm"
+          color={"#f45f02"}
+          _hover={{ color: "white" }}
+          textDecor="underline"
+        >
           Delete
         </Link>
         <QuantitySelect

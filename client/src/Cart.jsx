@@ -72,7 +72,6 @@ const Cart = () => {
   return (
     <Box minH={"80vh"} bg={"#151515"} w="100%">
       <Box
-        borderBottom={"4px solid #f45f02"}
         bg={"#151515"}
         w="100%"
         maxW={{
@@ -132,104 +131,6 @@ const Cart = () => {
               </Link>
             </HStack>
           </Flex>
-        </Stack>
-      </Box>
-
-      <Box
-        bg={"#151515"}
-        w="100%"
-        maxW={{
-          base: "3xl",
-          lg: "7xl",
-        }}
-        mx="auto"
-        px={{
-          base: "4",
-          md: "8",
-          lg: "12",
-        }}
-        py={{
-          base: "6",
-          md: "8",
-          lg: "12",
-        }}
-      >
-        <Stack
-          h="100%"
-          w="100%"
-          direction={{
-            base: "column",
-            md: "row",
-          }}
-          align={{
-            lg: "flex-start",
-          }}
-          spacing={{
-            base: "8",
-            md: "16",
-          }}
-        >
-          <VStack
-            p={5}
-            minH="100%"
-            spacing={{
-              base: "5",
-              md: "5",
-            }}
-            align={"left"}
-          >
-            <Heading color={"white"} fontSize="2xl">
-              Total Product in Wishlist {userData.wishlist.length}
-            </Heading>
-
-            <SimpleGrid columns={[2, 3, 4, 4]} spacing="6">
-              {userData.wishlist?.map((item) => (
-                <CartCard key={item.id} {...item} />
-              ))}
-            </SimpleGrid>
-          </VStack>
-
-          <Spacer />
-
-          <VStack
-            spacing={5}
-            w="350px"
-            minH="100%"
-            borderLeft={"2px solid #f45f02"}
-            direction="column"
-            align="center"
-          >
-            <Heading color={"white"} fontSize="2xl">
-              Purchase History
-            </Heading>
-
-            <VStack h="250px" spacing={5} overflowY="scroll">
-              {userData.purchase.map((el) => (
-                <Flex w="full" bg={"whiteAlpha.200"} p={3}>
-                  <Text color={"white"} fontWeight="medium">
-                    {" "}
-                    {el.productName} {"   "}
-                  </Text>
-                  <Spacer />
-                  <Text color={"white"} fontWeight="medium">
-                    {"   "} $ {el.price}
-                  </Text>
-                </Flex>
-              ))}
-            </VStack>
-            <Divider />
-
-            <Text
-              p={5}
-              bg={"#f45f02"}
-              color="white"
-              fontSize={"2xl"}
-              fontWeight="semibold"
-            >
-              {" "}
-              Total : {totalPurchase.toFixed(2)}{" "}
-            </Text>
-          </VStack>
         </Stack>
       </Box>
     </Box>

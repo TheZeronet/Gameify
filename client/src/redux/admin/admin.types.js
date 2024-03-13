@@ -11,3 +11,11 @@ export const DELETE_PRODUCT_ERROR = "delete/error";
 export const ADD_PRODUCT_LOADING = "add/loading";
 export const ADD_PRODUCT_SUCCESS = "add/success";
 export const ADD_PRODUCT_ERROR = "add/error";
+
+export const ADD_GAMES_LOADING = "add/loading";
+export const ADD_GAMES_SUCCESS = "add/success";
+export const ADD_GAMES_ERROR = "add/error";
+
+export const ADD_ACCESSORIES_LOADING = "add/loading";
+export const ADD_ACCESSORIES_SUCCESS = "add/success";
+export const ADD_ACCESSORIES_ERROR = "add/error";

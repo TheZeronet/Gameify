@@ -99,7 +99,7 @@ const SingleProductPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant },
+        data: { ...SingleData, qty: quant, image: SingleData.imgURL },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_CART(Product)).then((res) =>
@@ -145,7 +145,7 @@ const SingleProductPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant },
+        data: { ...SingleData, qty: quant, image: SingleData.imgURL },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product)).then((res) =>
