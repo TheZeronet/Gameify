@@ -28,46 +28,8 @@ const Wishlist = () => {
 
   const navigate = useNavigate();
 
-  const BackToPRoductPage = () => {
-    navigate("/product");
-  };
-
   let totalPurchase = 0;
   userData.purchase.map((el) => (totalPurchase += +el.price));
-
-  // const { data } = useSelector((store) => store.cart);
-
-  {
-    /* if(userData.cart.length===0){
-    
-      return (  
-    
-    
-    
-              <Stack bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-              w="100%" alignItems="center" p={15} direction={{base:"column", md:"row"}}   justify="center">
-    
-              <Image src='https://img.pikbest.com/png-images/20191028/little-boy-pushing-a-shopping-cart-to-buy-things-gif_2515305.png!c1024wm0' />
-          
-            <VStack spacing={30} >
-            <Text fontSize="3xl" color={"white"}>Nothing In The Bag </Text>
-    
-            <Divider />
-    <Button  onClick={()=>BackToPRoductPage()} fontSize="x-large" padding={8}  color="white" bg="#f45f02" _hover={{color:"#f45f02",bg:"white",border:"1px solid #f45f02"}}> 
-    Continue Shopping
-    </Button>
-    
-    
-    
-            </VStack>
-              </Stack>
-    
-        
-        
-        ) 
-    
-    }  */
-  }
 
   return (
     <Box minH={"80vh"} bg={"#151515"} w="100%">
@@ -106,65 +68,26 @@ const Wishlist = () => {
           }}
         >
           <VStack
-            p={5}
-            minH="100%"
-            spacing={{
-              base: "5",
-              md: "5",
-            }}
-            align={"left"}
+          // p={5}
+          // minH="100%"
+          // spacing={{
+          //   base: "5",
+          //   md: "5",
+          // }}
+          // align={"left"}
           >
             <Heading color={"white"} fontSize="2xl">
-              Total Product in Wishlist {userData.wishlist.length}
+              Total Products in Wishlist {userData.wishlist.length}
             </Heading>
+
+            <br />
+            <br />
 
             <SimpleGrid columns={[2, 3, 4, 4]} spacing="6">
               {userData.wishlist?.map((item) => (
                 <CartCard key={item.id} {...item} />
               ))}
             </SimpleGrid>
-          </VStack>
-
-          <Spacer />
-
-          <VStack
-            spacing={5}
-            w="350px"
-            minH="100%"
-            borderLeft={"2px solid #f45f02"}
-            direction="column"
-            align="center"
-          >
-            <Heading color={"white"} fontSize="2xl">
-              Purchase History
-            </Heading>
-
-            <VStack h="250px" spacing={5} overflowY="scroll">
-              {userData.purchase.map((el) => (
-                <Flex w="full" bg={"whiteAlpha.200"} p={3}>
-                  <Text color={"white"} fontWeight="medium">
-                    {" "}
-                    {el.productName} {"   "}
-                  </Text>
-                  <Spacer />
-                  <Text color={"white"} fontWeight="medium">
-                    {"   "} $ {el.price}
-                  </Text>
-                </Flex>
-              ))}
-            </VStack>
-            <Divider />
-
-            <Text
-              p={5}
-              bg={"#f45f02"}
-              color="white"
-              fontSize={"2xl"}
-              fontWeight="semibold"
-            >
-              {" "}
-              Total : {totalPurchase.toFixed(2)}{" "}
-            </Text>
           </VStack>
         </Stack>
       </Box>
