@@ -25,9 +25,7 @@ import CartCard from "./pages/sufiyan/pages/nestedPages/Card";
 const Cart = () => {
   const { userData, token, isAuth } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
   const BackToPRoductPage = () => {
     navigate("/");
   };

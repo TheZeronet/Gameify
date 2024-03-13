@@ -59,10 +59,13 @@ export const CartOrderSummary = () => {
             $250
           </Text>
         </OrderSummaryItem>
+
+        <Text borderBottom={"1px solid white"}> </Text>
+
         <Flex justify="space-between">
           <Text fontSize="xl" color={"white"} fontWeight="extrabold">
             Total
-            <span style={{ marginLeft: "100px" }}>
+            <span style={{ marginLeft: "155px" }}>
               {formatPrice(total + 550)}
             </span>
           </Text>
