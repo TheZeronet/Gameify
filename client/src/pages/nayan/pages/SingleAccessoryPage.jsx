@@ -87,7 +87,7 @@ const SingleAccessoryPage = () => {
     let check = true;
 
     userData.cart.map((el) => {
-      if (el.name === SingleData.name) {
+      if (el.productName === SingleData.name) {
         check = false;
 
         return toast({
@@ -104,7 +104,12 @@ const SingleAccessoryPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant },
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_CART(Product)).then((res) =>
@@ -133,7 +138,7 @@ const SingleAccessoryPage = () => {
     let check = true;
 
     userData.wishlist.map((el) => {
-      if (el.name === SingleData.name) {
+      if (el.productName === SingleData.name) {
         check = false;
 
         return toast({
@@ -150,7 +155,12 @@ const SingleAccessoryPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant },
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product)).then((res) =>

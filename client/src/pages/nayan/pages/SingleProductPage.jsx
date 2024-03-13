@@ -99,7 +99,12 @@ const SingleProductPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant, image: SingleData.imgURL },
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_CART(Product)).then((res) =>
@@ -128,7 +133,7 @@ const SingleProductPage = () => {
     let check = true;
 
     userData.wishlist.map((el) => {
-      if (el.name === SingleData.name) {
+      if (el.productName === SingleData.name) {
         check = false;
 
         return toast({
@@ -145,7 +150,12 @@ const SingleProductPage = () => {
 
       let Product = {
         email: token.email,
-        data: { ...SingleData, qty: quant, image: SingleData.imgURL },
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
       };
 
       dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product)).then((res) =>
