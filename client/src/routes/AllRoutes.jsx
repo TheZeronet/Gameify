@@ -7,6 +7,7 @@ import AccessoryPage from "../pages/nayan/pages/AccessoryPage";
 import SingleAccessoryPage from "../pages/nayan/pages/SingleAccessoryPage";
 import ProductPage from "../pages/nayan/pages/ProductPage";
 import Wishlist from "../pages/nayan/pages/Wishlist";
+import SingleWishlist from "../pages/nayan/pages/SingleWishlistPage";
 import SingleProductPage from "../pages/nayan/pages/SingleProductPage";
 import UserDashboard from "../pages/nayan/pages/UserDashboard";
 import Login from "../pages/Shrikrishna/pages/Login";
@@ -69,6 +70,15 @@ const AllRoutes = () => {
           element={
             <PrivateRoute>
               <Wishlist />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/wishlist/:producerID"
+          element={
+            <PrivateRoute>
+              <SingleWishlist />
             </PrivateRoute>
           }
         />

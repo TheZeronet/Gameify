@@ -40,7 +40,6 @@ const Wishlist = () => {
   return (
     <Box bg={"#151515"} w="100%">
       <br />
-      {/* <Filter setCategory={setCategory} setPriceRange={setPriceRange} /> */}
       <Box>
         <VStack maxW="1400px" m="auto">
           d
@@ -64,7 +63,7 @@ const Wishlist = () => {
                 h="100%"
               >
                 <Box h="350px" w="100%">
-                  <Link to={`/accessory/${wishlist.producerID}`}>
+                  <Link to={`/wishlist/${wishlist.producerID}`}>
                     <Image
                       fit="cover"
                       src={wishlist.imgURL}

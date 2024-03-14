@@ -42,6 +42,7 @@ const SingleProductPage = () => {
   const [LoadingT, setLoading] = useState(true);
   const [SingleData, setSingle] = useState({});
   const [games, setGames] = useState([]);
+  const [accessories, setAccessories] = useState([]);
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
@@ -57,6 +58,20 @@ const SingleProductPage = () => {
       }
     };
     fetchGames();
+
+    const fetchAccessories = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/accessories",
+          {}
+        );
+        setAccessories(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching accessories:", error);
+      }
+    };
+    fetchAccessories();
   }, [producerID]);
 
   useEffect(() => {
@@ -67,6 +82,17 @@ const SingleProductPage = () => {
       console.log(SingleData);
     }
   }, [producerID, games]);
+
+  useEffect(() => {
+    const selectedAccessory = accessories.find(
+      (accessories) => accessories.producerID === producerID
+    );
+    console.log(selectedAccessory);
+    if (selectedAccessory) {
+      setSingle(selectedAccessory);
+      console.log(SingleData);
+    }
+  }, [producerID, accessories]);
 
   const handleCart = () => {
     if (!isAuth) {
