@@ -1,5 +1,5 @@
 
-<h1 align="center">Gym.com</h1>
+<h1 align="center">Game Store.com</h1>
 
 <h3 align="center">It's a MERN Stack E-commerce web application with all the major functionalities</h3>
 
