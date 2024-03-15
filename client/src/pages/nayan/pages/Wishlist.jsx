@@ -42,7 +42,6 @@ const Wishlist = () => {
       <br />
       <Box>
         <VStack maxW="1400px" m="auto">
-          d
           <SimpleGrid
             p={5}
             w="100%"
