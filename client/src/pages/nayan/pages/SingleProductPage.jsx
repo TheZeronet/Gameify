@@ -119,6 +119,67 @@ const SingleProductPage = () => {
     }
   };
 
+  // const AddWishlist = () => {
+  //   if (!isAuth) {
+  //     toast({
+  //       title: "You Need Login first",
+  //       status: "warning",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //     return NavigatKaro("/login");
+  //   }
+
+  //   let updatedWishlist = [];
+  //   let check = true;
+
+  //   // Check if userData and wishlist are defined
+  //   if (userData && userData.wishlist) {
+  //     userData.wishlist.forEach((el) => {
+  //       if (el.productName === SingleData.name) {
+  //         check = false;
+  //         // Product found, so do not add it again, effectively removing it from wishlist
+  //         toast({
+  //           title: "Product Removed from Wishlist",
+  //           status: "success",
+  //           duration: 4000,
+  //           isClosable: true,
+  //         });
+  //       } else {
+  //         updatedWishlist.push(el);
+  //       }
+  //     });
+  //   }
+
+  //   if (check) {
+  //     // Add the product to the wishlist
+  //     updatedWishlist.push({
+  //       ...SingleData,
+  //       qty: quant,
+  //       image: SingleData.imgURL,
+  //       productName: SingleData.name,
+  //     });
+
+  //     toast({
+  //       title: "Product Added to Wishlist",
+  //       status: "success",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //   }
+
+  //   // Update the wishlist in user data only if it's defined
+  //   if (userData) {
+  //     let token = JSON.parse(localStorage.getItem("token"));
+  //     dispatch(
+  //       ACTION_ADD_ITEM_TO_WISHLIST({
+  //         email: token.email,
+  //         data: updatedWishlist,
+  //       })
+  //     ).then((res) => dispatch(getUserData(token.email)));
+  //   }
+  // };
+
   const AddWishlist = () => {
     if (!isAuth) {
       toast({
@@ -130,53 +191,43 @@ const SingleProductPage = () => {
       return NavigatKaro("/login");
     }
 
-    let updatedWishlist = [];
     let check = true;
 
-    // Check if userData and wishlist are defined
-    if (userData && userData.wishlist) {
-      userData.wishlist.forEach((el) => {
-        if (el.productName === SingleData.name) {
-          check = false;
-          // Product found, so do not add it again, effectively removing it from wishlist
-          toast({
-            title: "Product Removed from Wishlist",
-            status: "success",
-            duration: 4000,
-            isClosable: true,
-          });
-        } else {
-          updatedWishlist.push(el);
-        }
-      });
-    }
+    userData.wishlist.map((el) => {
+      if (el.productName === SingleData.name) {
+        check = false;
+
+        return toast({
+          title: "Product Already in Wishlist",
+          status: "warning",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
+    });
 
     if (check) {
-      // Add the product to the wishlist
-      updatedWishlist.push({
-        ...SingleData,
-        qty: quant,
-        image: SingleData.imgURL,
-        productName: SingleData.name,
-      });
+      let token = JSON.parse(localStorage.getItem("token"));
 
+      let Product = {
+        email: token.email,
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
+      };
+
+      dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product)).then((res) =>
+        dispatch(getUserData(token.email))
+      );
       toast({
         title: "Product Added to Wishlist",
         status: "success",
         duration: 4000,
         isClosable: true,
       });
-    }
-
-    // Update the wishlist in user data only if it's defined
-    if (userData) {
-      let token = JSON.parse(localStorage.getItem("token"));
-      dispatch(
-        ACTION_ADD_ITEM_TO_WISHLIST({
-          email: token.email,
-          data: updatedWishlist,
-        })
-      ).then((res) => dispatch(getUserData(token.email)));
     }
   };
 

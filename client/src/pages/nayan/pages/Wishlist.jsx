@@ -101,16 +101,6 @@ const Wishlist = () => {
                 >
                   <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
                     ₹{wishlist.price}
-                    <IconButton
-                      _hover={{ color: "orange.500" }}
-                      fontSize="25px"
-                      borderRadius={50}
-                      variant="link"
-                      // onClick={addToWish}
-                      icon={<VscHeart />}
-                      left="110px"
-                      bottom="-5px"
-                    />
                   </chakra.h1>
                 </HStack>
               </VStack>

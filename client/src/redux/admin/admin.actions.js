@@ -58,7 +58,6 @@ export const ACTION_DELETE_PRODUCT =
         },
       });
       dispatch({ type: DELETE_PRODUCT_SUCCESS });
-      console.log("i am here");
       return dispatch(ACTION_GET_PRODUCTS());
     } catch (err) {
       dispatch({ type: DELETE_PRODUCT_ERROR, payload: err.message });

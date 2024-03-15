@@ -77,6 +77,27 @@ const CartCard = ({ name, price, _id, imgURL, producerID }) => {
               {name}
             </chakra.h1>
           </Box>
+          {/* make button for move from wishlist to cart function */}
+          {/* <Button
+            px={4}
+            py={3}
+            fontSize="xs"
+            color="white"
+            fontWeight="bold"
+            rounded="lg"
+            textTransform="uppercase"
+            _hover={{
+              border: "1px solid #f45f02",
+              bg: "#151515",
+              color: "#f45f02;",
+            }}
+            bg="#f45f02;"
+            onClick={moveToCart}
+          >
+            {" "}
+            Move to Cart
+          </Button> */}
+
           <HStack
             w="100%"
             alignSelf={"flex-end"}

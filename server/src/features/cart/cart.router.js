@@ -7,48 +7,42 @@ app.get("/", async (req, res) => {
   if (!req.body.email) {
     try {
       let data = await CartModel.find();
-     return res.status(200).send(data);
+      return res.status(200).send(data);
     } catch (e) {
-     return res.status(401).send(e.massage);
+      return res.status(401).send(e.massage);
     }
   }
 
   try {
-    
     let data = await CartModel.findOne({ email: req.body.email });
 
-    if(!data){
-     return res.status(403).send("no cart data");
+    if (!data) {
+      return res.status(403).send("no cart data");
     }
 
-   return res.status(201).send(data);
-
-    
-
+    return res.status(201).send(data);
   } catch (e) {
     res.status(404).send(e.massage);
   }
 });
 
 app.get("/:email", async (req, res) => {
+  console.log(req.params.email);
 
-  console.log(req.params.email)
+  if (req.params.email) {
+    let data = await cartModel.findOne({ email: req.params.email });
 
-  if(req.params.email ){
-    let data = await cartModel.findOne({email:req.params.email});
-   
-    if(!data){
+    if (!data) {
       return res.status(403).send("no cart data");
-     }
+    }
 
     return res.status(200).send(data);
   }
 
-  return res.send(404)
+  return res.send(404);
 });
 
 app.post("/", async (req, res) => {
-
   try {
     let exists = await CartModel.findOne({ email: req.body.email });
 
@@ -61,7 +55,6 @@ app.post("/", async (req, res) => {
             return res.status(201).send("Product already in Cart");
           }
         }
-        
       });
       if (flag) {
         return res.status(201).send("Product already in Cart");
@@ -74,10 +67,9 @@ app.post("/", async (req, res) => {
 
       return res.status(200).send(addData);
     } else {
-
       let newData = { email: req.body.email, cart: req.body.data };
       let data = await CartModel.create(newData);
-    //  console.log(564);
+      //  console.log(564);
       return res.status(200).send(data);
     }
   } catch (e) {
@@ -86,9 +78,8 @@ app.post("/", async (req, res) => {
 });
 
 app.patch("/", async (req, res) => {
-
- // console.log(req)
- // console.log(req.body)
+  // console.log(req)
+  // console.log(req.body)
   //console.log(req.body, req.body.data, "SDS")
   try {
     let data = await cartModel.updateOne(
@@ -103,13 +94,10 @@ app.patch("/", async (req, res) => {
   }
 });
 
-
 ///wishlist
 
-
 app.post("/wishlist", async (req, res) => {
-
-  console.log(req)
+  console.log(req);
 
   try {
     let exists = await CartModel.findOne({ email: req.body.email });
@@ -123,7 +111,6 @@ app.post("/wishlist", async (req, res) => {
             return res.status(201).send("Product already in Cart");
           }
         }
-        
       });
       if (flag) {
         return res.status(201).send("Product already in Cart");
@@ -136,10 +123,9 @@ app.post("/wishlist", async (req, res) => {
 
       return res.status(200).send(addData);
     } else {
-
       let newData = { email: req.body.email, wishlist: req.body.data };
       let data = await CartModel.create(newData);
-    //  console.log(564);
+      //  console.log(564);
       return res.status(200).send(data);
     }
   } catch (e) {
@@ -147,56 +133,47 @@ app.post("/wishlist", async (req, res) => {
   }
 });
 
-
-// wishlist to cart 
+// wishlist to cart
 app.patch("/move", async (req, res) => {
-  
-  const { email , id } = req.body
- // console.log(req)
-   try {
+  const { email, id } = req.body;
+  // console.log(req)
+  try {
+    let user = await cartModel.findOne({ email: email });
 
-    let user = await cartModel.findOne({email: email})
-  
-    let product = user.wishlist.find((el)=> el._id == id)
-    console.log(product)
-     await cartModel.findOneAndUpdate(
-       {email:email},
-       {$pull: {wishlist: {_id:id}}, $push: {cart: product  }  },
-       {new :true}
-       )
+    let product = user.wishlist.find((el) => el._id == id);
+    console.log(product);
+    await cartModel.findOneAndUpdate(
+      { email: email },
+      { $pull: { wishlist: { _id: id } }, $push: { cart: product } },
+      { new: true }
+    );
 
-     return res.status(200).send("SUCCESS");
-   } catch (e) {
-     return res.status(404).send(e.massage);
-   }
- });
-
-
+    return res.status(200).send("SUCCESS");
+  } catch (e) {
+    return res.status(404).send(e.massage);
+  }
+});
 
 app.patch("/purchase", async (req, res) => {
-  
-  const { email } = req.body
-  console.log(email)
-   try {
+  const { email } = req.body;
+  console.log(email);
+  try {
+    let user = await cartModel.findOne({ email: email });
+    console.log(user.cart);
 
-    let user = await cartModel.findOne({email: email})
-   console.log(user.cart)
- 
-     await cartModel.findOneAndUpdate(
-       {email:email},
-       {$set: {purchase: [...user.purchase,...user.cart]} , cart: [] },
-       {new :true}
-       )
+    await cartModel.findOneAndUpdate(
+      { email: email },
+      { $set: { purchase: [...user.purchase, ...user.cart] }, cart: [] },
+      { new: true }
+    );
 
-     return res.status(200).send("SUCCESS");
-   } catch (e) {
-     return res.status(404).send(e.massage);
-   }
- });
+    return res.status(200).send("SUCCESS");
+  } catch (e) {
+    return res.status(404).send(e.massage);
+  }
+});
 
 module.exports = app;
-
-
 
 //{
 //  "_id": "639dabab40f0151c0c0ebb38",
@@ -205,5 +182,3 @@ module.exports = app;
 //  "price": "16.74",
 //  "qty": 1
 //},
-
-
