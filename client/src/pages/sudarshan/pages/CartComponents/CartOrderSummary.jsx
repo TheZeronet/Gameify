@@ -13,6 +13,9 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import RazorPay from "../../../Payment";
 import { formatPrice } from "./PriceTag";
+import PaymentForm from "../../../monu/pages/PaymentForm";
+import PaymentPage from "../../../PaymentPage";
+
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;
   return (
@@ -72,7 +75,17 @@ export const CartOrderSummary = () => {
         </Flex>
       </Stack>
 
-      <RazorPay />
+      <Button
+        bg="#f45f02"
+        color="#D3D6CE"
+        _hover={{ bg: "#151515", color: "#f45f02" }}
+      >
+        <NavLink to="/details">
+          <Text variant="solid" _hover={{ color: "#f45f02" }}>
+            Pay
+          </Text>
+        </NavLink>
+      </Button>
     </Stack>
   );
 };

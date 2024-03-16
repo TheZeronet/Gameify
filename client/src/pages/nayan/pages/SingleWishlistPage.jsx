@@ -28,11 +28,12 @@ import {
 } from "../../../redux/cart/cart.actions";
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import Loading from "../../Loading";
+import { MOVE_FROM_WISHLIST_TO_CART } from "../../../redux/cart/cart.actions";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 
-const SingleProductPage = () => {
+const SingleProductPage = (_id) => {
   const [quant, setQuant] = useState(1);
   const toast = useToast();
 
@@ -46,6 +47,27 @@ const SingleProductPage = () => {
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
+
+  const moveToCart = () => {
+    // console.log(_id)
+
+    let token = JSON.parse(localStorage.getItem("token"));
+
+    let data = {
+      email: token.email,
+      id: _id,
+    };
+
+    dispatch(MOVE_FROM_WISHLIST_TO_CART(data)).then((res) => {
+      dispatch(getUserData(token.email));
+      toast({
+        title: "Product Moved to cart",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+    });
+  };
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -224,7 +246,7 @@ const SingleProductPage = () => {
         alignContent="center"
         color={"white"}
       >
-        <Link to="/products" style={{ marginTop: "60px" }}>
+        <Link to="/wishlist" style={{ marginTop: "60px" }}>
           <IconButton
             alignSelf="flex-start"
             bg={"#151515"}
@@ -350,21 +372,26 @@ const SingleProductPage = () => {
             >
               Add to Cart
             </Button>
-            <IconButton
-              p="0px 20px"
-              fontSize="3xl"
-              onClick={AddWishlist}
-              color="gray.300"
+            {/* make button for move from wishlist to cart function */}
+            <Button
+              px={4}
+              py={3}
+              fontSize="xs"
+              color="white"
               fontWeight="bold"
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: "gray.300",
+                border: "1px solid #f45f02",
+                bg: "#151515",
                 color: "#f45f02;",
               }}
               bg="#f45f02;"
-              icon={<AiOutlineHeart />}
-            />
+              onClick={moveToCart}
+            >
+              {" "}
+              Move
+            </Button>
           </HStack>
 
           <br />

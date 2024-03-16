@@ -19,6 +19,9 @@ import Dashborad from "../pages/sufiyan/pages/nestedPages/Dashborad";
 import AdminPrivateAuth from "./AdminPrivateRoute";
 import PrivateRoute from "./PrivateRoute";
 import About from "../pages/monu/pages/About";
+import PaymentPage from "../pages/PaymentPage";
+import Details from "../pages/Details";
+import Checkout from "../pages/Checkout";
 
 const AllRoutes = () => {
   return (
@@ -39,6 +42,42 @@ const AllRoutes = () => {
         <Route path="/products/:producerID" element={<SingleProductPage />} />
 
         <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/details"
+          element={
+            <PrivateRoute>
+              <Details />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/payment"
+          element={
+            <PrivateRoute>
+              <PaymentPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
           path="/checkout/payment"
           element={
             <PrivateRoute>
@@ -52,15 +91,6 @@ const AllRoutes = () => {
           element={
             <PrivateRoute>
               <OrderSuccessfull />
-            </PrivateRoute>
-          }
-        />
-
-        <Route
-          path="/cart"
-          element={
-            <PrivateRoute>
-              <Cart />
             </PrivateRoute>
           }
         />
