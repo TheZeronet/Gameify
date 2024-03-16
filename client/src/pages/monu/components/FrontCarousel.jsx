@@ -8,7 +8,7 @@ import {
   Container,
   Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../../App.css";
 
 import front1 from "../assets/Alan.jpeg";
@@ -197,7 +197,7 @@ export default function FrontCarousel() {
                   {card.text}
                 </Text>
                 <Box>
-                  <Link to="/products">
+                  <NavLink to="/products">
                     <Button
                       color="#fff"
                       ml="2"
@@ -206,7 +206,7 @@ export default function FrontCarousel() {
                     >
                       GET INFO
                     </Button>
-                  </Link>
+                  </NavLink>
                 </Box>
               </Box>
             </Container>

@@ -6,32 +6,49 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormHelperText,
-  Text,
   VStack,
+  Text,
 } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-// import "./PaymentPage.css";
 
 const PaymentPage = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!cardNumber) {
+      newErrors.cardNumber = "Card number is required";
+    }
+    if (!expiry) {
+      newErrors.expiry = "Expiry date is required";
+    }
+    if (!cvv) {
+      newErrors.cvv = "CVV is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Submitting payment information...");
+    if (validateForm()) {
+      console.log("Submitting payment information...");
+    }
   };
 
   return (
     <Box p={6} bg="#151515">
-      <Heading as="h1" mb={6} textColor="#D3D6CE" textAlign="center">
+      <Heading as="h1" mb={6} color="#D3D6CE" textAlign="center">
         Payment Details
       </Heading>
+
       <br />
+
       <form onSubmit={handleSubmit}>
-        <VStack spacing={4} textColor="#D3D6CE">
+        <VStack spacing={4} color="#D3D6CE">
           <FormControl id="cardNumber" isRequired>
             <FormLabel>Card Number</FormLabel>
             <Input
@@ -40,6 +57,11 @@ const PaymentPage = () => {
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
             />
+            {errors.cardNumber && (
+              <Text color="red.500" fontSize="sm">
+                {errors.cardNumber}
+              </Text>
+            )}
           </FormControl>
 
           <br />
@@ -52,6 +74,11 @@ const PaymentPage = () => {
               value={expiry}
               onChange={(e) => setExpiry(e.target.value)}
             />
+            {errors.expiry && (
+              <Text color="red.500" fontSize="sm">
+                {errors.expiry}
+              </Text>
+            )}
           </FormControl>
 
           <br />
@@ -64,11 +91,17 @@ const PaymentPage = () => {
               value={cvv}
               onChange={(e) => setCvv(e.target.value)}
             />
+            {errors.cvv && (
+              <Text color="red.500" fontSize="sm">
+                {errors.cvv}
+              </Text>
+            )}
           </FormControl>
 
           <br />
 
           <Button
+            type="submit"
             variant="solid"
             bg="#f45f02"
             color="#D3D6CE"
@@ -78,9 +111,9 @@ const PaymentPage = () => {
               <Text _hover={{ color: "#f45f02" }}>checkout</Text>
             </NavLink>
           </Button>
-          <br />
-          <br />
         </VStack>
+        <br />
+        <br />
       </form>
     </Box>
   );
