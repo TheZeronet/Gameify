@@ -40,24 +40,25 @@ const CartCard = ({ image, productName, price, _id }) => {
   };
 
   return (
-    <VStack borderRadius={5} p={5} bg={"whiteAlpha.200"}>
-      <Image boxSize={"150px"} src={image} />
+    <VStack borderRadius={5} maxW={"1000px"} p={5} bg={"#151515"}>
+      <Image width={"300px"} height={"250px"} src={image} />
 
-      <Text color={"white"} fontWeight="semibold">
+      <Text color={"gray.300"} fontWeight="semibold">
         {productName}
       </Text>
 
-      <Text mt={-5} color={"white"} fontWeight="semibold">
-        $ {price}
+      <Text mt={-5} color={"gray.300"} fontWeight="semibold">
+        ₹ {price}
       </Text>
 
       <Button
         onClick={moveToCart}
-        colorScheme={"orange"}
+        bg="orange.500"
+        color="white"
         _hover={{
-          bg: "white",
-          border: "1px solid orange",
+          bg: "black",
           color: "orange.500",
+          border: "1px solid black",
         }}
       >
         Move to Cart

@@ -31,7 +31,11 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const BackToPRoductPage = () => {
-    navigate("/product");
+    navigate("/products");
+  };
+
+  const BackToHomePage = () => {
+    navigate("/");
   };
 
   let totalPurchase = 0;
@@ -133,7 +137,11 @@ const Cart = () => {
             <CartOrderSummary />
             <HStack mt="6" fontWeight="semibold">
               <Text color={"white"}>or</Text>
-              <Link color="#f45f02" _hover={{ color: "white" }}>
+              <Link
+                color="#f45f02"
+                _hover={{ color: "white" }}
+                onClick={() => BackToHomePage()}
+              >
                 Go back to Home Page
               </Link>
             </HStack>
