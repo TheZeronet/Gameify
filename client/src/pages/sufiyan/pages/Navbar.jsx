@@ -255,6 +255,7 @@ const Navbar = () => {
                   color="white"
                   variant="solid"
                   fontWeight="semibold"
+                  _hover={{ bg: "#151515", color: "#f45f02" }}
                 >
                   LogOut
                 </Button>
@@ -443,6 +444,7 @@ const Navbar = () => {
                       right="25px"
                       bg="#f45f02"
                       variant="solid"
+                      _hover={{ bg: "#151515", color: "#f45f02" }}
                     >
                       LOG OUT
                     </Button>
