@@ -75,17 +75,18 @@ export const CartOrderSummary = () => {
         </Flex>
       </Stack>
 
-      <Button
-        bg="#f45f02"
-        color="#D3D6CE"
-        _hover={{ bg: "#151515", color: "#f45f02" }}
-      >
-        <NavLink to="/details">
+      <NavLink to="/details">
+        <Button
+          bg="#f45f02"
+          color="#D3D6CE"
+          _hover={{ bg: "#151515", color: "#f45f02" }}
+          marginLeft={"120px"}
+        >
           <Text variant="solid" _hover={{ color: "#f45f02" }}>
             Pay
           </Text>
-        </NavLink>
-      </Button>
+        </Button>
+      </NavLink>
     </Stack>
   );
 };
