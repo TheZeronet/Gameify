@@ -3,19 +3,17 @@ import {
   Button,
   Divider,
   Flex,
-  chakra,
   Heading,
   HStack,
   Image,
+  Link,
   SimpleGrid,
   Spacer,
   Stack,
-  IconButton,
   Text,
   useColorModeValue as mode,
   VStack,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -23,120 +21,83 @@ import { CartItem } from "../../sudarshan/pages/CartComponents/CartItem";
 import { CartOrderSummary } from "../../sudarshan/pages/CartComponents/CartOrderSummary";
 import { cartData } from "../../sudarshan/pages/CartComponents/_data";
 import CartCard from "../../sufiyan/pages/nestedPages/Card";
-import { VscHeart } from "react-icons/vsc";
-// import { addToWish } from "../../../redux/auth/auth.actions";
 
-const Wishlist = () => {
+const Cart = () => {
   const { userData, token, isAuth } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
+  const BackToPRoductPage = () => {
+    navigate("/product");
+  };
+
   let totalPurchase = 0;
   userData.purchase.map((el) => (totalPurchase += +el.price));
 
-  console.log(userData.wishlist, "wishlist length");
+  // const { data } = useSelector((store) => store.cart);
 
   return (
-    <Box bg={"#151515"} w="100%">
-      <br />
-      <Box>
-        <VStack maxW="1400px" m="auto">
-          <SimpleGrid
+    <Box minH={"80vh"} bg={"#151515"} w="100%">
+      <Box
+        bg={"#151515"}
+        w="100%"
+        maxW={{
+          base: "3xl",
+          lg: "7xl",
+        }}
+        mx="auto"
+        px={{
+          base: "4",
+          md: "8",
+          lg: "12",
+        }}
+        py={{
+          base: "6",
+          md: "8",
+          lg: "12",
+        }}
+      >
+        <Stack
+          h="100%"
+          w="100%"
+          direction={{
+            base: "column",
+            md: "row",
+          }}
+          align={{
+            lg: "flex-start",
+          }}
+          spacing={{
+            base: "8",
+            md: "16",
+          }}
+        >
+          <VStack
             p={5}
-            w="100%"
-            spacing={{ base: "3", md: 5, lg: "10" }}
-            columns={{ base: 2, md: 3, lg: 4 }}
+            minH="100%"
+            spacing={{
+              base: "5",
+              md: "5",
+            }}
+            align={"left"}
           >
-            {userData.wishlist.map((wishlist) => (
-              <VStack
-                position={"relative"}
-                key={wishlist.producerID}
-                boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                borderRadius="10px"
-                maxW="xs"
-                bg="whiteAlpha.300"
-                shadow="lg"
-                rounded="lg"
-                z-index={-1}
-                h="100%"
-              >
-                <Box h="350px" w="100%">
-                  <Link to={`/wishlist/${wishlist.producerID}`}>
-                    <Image
-                      fit="cover"
-                      src={wishlist.imgURL}
-                      alt="NIKE AIR"
-                      w="100%"
-                      h="100%"
-                    />
-                  </Link>
-                </Box>
-                <Spacer />
-                <Box p={{ base: "2", md: "2", lg: "3" }}>
-                  <chakra.h1
-                    color="white"
-                    _dark={{
-                      color: "white",
-                    }}
-                    fontWeight="bold"
-                    fontSize={{ base: "xl", md: "xl", lg: "3xl" }}
-                    textTransform="uppercase"
-                    textAlign={"center"}
-                  >
-                    {wishlist.name}
-                  </chakra.h1>
-                  <chakra.h1 color="gray.400" textAlign="center">
-                    {wishlist.category}
-                  </chakra.h1>
-                </Box>
-                <HStack
-                  w="100%"
-                  alignSelf={"flex-end"}
-                  alignItems="center"
-                  justifyContent="space-between"
-                  px={4}
-                  py={2}
-                  roundedBottom="lg"
-                >
-                  <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                    ₹{wishlist.price}
-                  </chakra.h1>
-                </HStack>
-              </VStack>
-            ))}
-          </SimpleGrid>
-          {/* <Box onClick={handleClick}>
-            <HStack mt={4} spacing={4}>
-              <Button
-                colorScheme="orange"
-                disabled={page === 1}
-                onClick={() => handlePageChange(page - 1)}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-              >
-                Previous
-              </Button>
-              <Button
-                colorScheme="orange"
-                disabled={page === totalPages}
-                onClick={() => handlePageChange(page + 1)}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-              >
-                Next
-              </Button>
-            </HStack>
-          </Box> */}
-          <br />
-        </VStack>
+            <Heading color={"white"} fontSize="2xl">
+              Total Product in Wishlist {userData.wishlist.length}
+            </Heading>
+
+            <SimpleGrid columns={[2, 3, 4, 4]} spacing="6">
+              {userData.wishlist?.map((item) => (
+                <CartCard key={item.id} {...item} />
+              ))}
+            </SimpleGrid>
+          </VStack>
+
+          <Spacer />
+        </Stack>
       </Box>
     </Box>
   );
 };
 
-export default Wishlist;
+export default Cart;

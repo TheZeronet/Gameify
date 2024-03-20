@@ -34,3 +34,9 @@ export const ADD_ITEM_TOCART_FROM_WISHLIST_SUCCESS =
   "wishlist/cart/items/add/success";
 export const ADD_ITEM_TOCART_FROM_WISHLIST_ERROR =
   "wishlist/cart/items/add/error";
+
+export const REMOVE_ITEM_FROM_WISHLIST_LOADING =
+  "wishlist/items/remove/laoding";
+export const REMOVE_ITEM_FROM_WISHLIST_SUCCESS =
+  "wishlist/items/remove/success";
+export const REMOVE_ITEM_FROM_WISHLIST_ERROR = "wishlist/items/remove/error";
