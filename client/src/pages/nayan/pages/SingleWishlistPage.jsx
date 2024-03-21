@@ -50,23 +50,6 @@ const SingleProductPage = (_id) => {
 
   const moveToCart = () => {
     // console.log(_id)
-
-    let token = JSON.parse(localStorage.getItem("token"));
-
-    let data = {
-      email: token.email,
-      id: _id,
-    };
-
-    dispatch(MOVE_FROM_WISHLIST_TO_CART(data)).then((res) => {
-      dispatch(getUserData(token.email));
-      toast({
-        title: "Product Moved to cart",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-      });
-    });
   };
 
   useEffect(() => {
@@ -371,26 +354,6 @@ const SingleProductPage = (_id) => {
               border="1px solid #f45f02"
             >
               Add to Cart
-            </Button>
-            {/* make button for move from wishlist to cart function */}
-            <Button
-              px={4}
-              py={3}
-              fontSize="xs"
-              color="white"
-              fontWeight="bold"
-              rounded="lg"
-              textTransform="uppercase"
-              _hover={{
-                border: "1px solid #f45f02",
-                bg: "#151515",
-                color: "#f45f02;",
-              }}
-              bg="#f45f02;"
-              onClick={moveToCart}
-            >
-              {" "}
-              Move
             </Button>
           </HStack>
 
