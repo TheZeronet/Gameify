@@ -7,15 +7,25 @@ import {
   FormControl,
   FormLabel,
   VStack,
+  useToast,
   Text,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "../redux/auth/auth.actions";
 import { NavLink } from "react-router-dom";
+import { ACTION_PURCHASE } from "../redux/cart/cart.actions";
+import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
   const [errors, setErrors] = useState({});
+  const toast = useToast();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { userData, token } = useSelector((store) => store.auth);
 
   const validateForm = () => {
     const newErrors = {};
@@ -37,6 +47,24 @@ const PaymentPage = () => {
     if (validateForm()) {
       console.log("Submitting payment information...");
     }
+  };
+
+  const PaymentDone = () => {
+    // prompt()
+
+    dispatch(ACTION_PURCHASE(token.email)).then((res) => {
+      dispatch(getUserData(token.email));
+
+      toast({
+        title: "Payment Successfull.",
+        description: "Thank You For Shopping.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+
+      navigate("/OrderSuccessfull");
+    });
   };
 
   return (
@@ -106,6 +134,7 @@ const PaymentPage = () => {
             bg="#f45f02"
             color="#D3D6CE"
             _hover={{ bg: "#151515", color: "#f45f02" }}
+            onClick={PaymentDone}
           >
             <NavLink to="/checkout">
               <Text _hover={{ color: "#f45f02" }}>checkout</Text>
