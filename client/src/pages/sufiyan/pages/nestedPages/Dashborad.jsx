@@ -118,12 +118,12 @@ const Dashborad = () => {
             <div className="charts__right__cards">
               <div className="card2">
                 <h1> Game Sales</h1>
-                <p>${sales_revenue.toFixed(2)}</p>
+                <p> ₹{sales_revenue.toFixed(2)}</p>
               </div>
 
               <div className="card3">
                 <h1>Accessory Sales</h1>
-                <p> ${pending_sales.toFixed(2)}</p>
+                <p> ₹{pending_sales.toFixed(2)}</p>
               </div>
 
               <div className="card4">

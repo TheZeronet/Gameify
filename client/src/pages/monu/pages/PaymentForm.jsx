@@ -252,7 +252,7 @@ const PaymentForm = () => {
                 colorScheme="orange"
               >
                 {" "}
-                ${total} {"  "} Pay Now{" "}
+                ₹{total} {"  "} Pay Now{" "}
               </Button>
             </VStack>
           </VStack>

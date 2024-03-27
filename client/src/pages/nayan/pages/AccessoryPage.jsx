@@ -147,7 +147,7 @@ function AccessoryPage() {
                     roundedBottom="lg"
                   >
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                      ${accessories.price}
+                      ₹{accessories.price}
                       <IconButton
                         _hover={{ color: "orange.500" }}
                         fontSize="25px"

@@ -121,7 +121,7 @@ const UserDashboard = () => {
                 </Text>
                 <Spacer />
                 <Text color={"white"} fontWeight="medium">
-                  {"   "} $ {el.price}
+                  {"   "} ₹ {el.price}
                 </Text>
               </Flex>
             ))}
