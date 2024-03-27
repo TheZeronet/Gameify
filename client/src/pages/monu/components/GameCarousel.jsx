@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Games from "./DispGames";
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const settings = {
   className: "center",
@@ -50,19 +51,21 @@ export default function ProductCarousel() {
         {Games.map((game) => (
           <div key={game.name}>
             <div className="lisa">
-              <img src={game.imgURL} alt={game.name} />
-              <Box className="overlay2">
-                <Heading
-                  color="#fff"
-                  mb="-4"
-                  fontSize={["19", "19", "20", "20", "25"]}
-                >
-                  {game.name}
-                </Heading>
-                <Text color="#666" fontWeight={"500"}>
-                  {game.category}
-                </Text>
-              </Box>
+              <Link to="/products">
+                <img src={game.imgURL} alt={game.name} />
+                <Box className="overlay2">
+                  <Heading
+                    color="#fff"
+                    mb="-4"
+                    fontSize={["19", "19", "20", "20", "25"]}
+                  >
+                    {game.name}
+                  </Heading>
+                  <Text color="#666" fontWeight={"500"}>
+                    {game.category}
+                  </Text>
+                </Box>
+              </Link>
             </div>
           </div>
         ))}

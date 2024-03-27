@@ -47,12 +47,7 @@ const CartCard = ({ name, price, _id, imgURL, producerID }) => {
 
   return (
     <VStack w="100%">
-      <Box
-        sx={{
-          display: "flex",
-          gap: "10vw", // Increase the gap between elements
-        }}
-      >
+      <Box>
         <SimpleGrid p={5} w="100%">
           <VStack
             position={"relative"}

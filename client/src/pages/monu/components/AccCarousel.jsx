@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Acc from "./DispAccessories";
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const settings = {
   className: "center",
@@ -51,19 +52,21 @@ export default function ProductCarousel() {
         {Acc.map((accessories) => (
           <div key={accessories.name}>
             <div className="lisa">
-              <img src={accessories.imgURL} alt={accessories.name} />
-              <Box className="overlay2">
-                <Heading
-                  color="#fff"
-                  mb="-4"
-                  fontSize={["19", "19", "20", "20", "25"]}
-                >
-                  {accessories.name}
-                </Heading>
-                <Text color="#666" fontWeight={"500"}>
-                  {accessories.category}
-                </Text>
-              </Box>
+              <Link to="/accessory">
+                <img src={accessories.imgURL} alt={accessories.name} />
+                <Box className="overlay2">
+                  <Heading
+                    color="#fff"
+                    mb="-4"
+                    fontSize={["19", "19", "20", "20", "25"]}
+                  >
+                    {accessories.name}
+                  </Heading>
+                  <Text color="#666" fontWeight={"500"}>
+                    {accessories.category}
+                  </Text>
+                </Box>
+              </Link>
             </div>
           </div>
         ))}

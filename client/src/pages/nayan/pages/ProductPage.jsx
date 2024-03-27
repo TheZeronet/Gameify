@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { VscHeart } from "react-icons/vsc";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { VscGear } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
@@ -163,17 +164,16 @@ function ProductPage() {
                       <IconButton
                         p="0px 20px"
                         fontSize="3xl"
-                        onClick={() => DeleteProduct(game.producerID)}
                         color="white"
                         fontWeight="bold"
                         rounded="lg"
                         textTransform="uppercase"
                         _hover={{
-                          bg: "white",
+                          bg: "black",
                           color: "#f45f02;",
                         }}
                         bg="#f45f02;"
-                        icon={<RiDeleteBinLine />}
+                        icon={<VscGear />}
                       />
                     ) : (
                       <Link to={`/products/${game.producerID}`}>

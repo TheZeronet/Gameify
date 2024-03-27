@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { VscHeart } from "react-icons/vsc";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { VscGear } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
@@ -155,7 +156,7 @@ function AccessoryPage() {
                         variant="link"
                         onClick={addToWish}
                         icon={<VscHeart />}
-                        left="110px"
+                        left="100px"
                         bottom="-5px"
                       />
                     </chakra.h1>
@@ -163,17 +164,16 @@ function AccessoryPage() {
                       <IconButton
                         p="0px 20px"
                         fontSize="3xl"
-                        onClick={() => DeleteProduct(accessories.producerID)}
                         color="white"
                         fontWeight="bold"
                         rounded="lg"
                         textTransform="uppercase"
                         _hover={{
-                          bg: "white",
+                          bg: "black",
                           color: "#f45f02;",
                         }}
                         bg="#f45f02;"
-                        icon={<RiDeleteBinLine />}
+                        icon={<VscGear />}
                       />
                     ) : (
                       <Link to={`/accessory/${accessories.producerID}`}>
