@@ -54,12 +54,12 @@ export const CartOrderSummary = () => {
         </OrderSummaryItem>
         <OrderSummaryItem label="Shipping">
           <Text color={"white"} fontWeight="semibold">
-            $300
+            ₹300
           </Text>
         </OrderSummaryItem>
         <OrderSummaryItem label="Tax">
           <Text color={"white"} fontWeight="semibold">
-            $250
+            ₹250
           </Text>
         </OrderSummaryItem>
 
