@@ -187,7 +187,6 @@ function AccessoryPage() {
                           rounded="lg"
                           textTransform="uppercase"
                           _hover={{
-                            border: "1px solid #f45f02",
                             bg: "#151515",
                             color: "#f45f02;",
                           }}

@@ -119,67 +119,6 @@ const SingleProductPage = () => {
     }
   };
 
-  // const AddWishlist = () => {
-  //   if (!isAuth) {
-  //     toast({
-  //       title: "You Need Login first",
-  //       status: "warning",
-  //       duration: 4000,
-  //       isClosable: true,
-  //     });
-  //     return NavigatKaro("/login");
-  //   }
-
-  //   let updatedWishlist = [];
-  //   let check = true;
-
-  //   // Check if userData and wishlist are defined
-  //   if (userData && userData.wishlist) {
-  //     userData.wishlist.forEach((el) => {
-  //       if (el.productName === SingleData.name) {
-  //         check = false;
-  //         // Product found, so do not add it again, effectively removing it from wishlist
-  //         toast({
-  //           title: "Product Removed from Wishlist",
-  //           status: "success",
-  //           duration: 4000,
-  //           isClosable: true,
-  //         });
-  //       } else {
-  //         updatedWishlist.push(el);
-  //       }
-  //     });
-  //   }
-
-  //   if (check) {
-  //     // Add the product to the wishlist
-  //     updatedWishlist.push({
-  //       ...SingleData,
-  //       qty: quant,
-  //       image: SingleData.imgURL,
-  //       productName: SingleData.name,
-  //     });
-
-  //     toast({
-  //       title: "Product Added to Wishlist",
-  //       status: "success",
-  //       duration: 4000,
-  //       isClosable: true,
-  //     });
-  //   }
-
-  //   // Update the wishlist in user data only if it's defined
-  //   if (userData) {
-  //     let token = JSON.parse(localStorage.getItem("token"));
-  //     dispatch(
-  //       ACTION_ADD_ITEM_TO_WISHLIST({
-  //         email: token.email,
-  //         data: updatedWishlist,
-  //       })
-  //     ).then((res) => dispatch(getUserData(token.email)));
-  //   }
-  // };
-
   const AddWishlist = () => {
     if (!isAuth) {
       toast({
@@ -350,6 +289,10 @@ const SingleProductPage = () => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 disabled={quant < 1}
                 onClick={() => setQuant((prev) => prev - 1)}
               >
@@ -359,6 +302,10 @@ const SingleProductPage = () => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 onClick={() => setQuant((prev) => prev + 1)}
               >
                 +
@@ -371,7 +318,10 @@ const SingleProductPage = () => {
               bg="#f36100"
               onClick={handleCart}
               color={"gray.200"}
-              border="1px solid #f45f02"
+              _hover={{
+                bg: "#151515",
+                color: "#f45f02;",
+              }}
             >
               Add to Cart
             </Button>
@@ -384,7 +334,7 @@ const SingleProductPage = () => {
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: "gray.300",
+                bg: "#151515",
                 color: "#f45f02;",
               }}
               bg="#f45f02;"

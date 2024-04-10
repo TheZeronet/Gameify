@@ -330,6 +330,10 @@ const SingleProductPage = (_id) => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 disabled={quant < 1}
                 onClick={() => setQuant((prev) => prev - 1)}
               >
@@ -339,6 +343,10 @@ const SingleProductPage = (_id) => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 onClick={() => setQuant((prev) => prev + 1)}
               >
                 +
@@ -351,7 +359,10 @@ const SingleProductPage = (_id) => {
               bg="#f36100"
               onClick={handleCart}
               color={"gray.200"}
-              border="1px solid #f45f02"
+              _hover={{
+                bg: "#151515",
+                color: "#f45f02;",
+              }}
             >
               Add to Cart
             </Button>

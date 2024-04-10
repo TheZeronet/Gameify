@@ -185,7 +185,8 @@ const Navbar = () => {
                       color: "orange.500",
                     }}
                     color="white"
-                    variant="outline"
+                    bg="#f45f02"
+                    variant="solid"
                     fontWeight="semibold"
                     left="100px"
                     top="27px"

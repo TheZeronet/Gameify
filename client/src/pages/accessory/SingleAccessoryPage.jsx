@@ -295,6 +295,10 @@ const SingleAccessoryPage = () => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 disabled={quant < 1}
                 onClick={() => setQuant((prev) => prev - 1)}
               >
@@ -304,6 +308,10 @@ const SingleAccessoryPage = () => {
               <Button
                 bg="#f36100"
                 color={"gray.200"}
+                _hover={{
+                  bg: "#151515",
+                  color: "#f45f02;",
+                }}
                 onClick={() => setQuant((prev) => prev + 1)}
               >
                 +
@@ -312,7 +320,15 @@ const SingleAccessoryPage = () => {
           </HStack>
 
           <HStack>
-            <Button bg="#f36100" onClick={handleCart} color={"gray.200"}>
+            <Button
+              bg="#f36100"
+              onClick={handleCart}
+              color={"gray.200"}
+              _hover={{
+                bg: "#151515",
+                color: "#f45f02;",
+              }}
+            >
               Add to Cart
             </Button>
             <IconButton
@@ -324,7 +340,7 @@ const SingleAccessoryPage = () => {
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: "gray.300",
+                bg: "#151515",
                 color: "#f45f02;",
               }}
               bg="#f45f02;"
