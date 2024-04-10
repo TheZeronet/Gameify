@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 //import pay from "../Styles/pay.png"
 
 import img from "../../../assets/Loader.gif";
+import img2 from "../../../assets/thumb.png";
 
 const OrderSuccessfull = () => {
   const navigate = useNavigate();
@@ -17,21 +18,20 @@ const OrderSuccessfull = () => {
         spacing={10}
         position={"relative"}
         overflow="hidden"
-        bgGradient="radial-gradient(circle, rgba(0,0,0,1) 7%, rgba(64,64,64,1) 100%)"
+        bgColor={"#151515"}
         style={{ width: "100%", height: "90vh" }}
       >
         <div>
           <Text
-            style={{ color: "orange", fontSize: "2.5rem", fontWeight: "bold" }}
+            style={{ color: "#f45f02", fontSize: "2.5rem", fontWeight: "bold" }}
           >
             Hurray !! Order Successful
           </Text>
         </div>
         <div>
-          <img src={img} width="500px" alt="img" />
+          <img src={img2} width="500px" alt="img" />
         </div>
 
-        {/*  <Image w="80%" position={"absolute"} top="0" src={pay} /> */}
         <Button
           width="30%"
           height="50px"

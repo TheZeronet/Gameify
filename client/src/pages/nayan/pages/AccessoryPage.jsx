@@ -31,7 +31,7 @@ function AccessoryPage() {
   const [priceRange, setPriceRange] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 8;
   const dispatch = useDispatch();
   const toast = useToast();
 
