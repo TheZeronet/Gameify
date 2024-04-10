@@ -14,8 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_GET_CART,
   ACTION_REMOVE_ITEM_CART,
-} from "../../../../redux/cart/cart.actions";
-import { getUserData } from "../../../../redux/auth/auth.actions";
+} from "../redux/cart/cart.actions";
+import { getUserData } from "../redux/auth/auth.actions";
 const QuantitySelect = (props) => {
   return (
     <Select

@@ -35,8 +35,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
-import SearchBar from "../components/SearchBar";
-import SearchBar2 from "../components/SearchBar2";
+import SearchBar from "../../../components/SearchBar";
+import SearchBar2 from "../../../components/SearchBar2";
 import { VscHeart } from "react-icons/vsc";
 import { IoBagOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";

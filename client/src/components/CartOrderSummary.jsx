@@ -11,10 +11,10 @@ import * as React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import RazorPay from "../../../Payment";
+import RazorPay from "../pages/Payment";
 import { formatPrice } from "./PriceTag";
-import PaymentForm from "../../../monu/pages/PaymentForm";
-import PaymentPage from "../../../PaymentPage";
+import PaymentForm from "../pages/monu/pages/PaymentForm";
+import PaymentPage from "../pages/PaymentPage";
 
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;

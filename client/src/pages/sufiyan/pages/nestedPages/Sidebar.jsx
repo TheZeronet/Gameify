@@ -6,7 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaUsers } from "react-icons/fa";
 import { useState } from "react";
-import Item from "../../components/item";
+import Item from "../../../../components/item";
 import { Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function SideBarLeft() {

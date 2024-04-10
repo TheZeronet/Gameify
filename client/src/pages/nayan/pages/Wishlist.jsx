@@ -17,9 +17,9 @@ import {
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { CartItem } from "../../sudarshan/pages/CartComponents/CartItem";
-import { CartOrderSummary } from "../../sudarshan/pages/CartComponents/CartOrderSummary";
-import { cartData } from "../../sudarshan/pages/CartComponents/_data";
+import { CartItem } from "../../../components/CartItem";
+import { CartOrderSummary } from "../../../components/CartOrderSummary";
+import { cartData } from "../../../components/_data";
 import CartCard from "../../sufiyan/pages/nestedPages/Card";
 
 const Cart = () => {
