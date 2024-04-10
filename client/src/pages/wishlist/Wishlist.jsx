@@ -17,10 +17,7 @@ import {
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { CartItem } from "../../components/CartItem";
-import { CartOrderSummary } from "../../components/CartOrderSummary";
-import { cartData } from "../../components/_data";
-import CartCard from "../../components/Card";
+import CartCard from "../../components/Card.jsx";
 
 const Cart = () => {
   const { userData, token, isAuth } = useSelector((store) => store.auth);
