@@ -1,6 +1,6 @@
 import React from "react";
-import FrontCarousel from "../components/FrontCarousel";
-import Store from "../components/Store";
+import FrontCarousel from "./monu/components/FrontCarousel";
+import Store from "./monu/components/Store";
 import "./LandingPage.css";
 
 const LandingPage = () => {

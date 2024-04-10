@@ -4,7 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Games from "./DispGames";
+import Games from "../../../components/DispGames";
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 

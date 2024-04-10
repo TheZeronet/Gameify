@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import RazorPay from "../pages/Payment";
 import { formatPrice } from "./PriceTag";
-import PaymentForm from "../pages/monu/pages/PaymentForm";
+import PaymentForm from "../pages/PaymentForm";
 import PaymentPage from "../pages/PaymentPage";
 
 const OrderSummaryItem = (props) => {

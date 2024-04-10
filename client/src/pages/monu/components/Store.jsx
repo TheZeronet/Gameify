@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Heading, HStack, Text } from "@chakra-ui/react";
 import GameCarousel from "./GameCarousel";
-import AccCarousel from "./AccCarousel";
+import AccCarousel from "../../../components/AccCarousel";
 const Store = () => {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
