@@ -40,6 +40,10 @@ export const CartOrderSummary = () => {
 
   const PaymentKaro = () => {};
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
       <Heading size="md" color={"white"}>
@@ -82,7 +86,11 @@ export const CartOrderSummary = () => {
           _hover={{ bg: "#151515", color: "#f45f02" }}
           marginLeft={"120px"}
         >
-          <Text variant="solid" _hover={{ color: "#f45f02" }}>
+          <Text
+            variant="solid"
+            _hover={{ color: "#f45f02" }}
+            onClick={handleClick}
+          >
             Pay
           </Text>
         </Button>

@@ -117,6 +117,7 @@ function AccessoryPage() {
                         alt="NIKE AIR"
                         w="100%"
                         h="100%"
+                        onClick={handleClick}
                       />
                     </Link>
                   </Box>

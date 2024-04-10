@@ -67,6 +67,10 @@ const PaymentPage = () => {
     });
   };
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box p={6} bg="#151515">
       <Heading as="h1" mb={6} color="#D3D6CE" textAlign="center">
@@ -137,7 +141,9 @@ const PaymentPage = () => {
             onClick={PaymentDone}
           >
             <NavLink to="/OrderSuccessfull">
-              <Text _hover={{ color: "#f45f02" }}>checkout</Text>
+              <Text _hover={{ color: "#f45f02" }} onClick={handleClick}>
+                checkout
+              </Text>
             </NavLink>
           </Button>
         </VStack>

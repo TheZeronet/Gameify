@@ -29,9 +29,8 @@ import {
   MdFeed,
   MdOutlineDarkMode,
 } from "react-icons/md";
-import { BsLightbulb } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
-//AiOutlineMenu
+
 import { BiSearch } from "react-icons/bi";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
@@ -486,6 +485,7 @@ const Navbar = () => {
               <NavLink
                 key={"el.path"}
                 to={"/admin"}
+                onClick={handleClick}
                 className={({ isActive }) =>
                   isActive ? "activeS" : "defaultS"
                 }
@@ -501,6 +501,7 @@ const Navbar = () => {
               <NavLink
                 key={"el.path"}
                 to={"/user-profile"}
+                onClick={handleClick}
                 className={({ isActive }) =>
                   isActive ? "activeS" : "defaultS"
                 }

@@ -43,6 +43,10 @@ const Details = () => {
     }
   };
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box p={6} bg="#151515">
       <Heading as="h1" mb={6} color="#D3D6CE" textAlign="center">
@@ -129,7 +133,9 @@ const Details = () => {
             _hover={{ bg: "#151515", color: "#f45f02" }}
           >
             <NavLink to="/payment">
-              <Text _hover={{ color: "#f45f02" }}>Proceed to Payment</Text>
+              <Text _hover={{ color: "#f45f02" }} onClick={handleClick}>
+                Proceed to Payment
+              </Text>
             </NavLink>
           </Button>
         </VStack>
