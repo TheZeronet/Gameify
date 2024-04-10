@@ -20,20 +20,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getUserData } from "../../../redux/auth/auth.actions";
+import { getUserData } from "../redux/auth/auth.actions";
 import {
   ACTION_ADD_ITEM_TO_CART,
   ACTION_ADD_ITEM_TO_WISHLIST,
   ACTION_GET_CART,
-} from "../../../redux/cart/cart.actions";
-import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
-import Loading from "../../Loading";
-import { MOVE_FROM_WISHLIST_TO_CART } from "../../../redux/cart/cart.actions";
+} from "../redux/cart/cart.actions";
+import { ACTION_GET_PRODUCTS } from "../redux/products/product.actions";
+import Loading from "./Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 
-const SingleProductPage = (_id) => {
+const SingleProductPage = () => {
   const [quant, setQuant] = useState(1);
   const toast = useToast();
 
@@ -43,14 +42,9 @@ const SingleProductPage = (_id) => {
   const [LoadingT, setLoading] = useState(true);
   const [SingleData, setSingle] = useState({});
   const [games, setGames] = useState([]);
-  const [accessories, setAccessories] = useState([]);
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
-
-  const moveToCart = () => {
-    // console.log(_id)
-  };
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -63,20 +57,6 @@ const SingleProductPage = (_id) => {
       }
     };
     fetchGames();
-
-    const fetchAccessories = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/accessories",
-          {}
-        );
-        setAccessories(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching accessories:", error);
-      }
-    };
-    fetchAccessories();
   }, [producerID]);
 
   useEffect(() => {
@@ -87,17 +67,6 @@ const SingleProductPage = (_id) => {
       console.log(SingleData);
     }
   }, [producerID, games]);
-
-  useEffect(() => {
-    const selectedAccessory = accessories.find(
-      (accessories) => accessories.producerID === producerID
-    );
-    console.log(selectedAccessory);
-    if (selectedAccessory) {
-      setSingle(selectedAccessory);
-      console.log(SingleData);
-    }
-  }, [producerID, accessories]);
 
   const handleCart = () => {
     if (!isAuth) {
@@ -150,6 +119,67 @@ const SingleProductPage = (_id) => {
     }
   };
 
+  // const AddWishlist = () => {
+  //   if (!isAuth) {
+  //     toast({
+  //       title: "You Need Login first",
+  //       status: "warning",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //     return NavigatKaro("/login");
+  //   }
+
+  //   let updatedWishlist = [];
+  //   let check = true;
+
+  //   // Check if userData and wishlist are defined
+  //   if (userData && userData.wishlist) {
+  //     userData.wishlist.forEach((el) => {
+  //       if (el.productName === SingleData.name) {
+  //         check = false;
+  //         // Product found, so do not add it again, effectively removing it from wishlist
+  //         toast({
+  //           title: "Product Removed from Wishlist",
+  //           status: "success",
+  //           duration: 4000,
+  //           isClosable: true,
+  //         });
+  //       } else {
+  //         updatedWishlist.push(el);
+  //       }
+  //     });
+  //   }
+
+  //   if (check) {
+  //     // Add the product to the wishlist
+  //     updatedWishlist.push({
+  //       ...SingleData,
+  //       qty: quant,
+  //       image: SingleData.imgURL,
+  //       productName: SingleData.name,
+  //     });
+
+  //     toast({
+  //       title: "Product Added to Wishlist",
+  //       status: "success",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //   }
+
+  //   // Update the wishlist in user data only if it's defined
+  //   if (userData) {
+  //     let token = JSON.parse(localStorage.getItem("token"));
+  //     dispatch(
+  //       ACTION_ADD_ITEM_TO_WISHLIST({
+  //         email: token.email,
+  //         data: updatedWishlist,
+  //       })
+  //     ).then((res) => dispatch(getUserData(token.email)));
+  //   }
+  // };
+
   const AddWishlist = () => {
     if (!isAuth) {
       toast({
@@ -161,53 +191,43 @@ const SingleProductPage = (_id) => {
       return NavigatKaro("/login");
     }
 
-    let updatedWishlist = [];
     let check = true;
 
-    // Check if userData and wishlist are defined
-    if (userData && userData.wishlist) {
-      userData.wishlist.forEach((el) => {
-        if (el.productName === SingleData.name) {
-          check = false;
-          // Product found, so do not add it again, effectively removing it from wishlist
-          toast({
-            title: "Product Removed from Wishlist",
-            status: "success",
-            duration: 4000,
-            isClosable: true,
-          });
-        } else {
-          updatedWishlist.push(el);
-        }
-      });
-    }
+    userData.wishlist.map((el) => {
+      if (el.productName === SingleData.name) {
+        check = false;
+
+        return toast({
+          title: "Product Already in Wishlist",
+          status: "warning",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
+    });
 
     if (check) {
-      // Add the product to the wishlist
-      updatedWishlist.push({
-        ...SingleData,
-        qty: quant,
-        image: SingleData.imgURL,
-        productName: SingleData.name,
-      });
+      let token = JSON.parse(localStorage.getItem("token"));
 
+      let Product = {
+        email: token.email,
+        data: {
+          ...SingleData,
+          qty: quant,
+          image: SingleData.imgURL,
+          productName: SingleData.name,
+        },
+      };
+
+      dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product)).then((res) =>
+        dispatch(getUserData(token.email))
+      );
       toast({
         title: "Product Added to Wishlist",
         status: "success",
         duration: 4000,
         isClosable: true,
       });
-    }
-
-    // Update the wishlist in user data only if it's defined
-    if (userData) {
-      let token = JSON.parse(localStorage.getItem("token"));
-      dispatch(
-        ACTION_ADD_ITEM_TO_WISHLIST({
-          email: token.email,
-          data: updatedWishlist,
-        })
-      ).then((res) => dispatch(getUserData(token.email)));
     }
   };
 
@@ -229,7 +249,7 @@ const SingleProductPage = (_id) => {
         alignContent="center"
         color={"white"}
       >
-        <Link to="/wishlist" style={{ marginTop: "60px" }}>
+        <Link to="/products" style={{ marginTop: "60px" }}>
           <IconButton
             alignSelf="flex-start"
             bg={"#151515"}
@@ -355,6 +375,21 @@ const SingleProductPage = (_id) => {
             >
               Add to Cart
             </Button>
+            <IconButton
+              p="0px 20px"
+              fontSize="3xl"
+              onClick={AddWishlist}
+              color="gray.300"
+              fontWeight="bold"
+              rounded="lg"
+              textTransform="uppercase"
+              _hover={{
+                bg: "gray.300",
+                color: "#f45f02;",
+              }}
+              bg="#f45f02;"
+              icon={<AiOutlineHeart />}
+            />
           </HStack>
 
           <br />

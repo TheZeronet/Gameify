@@ -20,19 +20,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getUserData } from "../../../redux/auth/auth.actions";
+import { getUserData } from "../redux/auth/auth.actions";
 import {
   ACTION_ADD_ITEM_TO_CART,
   ACTION_ADD_ITEM_TO_WISHLIST,
   ACTION_GET_CART,
-} from "../../../redux/cart/cart.actions";
-import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
-import Loading from "../../Loading";
+} from "../redux/cart/cart.actions";
+import { ACTION_GET_PRODUCTS } from "../redux/products/product.actions";
+import Loading from "./Loading";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 
-const SingleProductPage = () => {
+const SingleAccessoryPage = () => {
   const [quant, setQuant] = useState(1);
   const toast = useToast();
 
@@ -41,32 +41,37 @@ const SingleProductPage = () => {
 
   const [LoadingT, setLoading] = useState(true);
   const [SingleData, setSingle] = useState({});
-  const [games, setGames] = useState([]);
+  const [accessories, setAccessories] = useState([]);
 
   const { producerID } = useParams();
   const NavigatKaro = useNavigate();
 
   useEffect(() => {
-    const fetchGames = async () => {
+    const fetchAccessories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/games", {});
-        setGames(response.data);
+        const response = await axios.get(
+          "http://localhost:8080/accessories",
+          {}
+        );
+        setAccessories(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching games:", error);
+        console.error("Error fetching accessories:", error);
       }
     };
-    fetchGames();
+    fetchAccessories();
   }, [producerID]);
 
   useEffect(() => {
-    const selectedGame = games.find((game) => game.producerID === producerID);
-    console.log(selectedGame);
-    if (selectedGame) {
-      setSingle(selectedGame);
+    const selectedAccessory = accessories.find(
+      (accessories) => accessories.producerID === producerID
+    );
+    console.log(selectedAccessory);
+    if (selectedAccessory) {
+      setSingle(selectedAccessory);
       console.log(SingleData);
     }
-  }, [producerID, games]);
+  }, [producerID, accessories]);
 
   const handleCart = () => {
     if (!isAuth) {
@@ -118,67 +123,6 @@ const SingleProductPage = () => {
       });
     }
   };
-
-  // const AddWishlist = () => {
-  //   if (!isAuth) {
-  //     toast({
-  //       title: "You Need Login first",
-  //       status: "warning",
-  //       duration: 4000,
-  //       isClosable: true,
-  //     });
-  //     return NavigatKaro("/login");
-  //   }
-
-  //   let updatedWishlist = [];
-  //   let check = true;
-
-  //   // Check if userData and wishlist are defined
-  //   if (userData && userData.wishlist) {
-  //     userData.wishlist.forEach((el) => {
-  //       if (el.productName === SingleData.name) {
-  //         check = false;
-  //         // Product found, so do not add it again, effectively removing it from wishlist
-  //         toast({
-  //           title: "Product Removed from Wishlist",
-  //           status: "success",
-  //           duration: 4000,
-  //           isClosable: true,
-  //         });
-  //       } else {
-  //         updatedWishlist.push(el);
-  //       }
-  //     });
-  //   }
-
-  //   if (check) {
-  //     // Add the product to the wishlist
-  //     updatedWishlist.push({
-  //       ...SingleData,
-  //       qty: quant,
-  //       image: SingleData.imgURL,
-  //       productName: SingleData.name,
-  //     });
-
-  //     toast({
-  //       title: "Product Added to Wishlist",
-  //       status: "success",
-  //       duration: 4000,
-  //       isClosable: true,
-  //     });
-  //   }
-
-  //   // Update the wishlist in user data only if it's defined
-  //   if (userData) {
-  //     let token = JSON.parse(localStorage.getItem("token"));
-  //     dispatch(
-  //       ACTION_ADD_ITEM_TO_WISHLIST({
-  //         email: token.email,
-  //         data: updatedWishlist,
-  //       })
-  //     ).then((res) => dispatch(getUserData(token.email)));
-  //   }
-  // };
 
   const AddWishlist = () => {
     if (!isAuth) {
@@ -249,7 +193,7 @@ const SingleProductPage = () => {
         alignContent="center"
         color={"white"}
       >
-        <Link to="/products" style={{ marginTop: "60px" }}>
+        <Link to="/accessory" style={{ marginTop: "60px" }}>
           <IconButton
             alignSelf="flex-start"
             bg={"#151515"}
@@ -262,6 +206,7 @@ const SingleProductPage = () => {
             <IoChevronBackCircleSharp size={48} />
           </IconButton>
         </Link>
+
         <VStack
           mt="20px"
           h="100%"
@@ -294,8 +239,8 @@ const SingleProductPage = () => {
             borderRadius={10}
             mt="10px"
             ml={"100px"}
-            maxW={{ md: "400px", lg: "400px", xl: "400px" }}
-            maxH={{ md: "400px", lg: "400px", xl: "400px" }}
+            maxW={{ md: "700px", lg: "700px", xl: "700px" }}
+            maxH={{ md: "700px", lg: "700px", xl: "700px" }}
             src={SingleData.imgURL}
             alt="singleProduct"
             // Set the height of the image dynamically based on the height of the adjacent VStack
@@ -367,12 +312,7 @@ const SingleProductPage = () => {
           </HStack>
 
           <HStack>
-            <Button
-              bg="#f36100"
-              onClick={handleCart}
-              color={"gray.200"}
-              border="1px solid #f45f02"
-            >
+            <Button bg="#f36100" onClick={handleCart} color={"gray.200"}>
               Add to Cart
             </Button>
             <IconButton
@@ -407,7 +347,6 @@ const SingleProductPage = () => {
             <Text borderBottom={"1px solid gray"}>
               Rating: {SingleData.rating}
             </Text>
-            <Text>Platform: {SingleData.platform_available}</Text>
           </VStack>
         </VStack>
       </Box>
@@ -489,4 +428,4 @@ const SingleProductPage = () => {
   );
 };
 
-export default SingleProductPage;
+export default SingleAccessoryPage;

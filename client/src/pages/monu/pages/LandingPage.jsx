@@ -1,7 +1,7 @@
 import React from "react";
 import FrontCarousel from "../components/FrontCarousel";
 import Store from "../components/Store";
-import "../styles/LandingPage.css";
+import "./LandingPage.css";
 
 const LandingPage = () => {
   return (

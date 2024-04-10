@@ -1,6 +1,6 @@
-import "../../styles/Main.css";
-import hello from "../../../../assets/hello.svg";
-import Chart from "../../../../components/Chart";
+import "../styles/Main.css";
+import hello from "../assets/hello.svg";
+import Chart from "../components/Chart";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";

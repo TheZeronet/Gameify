@@ -21,38 +21,38 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
   ACTION_DELETE_PRODUCT,
-} from "../../../redux/admin/admin.actions";
-import Filter from "./FilterG";
+} from "../redux/admin/admin.actions";
+import Filter from "../components/FilterA";
 import { useParams } from "react-router-dom";
 
-function ProductPage() {
-  const [games, setGames] = useState([]);
+function AccessoryPage() {
+  const [accessories, setAccessories] = useState([]);
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 16;
+  const itemsPerPage = 8;
   const dispatch = useDispatch();
   const toast = useToast();
 
   useEffect(() => {
-    const fetchGames = async () => {
+    const fetchAccessories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/games", {
+        const response = await axios.get("http://localhost:8080/accessories", {
           params: {
             category,
             priceRange,
           },
         });
-        setGames(response.data);
+        setAccessories(response.data);
         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
         console.log(response.data.length);
       } catch (error) {
-        console.error("Error fetching games:", error);
+        console.error("Error fetching Accessories:", error);
       }
     };
 
-    fetchGames();
+    fetchAccessories();
   }, [category, priceRange]);
 
   const handlePageChange = (pageNumber) => {
@@ -60,7 +60,7 @@ function ProductPage() {
   };
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, left: 0 });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const addToWish = (_id) => {
@@ -94,12 +94,12 @@ function ProductPage() {
             spacing={{ base: "3", md: 5, lg: "10" }}
             columns={{ base: 2, md: 3, lg: 4 }}
           >
-            {games
+            {accessories
               .slice((page - 1) * itemsPerPage, page * itemsPerPage)
-              .map((game) => (
+              .map((accessories) => (
                 <VStack
                   position={"relative"}
-                  key={game.producerID}
+                  key={accessories.producerID}
                   boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
                   borderRadius="10px"
                   maxW="xs"
@@ -110,10 +110,10 @@ function ProductPage() {
                   h="100%"
                 >
                   <Box h="350px" w="100%">
-                    <Link to={`/products/${game.producerID}`}>
+                    <Link to={`/accessory/${accessories.producerID}`}>
                       <Image
                         fit="cover"
-                        src={game.imgURL}
+                        src={accessories.imgURL}
                         alt="NIKE AIR"
                         w="100%"
                         h="100%"
@@ -132,10 +132,10 @@ function ProductPage() {
                       textTransform="uppercase"
                       textAlign={"center"}
                     >
-                      {game.name}
+                      {accessories.name}
                     </chakra.h1>
                     <chakra.h1 color="gray.400" textAlign="center">
-                      {game.category}
+                      {accessories.category}
                     </chakra.h1>
                   </Box>
                   <HStack
@@ -148,7 +148,7 @@ function ProductPage() {
                     roundedBottom="lg"
                   >
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                      ₹{game.price}
+                      ₹{accessories.price}
                       <IconButton
                         _hover={{ color: "orange.500" }}
                         fontSize="25px"
@@ -156,7 +156,7 @@ function ProductPage() {
                         variant="link"
                         onClick={addToWish}
                         icon={<VscHeart />}
-                        left="110px"
+                        left="100px"
                         bottom="-5px"
                       />
                     </chakra.h1>
@@ -176,8 +176,8 @@ function ProductPage() {
                         icon={<VscGear />}
                       />
                     ) : (
-                      <Link to={`/products/${game.producerID}`}>
-                        <Button
+                      <Link to={`/accessory/${accessories.producerID}`}>
+                        <chakra.button
                           px={4}
                           py={3}
                           fontSize="xs"
@@ -194,39 +194,37 @@ function ProductPage() {
                           onClick={handleClick}
                         >
                           View
-                        </Button>{" "}
+                        </chakra.button>{" "}
                       </Link>
                     )}
                   </HStack>
                 </VStack>
               ))}
           </SimpleGrid>
-          <Box onClick={handleClick}>
-            <HStack mt={4} spacing={4}>
-              <Button
-                colorScheme="orange"
-                disabled={page === 1}
-                onClick={() => handlePageChange(page - 1)}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-              >
-                Previous
-              </Button>
-              <Button
-                colorScheme="orange"
-                disabled={page === totalPages}
-                onClick={() => handlePageChange(page + 1)}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-              >
-                Next
-              </Button>
-            </HStack>
-          </Box>
+          <HStack mt={4} spacing={4}>
+            <Button
+              colorScheme="orange"
+              disabled={page === 1}
+              onClick={() => handlePageChange(page - 1)}
+              _hover={{
+                bg: "#151515",
+                color: "#f45f02;",
+              }}
+            >
+              Previous
+            </Button>
+            <Button
+              colorScheme="orange"
+              disabled={page === totalPages}
+              onClick={() => handlePageChange(page + 1)}
+              _hover={{
+                bg: "#151515",
+                color: "#f45f02;",
+              }}
+            >
+              Next
+            </Button>
+          </HStack>
           <br />
         </VStack>
       </Box>
@@ -234,4 +232,4 @@ function ProductPage() {
   );
 }
 
-export default ProductPage;
+export default AccessoryPage;
