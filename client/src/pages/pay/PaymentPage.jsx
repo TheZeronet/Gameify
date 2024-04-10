@@ -136,7 +136,7 @@ const PaymentPage = () => {
             _hover={{ bg: "#151515", color: "#f45f02" }}
             onClick={PaymentDone}
           >
-            <NavLink to="/checkout">
+            <NavLink to="/OrderSuccessfull">
               <Text _hover={{ color: "#f45f02" }}>checkout</Text>
             </NavLink>
           </Button>
