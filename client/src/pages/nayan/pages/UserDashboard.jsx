@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, VStack, Text, Tag, Img, Flex, Spacer } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import Clive from "../Assets/Clive16.png";
+import Clive from "../../../assets/Clive16.png";
 
 const UserDashboard = () => {
   const { userData } = useSelector((store) => store.auth);

@@ -3,9 +3,9 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import SideBarLeft from "./nestedPages/Sidebar";
 
-import cloud from "../assets/cloud.png";
-import cloud2 from "../assets/cloud2.png";
-import Chief from "../assets/Chief.png";
+import cloud from "../../../assets/cloud.png";
+import cloud2 from "../../../assets/cloud2.png";
+import Chief from "../../../assets/Chief.png";
 
 const AdminDashbord = () => {
   return (

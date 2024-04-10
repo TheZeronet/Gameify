@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserData } from "../../../redux/auth/auth.actions";
 import { ACTION_PURCHASE } from "../../../redux/cart/cart.actions";
 import RazorPay from "../../Payment";
-import pay from "../styles/pay.png";
+// import pay from "../styles/pay.png";
 
 const PaymentForm = () => {
   const price = 1100;
@@ -258,7 +258,7 @@ const PaymentForm = () => {
           </VStack>
         </Stack>
 
-        <Image h="120%" position={"absolute"} src={pay} />
+        {/* <Image h="120%" position={"absolute"} src={pay} /> */}
         <RazorPay />
       </VStack>
     </>
