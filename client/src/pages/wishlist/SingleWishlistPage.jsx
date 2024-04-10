@@ -20,15 +20,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getUserData } from "../redux/auth/auth.actions";
+import { getUserData } from "../../redux/auth/auth.actions";
 import {
   ACTION_ADD_ITEM_TO_CART,
   ACTION_ADD_ITEM_TO_WISHLIST,
   ACTION_GET_CART,
-} from "../redux/cart/cart.actions";
-import { ACTION_GET_PRODUCTS } from "../redux/products/product.actions";
-import Loading from "./Loading";
-import { MOVE_FROM_WISHLIST_TO_CART } from "../redux/cart/cart.actions";
+} from "../../redux/cart/cart.actions";
+import { ACTION_GET_PRODUCTS } from "../../redux/products/product.actions";
+import Loading from "../Loading";
+import { MOVE_FROM_WISHLIST_TO_CART } from "../../redux/cart/cart.actions";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoChevronBackCircleSharp } from "react-icons/io5";

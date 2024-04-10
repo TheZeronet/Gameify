@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import Cart from "../Cart";
+import Cart from "../pages/pay/Cart";
 import LandingPage from "../pages/LandingPage";
 import OrderSuccessfull from "../pages/pay/OrderSuccessfull";
 import PaymentForm from "../pages/pay/PaymentForm";
 import AccessoryPage from "../pages/accessory/AccessoryPage";
 import SingleAccessoryPage from "../pages/accessory/SingleAccessoryPage";
 import ProductPage from "../pages/game/ProductPage";
-import Wishlist from "../pages/Wishlist";
-import SingleWishlist from "../pages/SingleWishlistPage";
+import Wishlist from "../pages/wishlist/Wishlist";
+import SingleWishlist from "../pages/wishlist/SingleWishlistPage";
 import SingleProductPage from "../pages/game/SingleProductPage";
 import UserDashboard from "../pages/dashboard/UserDashboard";
 import Login from "../pages/login/Login";
