@@ -20,7 +20,7 @@ import ResetPasswordForm from "./ResetPassword";
 import VerifyEmailForm from "./EmailCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { ForegetPassword } from "../../../redux/auth/auth.actions";
+import { ForegetPassword } from "../../redux/auth/auth.actions";
 
 const Login = () => {
   const [forgot, setForget] = useState(false);

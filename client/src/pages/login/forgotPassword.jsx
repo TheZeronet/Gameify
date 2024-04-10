@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ForegetPassword } from "../../../redux/auth/auth.actions";
+import { ForegetPassword } from "../../redux/auth/auth.actions";
 
 export default function ForgotPasswordForm({ handleOtp }) {
   const toast = useToast();

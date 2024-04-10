@@ -13,9 +13,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { getUserData } from "../../../../redux/auth/auth.actions";
+import { getUserData } from "../redux/auth/auth.actions";
 import { Link } from "react-router-dom";
-import { MOVE_FROM_WISHLIST_TO_CART } from "../../../../redux/cart/cart.actions";
+import { MOVE_FROM_WISHLIST_TO_CART } from "../redux/cart/cart.actions";
 
 const CartCard = ({ name, price, _id, imgURL, producerID }) => {
   const dispatch = useDispatch();

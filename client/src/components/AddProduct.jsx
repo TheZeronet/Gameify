@@ -15,7 +15,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { ACTION_ADD_PRODUCT } from "../../../../redux/admin/admin.actions";
+import { ACTION_ADD_PRODUCT } from "../redux/admin/admin.actions";
 //import { ACTION_ADD_PRODUCT } from "../../redux/admin/admin.actions";
 
 const AddProduct = () => {
@@ -26,27 +26,23 @@ const AddProduct = () => {
 
   const dispatch = useDispatch();
 
-  const toast = useToast()
+  const toast = useToast();
 
   const AddToDatabase = () => {
-
-    dispatch(ACTION_ADD_PRODUCT( area ))
-    .then((res)=>{
+    dispatch(ACTION_ADD_PRODUCT(area)).then((res) => {
       toast({
         title: "Product Added Successfull",
         status: "success",
         duration: 4000,
         isClosable: true,
-      })
-    })
-    
+      });
+    });
+
     //setarea("");
   };
 
   return (
     <Flex gap="10rem" justifyContent="center" alignItems="center">
-     
-
       <Flex
         p={50}
         direction="column"
@@ -69,21 +65,24 @@ const AddProduct = () => {
           <VStack>
             <Textarea
               placeholder="Here is a sample placeholder"
-             height={"200px"}
+              height={"200px"}
               width="650px"
               value={area}
               color="white"
               onChange={(e) => setarea(e.target.value)}
               resize={resize}
             />
-
           </VStack>
-          <RadioGroup color="white" colorScheme='orange'  value={value} onChange={setvalue}>
+          <RadioGroup
+            color="white"
+            colorScheme="orange"
+            value={value}
+            onChange={setvalue}
+          >
             <HStack spacing="24px" align="left">
-            <Radio value="products">Products</Radio>
-            
+              <Radio value="products">Products</Radio>
+
               <Radio value="plans">Plans</Radio>
-           
             </HStack>
 
             <Spacer />

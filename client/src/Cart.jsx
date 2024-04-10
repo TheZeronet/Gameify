@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { CartItem } from "./components/CartItem";
 import { CartOrderSummary } from "./components/CartOrderSummary";
 import { cartData } from "./components/_data";
-import CartCard from "./pages/sufiyan/pages/nestedPages/Card";
+import CartCard from "./components/Card";
 
 const Cart = () => {
   const { userData, token, isAuth } = useSelector((store) => store.auth);

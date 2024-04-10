@@ -16,8 +16,8 @@ import {
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { getUserData, login } from "../../../redux/auth/auth.actions";
-import Loading from "../../Loading";
+import { getUserData, login } from "../../redux/auth/auth.actions";
+import Loading from "../Loading";
 
 export default function LoginForm({ handleForgot }) {
   const { isAuth, loading, error, errorMessage } = useSelector(

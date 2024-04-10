@@ -22,8 +22,8 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
-import { login } from "../../../redux/auth/auth.actions";
-import { registerUser } from "../../../redux/register/register.actions";
+import { login } from "../../redux/auth/auth.actions";
+import { registerUser } from "../../redux/register/register.actions";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
