@@ -3,8 +3,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 //import pay from "../Styles/pay.png"
 
-import img from "../assets/Loader.gif";
-import img2 from "../assets/thumb.png";
+import img from "../../assets/Loader.gif";
+import img2 from "../../assets/thumb.png";
 
 const OrderSuccessfull = () => {
   const navigate = useNavigate();

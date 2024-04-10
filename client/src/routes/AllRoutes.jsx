@@ -1,27 +1,27 @@
 import { Route, Routes } from "react-router-dom";
 import Cart from "../Cart";
 import LandingPage from "../pages/LandingPage";
-import OrderSuccessfull from "../pages/OrderSuccessfull";
-import PaymentForm from "../pages/PaymentForm";
-import AccessoryPage from "../pages/AccessoryPage";
-import SingleAccessoryPage from "../pages/SingleAccessoryPage";
-import ProductPage from "../pages/ProductPage";
+import OrderSuccessfull from "../pages/pay/OrderSuccessfull";
+import PaymentForm from "../pages/pay/PaymentForm";
+import AccessoryPage from "../pages/accessory/AccessoryPage";
+import SingleAccessoryPage from "../pages/accessory/SingleAccessoryPage";
+import ProductPage from "../pages/game/ProductPage";
 import Wishlist from "../pages/Wishlist";
 import SingleWishlist from "../pages/SingleWishlistPage";
-import SingleProductPage from "../pages/SingleProductPage";
-import UserDashboard from "../pages/UserDashboard";
+import SingleProductPage from "../pages/game/SingleProductPage";
+import UserDashboard from "../pages/dashboard/UserDashboard";
 import Login from "../pages/login/Login";
 import SignUp from "../pages/login/SignUp";
-import AdminDashbord from "../pages/AdminDashbord";
+import AdminDashbord from "../pages/dashboard/AdminDashbord";
 import AddProduct from "../components/AddProduct";
 import AllUsers from "../pages/AllUsers";
-import Dashborad from "../pages/Dashborad";
+import Dashborad from "../pages/dashboard/Dashborad";
 import AdminPrivateAuth from "./AdminPrivateRoute";
 import PrivateRoute from "./PrivateRoute";
 import About from "../pages/About";
-import PaymentPage from "../pages/PaymentPage";
-import Details from "../pages/Details";
-import Checkout from "../pages/Checkout";
+import PaymentPage from "../pages/pay/PaymentPage";
+import Details from "../pages/pay/Details";
+import Checkout from "../pages/pay/Checkout";
 
 const AllRoutes = () => {
   return (

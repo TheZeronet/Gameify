@@ -18,8 +18,8 @@ import {
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserData } from "../redux/auth/auth.actions";
-import { ACTION_PURCHASE } from "../redux/cart/cart.actions";
+import { getUserData } from "../../redux/auth/auth.actions";
+import { ACTION_PURCHASE } from "../../redux/cart/cart.actions";
 import RazorPay from "./Payment";
 // import pay from "../styles/pay.png";
 

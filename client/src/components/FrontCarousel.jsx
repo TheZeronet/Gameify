@@ -9,14 +9,14 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
-import "../../../App.css";
+import "../App.css";
 
-import front1 from "../../../assets/Alan.jpeg";
-import front2 from "../../../assets/Kena.jpg";
-import front3 from "../../../assets/Horizon.jpg";
-import front4 from "../../../assets/Nier.jpg";
-import front5 from "../../../assets/Sifu.jpg";
-import front6 from "../../../assets/Cyberpunk.jpg";
+import front1 from "../assets/Alan.jpeg";
+import front2 from "../assets/Kena.jpg";
+import front3 from "../assets/Horizon.jpg";
+import front4 from "../assets/Nier.jpg";
+import front5 from "../assets/Sifu.jpg";
+import front6 from "../assets/Cyberpunk.jpg";
 
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";

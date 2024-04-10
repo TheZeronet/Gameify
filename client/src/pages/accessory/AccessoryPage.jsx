@@ -21,8 +21,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION_ADD_PRODUCT,
   ACTION_DELETE_PRODUCT,
-} from "../redux/admin/admin.actions";
-import Filter from "../components/FilterA";
+} from "../../redux/admin/admin.actions";
+import Filter from "../../components/FilterA";
 import { useParams } from "react-router-dom";
 
 function AccessoryPage() {

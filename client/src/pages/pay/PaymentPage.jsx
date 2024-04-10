@@ -11,9 +11,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserData } from "../redux/auth/auth.actions";
+import { getUserData } from "../../redux/auth/auth.actions";
 import { NavLink } from "react-router-dom";
-import { ACTION_PURCHASE } from "../redux/cart/cart.actions";
+import { ACTION_PURCHASE } from "../../redux/cart/cart.actions";
 import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
