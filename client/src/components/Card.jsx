@@ -68,7 +68,7 @@ const CartCard = ({ name, price, _id, imgURL, producerID }) => {
                 <Image
                   fit="cover"
                   src={imgURL}
-                  alt="NIKE AIR"
+                  alt="RRODUCT IMAGE"
                   w="100%"
                   h="100%"
                 />

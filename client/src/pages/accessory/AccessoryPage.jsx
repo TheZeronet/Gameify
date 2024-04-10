@@ -114,7 +114,7 @@ function AccessoryPage() {
                       <Image
                         fit="cover"
                         src={accessories.imgURL}
-                        alt="NIKE AIR"
+                        alt="ACCESSORY IMAGE"
                         w="100%"
                         h="100%"
                         onClick={handleClick}

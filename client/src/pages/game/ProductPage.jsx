@@ -114,7 +114,7 @@ function ProductPage() {
                       <Image
                         fit="cover"
                         src={game.imgURL}
-                        alt="NIKE AIR"
+                        alt="GAME IMAGE"
                         w="100%"
                         h="100%"
                         onClick={handleClick}
