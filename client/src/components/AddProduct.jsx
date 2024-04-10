@@ -5,13 +5,10 @@ import {
   RadioGroup,
   HStack,
   VStack,
-  Image,
   Textarea,
-  Box,
   Radio,
   Flex,
   Button,
-  Input,
   useToast,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
@@ -19,7 +16,7 @@ import { ACTION_ADD_PRODUCT } from "../redux/admin/admin.actions";
 //import { ACTION_ADD_PRODUCT } from "../../redux/admin/admin.actions";
 
 const AddProduct = () => {
-  const [resize, setResize] = React.useState("horizontal");
+  const [resize] = React.useState("horizontal");
 
   const [value, setvalue] = useState("products");
   let [area, setarea] = useState("");
