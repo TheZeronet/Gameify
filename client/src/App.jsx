@@ -8,12 +8,23 @@ import Logo from "./assets/Logo.png";
 
 function App() {
   const [Starting, setStarting] = useState(true);
+  
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
       setStarting(false);
     }, 2000);
   }, []);
+
+  const handleOnSearch = (string) => {
+    // onSearch will have as the first callback parameter
+    // the string searched and for the second the results.
+    console.log(string, results);
+
+    setSearch(string);
+  };
 
   if (Starting) {
     return (
@@ -44,8 +55,8 @@ function App() {
 
   return (
     <Box>
-      <Navbar />
-      <AllRoutes />
+      <Navbar handleOnSearch={handleOnSearch}/>
+      <AllRoutes search={search}/>
       <Footer />
     </Box>
   );

@@ -16,24 +16,6 @@ import {
   ACTION_REMOVE_ITEM_CART,
 } from "../redux/cart/cart.actions";
 import { getUserData } from "../redux/auth/auth.actions";
-const QuantitySelect = (props) => {
-  return (
-    <Select
-      color={"white"}
-      bg="#f45f02"
-      _hover={{ color: "#f45f02", bg: "white" }}
-      maxW="64px"
-      aria-label="Select quantity"
-      focusBorderColor={useColorModeValue("blue.500", "blue.200")}
-      {...props}
-    >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </Select>
-  );
-};
 
 export const CartItem = (props) => {
   //console.log(1)
@@ -91,18 +73,12 @@ export const CartItem = (props) => {
       {/* Desktop */}
       <Flex
         width="full"
-        justify="space-between"
+        justify="right"
         display={{
           base: "none",
           md: "flex",
         }}
       >
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        />
         <PriceTag price={price} currency={currency} />
         <CloseButton
           color="#f45f02"
@@ -131,12 +107,7 @@ export const CartItem = (props) => {
         >
           Delete
         </Link>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        />
+
         <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>

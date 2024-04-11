@@ -107,6 +107,8 @@ const SingleProductPage = () => {
         },
       };
 
+      console.log(Product)
+
       dispatch(ACTION_ADD_ITEM_TO_CART(Product)).then((res) =>
         dispatch(getUserData(token.email))
       );
@@ -275,43 +277,7 @@ const SingleProductPage = () => {
 
           <br />
 
-          <HStack
-            m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
-            mt="20px"
-            w={{ base: "100%", sm: "60%", md: "70%", lg: "50%" }}
-          >
-            <HStack
-              maxW={"120px"}
-              alignItems="center"
-              display="flex"
-              justifyContent="space-between"
-            >
-              <Button
-                bg="#f36100"
-                color={"gray.200"}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-                disabled={quant < 1}
-                onClick={() => setQuant((prev) => prev - 1)}
-              >
-                -
-              </Button>
-              <Text color={"gray.200"}>{quant}</Text>
-              <Button
-                bg="#f36100"
-                color={"gray.200"}
-                _hover={{
-                  bg: "#151515",
-                  color: "#f45f02;",
-                }}
-                onClick={() => setQuant((prev) => prev + 1)}
-              >
-                +
-              </Button>
-            </HStack>
-          </HStack>
+          
 
           <HStack>
             <Button
