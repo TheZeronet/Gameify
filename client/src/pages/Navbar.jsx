@@ -64,7 +64,7 @@ const Links = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ handleOnSearch }) => {
   // const AdminIsAuth = true
 
   const dispatch = useDispatch();
@@ -169,7 +169,7 @@ const Navbar = () => {
             style={{ paddingLeft: "110px" }}
           >
             <Box visibility={{ base: "hidden", md: "visible" }}>
-              <SearchBar />
+              <SearchBar handleOnSearch={handleOnSearch} />
             </Box>
           </HStack>
           <Spacer display={{ base: "none", md: "block" }} />
@@ -363,7 +363,7 @@ const Navbar = () => {
               <br />
 
               <VStack>
-                {Links.map((el) => (
+                {Links.map((el, key) => (
                   <VStack w={"80%"}>
                     <NavLink
                       key={el.path}

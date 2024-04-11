@@ -26,8 +26,8 @@ const SearchBar2 = ( OpenSearch , SetOpenSearch ) => {
           <HStack   
           onClick={()=>SetOpenSearch( OpenSearch=="none" ? "block" : "none" )}  >
           
-            <Image boxSize={50} src={item.image} />
-            <Text>{item.name}</Text>
+            {/* <Image boxSize={50} src={item.image} />
+            <Text>{item.name}</Text> */}
           </HStack>
         )
       }
@@ -69,9 +69,9 @@ const SearchBar2 = ( OpenSearch , SetOpenSearch ) => {
       onSearch={handleOnSearch}
      // onHover={handleOnHover}
       onSelect={handleOnSelect}
+      showNoResults={false}
      // onFocus={handleOnFocus}
       autoFocus
-      formatResult={formatResult}
       fuseOptions={{ keys: ["name", "price"] }}
     />
 

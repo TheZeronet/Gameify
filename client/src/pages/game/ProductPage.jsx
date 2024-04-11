@@ -25,7 +25,7 @@ import {
 import Filter from "../../components/FilterG";
 import { useParams } from "react-router-dom";
 
-function ProductPage() {
+function ProductPage({ search }) {
   const [games, setGames] = useState([]);
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
@@ -44,7 +44,16 @@ function ProductPage() {
             priceRange,
           },
         });
-        setGames(response.data);
+        // setGames(response.data);
+        // console.log(response.data);
+
+        // Filter the response data based on the search term
+        const filteredGames = response.data.filter(game =>
+          game.name.toLowerCase().includes(search.toLowerCase())
+        );
+
+        setGames(filteredGames);
+
         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
         console.log(response.data.length);
       } catch (error) {
@@ -53,7 +62,7 @@ function ProductPage() {
     };
 
     fetchGames();
-  }, [category, priceRange]);
+  }, [search, category, priceRange]);
 
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);

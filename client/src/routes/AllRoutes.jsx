@@ -22,8 +22,9 @@ import About from "../pages/About";
 import PaymentPage from "../pages/pay/PaymentPage";
 import Details from "../pages/pay/Details";
 import Checkout from "../pages/pay/Checkout";
+import React from "react";
 
-const AllRoutes = () => {
+const AllRoutes = ({ search }) => {
   return (
     <div>
       <Routes>
@@ -32,13 +33,13 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<SignUp />} />
 
-        <Route path="/accessory" element={<AccessoryPage />} />
+        <Route path="/accessory" element={<AccessoryPage search={search}/>} />
         <Route
           path="/accessory/:producerID"
           element={<SingleAccessoryPage />}
         />
 
-        <Route path="/products" element={<ProductPage />} />
+        <Route path="/products" element={<ProductPage search={search} />} />
         <Route path="/products/:producerID" element={<SingleProductPage />} />
 
         <Route

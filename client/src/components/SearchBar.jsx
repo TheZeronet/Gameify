@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-const SearchBar = () => {
+const SearchBar = ({ handleOnSearch }) => {
   const navigate = useNavigate();
 
   const { data: dataTobeMatch } = useSelector((store) => store.product);
@@ -25,11 +25,6 @@ const SearchBar = () => {
     );
   };
 
-  const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    console.log(string, results);
-  };
 
   const handleOnHover = (result) => {
     // the item hovered
@@ -57,7 +52,7 @@ const SearchBar = () => {
         onSelect={handleOnSelect}
         // onFocus={handleOnFocus}
         autoFocus
-        formatResult={formatResult}
+        showNoResults={false}
         fuseOptions={{ keys: ["name", "price"] }}
         //     // necessary, otherwise the results will be blank
         styling={{

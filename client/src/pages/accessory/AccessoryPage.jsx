@@ -25,7 +25,7 @@ import {
 import Filter from "../../components/FilterA";
 import { useParams } from "react-router-dom";
 
-function AccessoryPage() {
+function AccessoryPage({ search }) {
   const [accessories, setAccessories] = useState([]);
   const [category, setCategory] = useState("");
   const [priceRange, setPriceRange] = useState("");
@@ -44,7 +44,14 @@ function AccessoryPage() {
             priceRange,
           },
         });
-        setAccessories(response.data);
+        // setAccessories(response.data);
+
+        const filteredAccessories = response.data.filter(acc =>
+          acc.name.toLowerCase().includes(search.toLowerCase())
+        );
+
+        setAccessories(filteredAccessories);
+
         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
         console.log(response.data.length);
       } catch (error) {
@@ -53,7 +60,7 @@ function AccessoryPage() {
     };
 
     fetchAccessories();
-  }, [category, priceRange]);
+  }, [search, category, priceRange]);
 
   const handlePageChange = (pageNumber) => {
     setPage(pageNumber);
