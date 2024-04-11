@@ -14,9 +14,6 @@ const AdminDashbord = () => {
       align={"flex-start"}
       justifyContent="flex-start"
       p={5}
-      // bgGradient={
-      //   "linear-gradient(279deg, rgba(64,64,64,1) 31%, rgba(0,0,0,1) 100%)"
-      // }
       bg={"#151515"}
     >
       <SideBarLeft />
