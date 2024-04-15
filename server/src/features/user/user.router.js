@@ -90,7 +90,7 @@ app.post("/login", async (req, res) => {
         from: process.env.EMAIL,
         to: email,
         subject: `Login Successfull`,
-        html: `<h1>your ACcount Login Successfull  </h1>`,
+        html: `<h1> your Account Login Successfull </h1>`,
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
@@ -169,7 +169,7 @@ app.post("/signup", async (req, res) => {
         from: process.env.EMAIL,
         to: email,
         subject: `Sign Up Successfull`,
-        html: `<h1>${username} Account Sign Up Successfull  </h1>`,
+        html: `<h1>${username} Account Sign-Up Successfull  </h1>`,
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
@@ -268,7 +268,7 @@ app.post("/reset-password/reset", async (req, res) => {
       from: process.env.EMAIL,
       to: email,
       subject: `Password Updated Successfully`,
-      html: `<h1>Your Passwrod Updated Successfully</h1>`,
+      html: `<h1>Your Password has been updated Successfully</h1>`,
     };
 
     transporter.sendMail(mailOptions, (err, info) => {
