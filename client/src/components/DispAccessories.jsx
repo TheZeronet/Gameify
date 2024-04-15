@@ -40,14 +40,17 @@ const DispAccessories = [
     category: "Mouse",
   },
   {
-    name: "Ghost wire: Tokyo",
-    producerID: "650d34181a43390435a92ede",
-    maker: "Tango Gameworks",
+    _id: {
+      $oid: "65e74c5cf2556118eb44eb9d",
+    },
+    name: "Sony WH-1000XM4",
+    producerID: "qwertyuiop6",
+    maker: "Sony",
     imgURL:
-      "https://i.pinimg.com/564x/5f/0b/e8/5f0be86054955348aeb2fbc48f1ec53d.jpg",
-    info: "Mysterious disappearances in Tokyo; unravel supernatural occurrences, combat occult forces.",
-    price: 2500,
-    category: "Action, Adventure",
+      "https://i.rtings.com/assets/products/nggZcsC3/sony-wh-1000xm4-wireless/design-medium.jpg?format=auto",
+    info: "Premium wireless noise-cancelling headphones with advanced features, long battery life, comfortable fit.",
+    price: 25000,
+    category: "Headphones",
   },
 ];
 

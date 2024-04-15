@@ -46,7 +46,7 @@ function AccessoryPage({ search }) {
         });
         // setAccessories(response.data);
 
-        const filteredAccessories = response.data.filter(acc =>
+        const filteredAccessories = response.data.filter((acc) =>
           acc.name.toLowerCase().includes(search.toLowerCase())
         );
 
@@ -67,7 +67,7 @@ function AccessoryPage({ search }) {
   };
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0 });
   };
 
   const addToWish = (_id) => {
