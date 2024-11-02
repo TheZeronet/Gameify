@@ -38,7 +38,8 @@ Clone the repository:
 
 A) Splash Screen: 
 The Splash screen shows the website’s name.
-![Splash screen](https://github.com/user-attachments/assets/117ddf3e-edf2-402d-b4e5-772b8e4bf34a)
+![image](https://github.com/user-attachments/assets/f919a632-46f0-48a1-92fc-487f3644a427)
+
 
 B) Sign In Page:
 Includes sign in details
