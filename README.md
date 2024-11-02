@@ -40,14 +40,13 @@ A) Splash Screen:
 The Splash screen shows the website’s name.
 ![Splash screen](https://github.com/user-attachments/assets/117ddf3e-edf2-402d-b4e5-772b8e4bf34a)
 
-
 B) Sign In Page:
 Includes sign in details
-
+![sign in](https://github.com/user-attachments/assets/3eb3cfed-a0e8-48a8-8c29-96bfe5c767c6)
 
 C) Sign Up Page:
 Includes sign Up details
-
+![sign up](https://github.com/user-attachments/assets/5f8a7610-ffc8-4946-a7f0-5a0d58b51bfe)
 
 D) Home Page:
 The start menu shows four options of the game which you can access.
